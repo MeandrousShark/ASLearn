@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">ASLearn</string>
+    <string name="learn">Learn ASL</string>
+    <string name="dictionary">ASL Dictionary</string>
+    <string name="culture">History and Culture</string>
+    <string name="progress">My Progress</string>
 </resources>
