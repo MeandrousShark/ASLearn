@@ -16,21 +16,20 @@
         android:layout_marginTop="32dp"
         android:text="@string/welcome"
         android:textSize="44sp"
-        app:layout_constraintBottom_toTopOf="@+id/button14"
+        app:layout_constraintBottom_toTopOf="@+id/learnASL"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/learnASL"
         android:layout_width="0dp"
-        android:layout_height="42dp"
+        android:layout_height="47dp"
         android:layout_marginBottom="5dp"
         android:layout_marginEnd="53dp"
         android:layout_marginStart="53dp"
         android:background="#FFFFFF"
         android:backgroundTint="#FFFFFF"
-        android:onClick="moduleMenu"
         android:paddingEnd="20dp"
         android:paddingStart="30dp"
         android:text="@string/learn"
@@ -38,15 +37,14 @@
         android:textColor="#888888"
         android:textSize="20sp"
         android:theme="@style/PrimaryFlatButton"
-        app:layout_constraintBottom_toTopOf="@+id/button15"
+        app:layout_constraintBottom_toTopOf="@+id/culture"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintHorizontal_weight="0.70"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button14" />
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <Button
-        android:id="@+id/button15"
+        android:id="@+id/culture"
         android:layout_width="0dp"
         android:layout_height="42dp"
         android:layout_marginBottom="5dp"
@@ -61,17 +59,17 @@
         android:textColor="#888888"
         android:textSize="20sp"
         android:theme="@style/PrimaryFlatButton"
-        app:layout_constraintBottom_toTopOf="@+id/button16"
+        app:layout_constraintBottom_toTopOf="@+id/dictionary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_weight="0.70"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2" />
+        app:layout_constraintTop_toBottomOf="@+id/learnASL" />
 
     <Button
-        android:id="@+id/button16"
+        android:id="@+id/dictionary"
         android:layout_width="0dp"
         android:layout_height="42dp"
-        android:layout_marginBottom="45dp"
+        android:layout_marginBottom="5dp"
         android:layout_marginEnd="53dp"
         android:layout_marginStart="53dp"
         android:background="#FFFFFF"
@@ -83,22 +81,22 @@
         android:textColor="#888888"
         android:textSize="20sp"
         android:theme="@style/PrimaryFlatButton"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/progress"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintHorizontal_weight="0.70"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button15" />
+        app:layout_constraintTop_toBottomOf="@+id/culture" />
 
     <Button
-        android:id="@+id/button14"
+        android:id="@+id/progress"
         android:layout_width="0dp"
         android:layout_height="42dp"
-        android:layout_marginBottom="5dp"
+        android:layout_marginBottom="45dp"
         android:layout_marginEnd="53dp"
         android:layout_marginStart="53dp"
         android:background="#FFFFFF"
         android:backgroundTint="#FFFFFF"
-        android:onClick="moduleMenu"
         android:paddingEnd="20dp"
         android:paddingStart="30dp"
         android:text="@string/progress"
@@ -106,11 +104,11 @@
         android:textColor="#888888"
         android:textSize="20sp"
         android:theme="@style/PrimaryFlatButton"
-        app:layout_constraintBottom_toTopOf="@+id/button2"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintHorizontal_weight=".70"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/dictionary" />
 
 </android.support.constraint.ConstraintLayout>
