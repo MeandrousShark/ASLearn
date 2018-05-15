@@ -4,4 +4,5 @@
     <string name="dictionary">ASL Dictionary</string>
     <string name="culture">History and Culture</string>
     <string name="progress">My Progress</string>
+    <string name="alphabet">Alphabet</string>
 </resources>
