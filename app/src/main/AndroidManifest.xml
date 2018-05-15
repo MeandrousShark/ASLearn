@@ -16,7 +16,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainMenu" />
+        <activity android:name=".MainMenu"
+            android:label="@string/module_menu"
+            android:parentActivityName=".MainActivity">
+        </activity>
     </application>
 
 </manifest>
