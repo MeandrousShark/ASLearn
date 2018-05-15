@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:label="@string/module_menu">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <Button
+                android:id="@+id/button6"
+                android:layout_width="match_parent"
+                android:layout_height="69dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:background="#FFFFFF"
+                android:backgroundTint="#FFFFFF"
+                android:paddingEnd="20dp"
+                android:paddingStart="30dp"
+                android:text="@string/alphabet"
+                android:textAlignment="textStart"
+                android:textColor="#888888"
+                android:textSize="20sp"
+                android:theme="@style/PrimaryFlatButton"
+                app:layout_constraintBottom_toTopOf="@+id/button15"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_weight="0.70"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/button14" />
+
+            <Button
+                android:id="@+id/button7"
+                android:layout_width="match_parent"
+                android:layout_height="69dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginStart="5dp"
+                android:background="#FFFFFF"
+                android:backgroundTint="#FFFFFF"
+                android:paddingEnd="20dp"
+                android:paddingStart="30dp"
+                android:text="@string/numbers"
+                android:textAlignment="textStart"
+                android:textColor="#888888"
+                android:textSize="20sp"
+                android:theme="@style/PrimaryFlatButton"
+                app:layout_constraintBottom_toTopOf="@+id/button15"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_weight="0.70"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/button14" />
+
+            <Button
+                android:id="@+id/button8"
+                android:layout_width="match_parent"
+                android:layout_height="69dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginStart="5dp"
+                android:background="#FFFFFF"
+                android:backgroundTint="#FFFFFF"
+                android:paddingEnd="20dp"
+                android:paddingStart="30dp"
+                android:text="@string/greetings"
+                android:textAlignment="textStart"
+                android:textColor="#888888"
+                android:textSize="20sp"
+                android:theme="@style/PrimaryFlatButton"
+                app:layout_constraintBottom_toTopOf="@+id/button15"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_weight="0.70"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/button14" />
+
+            <Button
+                android:id="@+id/button9"
+                android:layout_width="match_parent"
+                android:layout_height="69dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginStart="5dp"
+                android:background="#FFFFFF"
+                android:backgroundTint="#FFFFFF"
+                android:paddingEnd="20dp"
+                android:paddingStart="30dp"
+                android:text="@string/food"
+                android:textAlignment="textStart"
+                android:textColor="#888888"
+                android:textSize="20sp"
+                android:theme="@style/PrimaryFlatButton"
+                app:layout_constraintBottom_toTopOf="@+id/button15"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_weight="0.70"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/button14" />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
