@@ -30,6 +30,7 @@
         android:layout_marginStart="53dp"
         android:background="#FFFFFF"
         android:backgroundTint="#FFFFFF"
+        android:onClick="learnASL"
         android:paddingEnd="20dp"
         android:paddingStart="30dp"
         android:text="@string/learn"

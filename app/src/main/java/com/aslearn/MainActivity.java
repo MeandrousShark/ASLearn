@@ -13,9 +13,29 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    protected void moduleMenu(View view) {
+    /**
+     * Loads the module menu activity when the user clicks on "Learn ASL"
+     * @param view the current view the user is on?
+     */
+    protected void learnASL(View view) {
         System.out.println("moduleMenu button clicked!");
         Intent intent = new Intent(this, MainMenu.class);
         startActivity(intent);
     }
+//    protected void culture(View view) {
+//        System.out.println("moduleMenu button clicked!");
+//        Intent intent = new Intent(this, MainMenu.class);
+//        startActivity(intent);
+//    }
+//        protected void dictionary(View view) {
+//        System.out.println("moduleMenu button clicked!");
+//        Intent intent = new Intent(this, MainMenu.class);
+//        startActivity(intent);
+//    }
+//        protected void progress(View view) {
+//        System.out.println("moduleMenu button clicked!");
+//        Intent intent = new Intent(this, MainMenu.class);
+//        startActivity(intent);
+//    }
+
 }
