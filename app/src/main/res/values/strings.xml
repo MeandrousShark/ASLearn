@@ -11,4 +11,6 @@
     <string name="numbers">Numbers</string>
     <string name="greetings">Greetings</string>
     <string name="food">Food</string>
+    <string name="todo">TODO</string>
+    <string name="tododo">TODO</string>
 </resources>
