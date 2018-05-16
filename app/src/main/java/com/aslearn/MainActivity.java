@@ -1,16 +1,22 @@
 package com.aslearn;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.VideoView;
 
 public class MainActivity extends AppCompatActivity {
-
+    VideoView videoView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        videoView = (VideoView) findViewById(R.id.HelloGif);
+        Uri uri = Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.welcome);
+        videoView.setVideoURI(uri);
+        videoView.start();
     }
 
     /**
@@ -22,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, MainMenu.class);
         startActivity(intent);
     }
+
 
 
 //    protected void culture(View view) {
