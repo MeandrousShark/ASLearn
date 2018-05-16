@@ -17,6 +17,7 @@
 
             <Button
                 android:id="@+id/alphaButton"
+                android:tag="alphaButton"
                 android:layout_width="match_parent"
                 android:layout_height="69dp"
                 android:layout_marginBottom="5dp"
@@ -25,6 +26,7 @@
                 android:layout_marginTop="5dp"
                 android:background="#FFFFFF"
                 android:backgroundTint="#FFFFFF"
+                android:onClick="openLesson"
                 android:paddingEnd="20dp"
                 android:paddingStart="30dp"
                 android:text="@string/alphabet"
@@ -40,6 +42,7 @@
 
             <Button
                 android:id="@+id/numberButton"
+                android:tag="numberButton"
                 android:layout_width="match_parent"
                 android:layout_height="69dp"
                 android:layout_marginBottom="5dp"
@@ -63,6 +66,7 @@
 
             <Button
                 android:id="@+id/greetButton"
+                android:tag="greetButton"
                 android:layout_width="match_parent"
                 android:layout_height="69dp"
                 android:layout_marginBottom="5dp"
@@ -71,7 +75,7 @@
                 android:layout_marginTop="5dp"
                 android:background="#FFFFFF"
                 android:backgroundTint="#FFFFFF"
-                android:onClick="greetings"
+                android:onClick="openLesson"
                 android:paddingEnd="20dp"
                 android:paddingStart="30dp"
                 android:text="@string/greetings"
@@ -87,6 +91,7 @@
 
             <Button
                 android:id="@+id/foodButton"
+                android:tag="foodButton"
                 android:layout_width="match_parent"
                 android:layout_height="69dp"
                 android:layout_marginBottom="5dp"
@@ -110,6 +115,7 @@
 
             <Button
                 android:id="@+id/verbButton"
+                android:tag="verbButton"
                 android:layout_width="match_parent"
                 android:layout_height="69dp"
                 android:layout_marginBottom="5dp"
@@ -133,6 +139,7 @@
 
             <Button
                 android:id="@+id/directButton"
+                android:tag="directButton"
                 android:layout_width="match_parent"
                 android:layout_height="69dp"
                 android:layout_marginBottom="5dp"
@@ -179,6 +186,7 @@
 
             <Button
                 android:id="@+id/familyButton"
+                android:tag="familyButton"
                 android:layout_width="match_parent"
                 android:layout_height="69dp"
                 android:layout_marginBottom="5dp"
@@ -202,6 +210,7 @@
 
             <Button
                 android:id="@+id/weatherButton"
+                android:tag="weatherButton"
                 android:layout_width="match_parent"
                 android:layout_height="69dp"
                 android:layout_marginBottom="5dp"
@@ -225,6 +234,7 @@
 
             <Button
                 android:id="@+id/questionButton"
+                android:tag="questionButton"
                 android:layout_width="match_parent"
                 android:layout_height="69dp"
                 android:layout_marginBottom="5dp"

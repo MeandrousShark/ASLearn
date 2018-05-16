@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.VideoView;
 
 /**
@@ -15,9 +16,27 @@ import android.widget.VideoView;
 
 public class InfoLesson extends AppCompatActivity{
 
+    TextView title;
+    TextView info;
     VideoView videoView;
     //TODO Fix AndroidManifest so that it gets the Android Label from button name
 
+//    public InfoLesson(String buttonName, View view) {
+//        setContentView(R.layout.infopage);
+//        switch(buttonName) {
+//            case "alphaButton":
+//                break;
+//            case "greetButton":
+//                title = findViewById(R.id.WelcomeText);
+//                info = findViewById(R.id.topinfo);
+//                title.setText(R.string.welcomeLesson);
+//                info.setText(R.string.welcomeInfo);
+//                videoView = (VideoView) findViewById(R.id.HelloGif);
+//                Uri uri = Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.welcome);
+//                videoView.setVideoURI(uri);
+//                videoView.start();
+//        }
+//    }
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.infopage);
