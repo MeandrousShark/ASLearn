@@ -13,4 +13,10 @@
     <string name="food">Food</string>
     <string name="todo">TODO</string>
     <string name="tododo">TODO</string>
+    <string name="verbs">Basic Verbs</string>
+    <string name="adjectives">Basic Adjectives</string>
+    <string name="directions">Giving Directions</string>
+    <string name="family">Family</string>
+    <string name="weather">Weather</string>
+    <string name="questions">Questions</string>
 </resources>
