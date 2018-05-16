@@ -22,6 +22,9 @@
             android:label="@string/module_menu"
             android:parentActivityName=".MainActivity">
         </activity>
+        <activity android:name=".InfoLesson"
+            android:label="Greetings"
+            android:parentActivityName=".MainMenu"/>
     </application>
 
 </manifest>
