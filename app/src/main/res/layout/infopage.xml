@@ -1,39 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#c9ddff"
-    android:backgroundTint="#c9ddff">
-
-
+    android:backgroundTint="#c9ddff"
+    android:orientation="vertical">
 
 
     <EditText
         android:id="@+id/topinfo"
         android:layout_width="700dp"
         android:layout_height="250dp"
-        android:layout_marginTop="50dp"
         android:layout_marginStart="50dp"
-        android:paddingStart="20dp"
-        android:paddingEnd="30dp"
+        android:layout_marginTop="50dp"
         android:background="#FFFFFF"
         android:backgroundTint="#FFFFFF"
         android:fontFamily="sans-serif"
-        android:text="Hello
-Handshape: B, palm outward
-Movement: Touch your cheekbone, then wave once downwards
-Location: Cheek"
         android:padding="10dp"
+        android:paddingEnd="30dp"
+        android:paddingStart="20dp"
+        android:text="Welcome
+Handshape: thumb in palm, fingers straight, palm up
+Movement: move hand across your body
+Location: mid section"
         android:textColor="#888888"
         android:textSize="36sp" />
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="500dp"
-        android:layout_marginStart="160dp"
-        app:srcCompat="@drawable/welcome" />
+    <Button
+        android:id="@+id/nextsign"
+        android:layout_width="200dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="700dp"
+        android:layout_marginStart="50dp"
+        android:background="#FFFFFF"
+        android:backgroundTint="#FFFFFF"
+        android:paddingEnd="10dp"
+        android:paddingStart="10dp"
+        android:text="Next Sign"
+        android:textColor="#888888"
+        android:textSize="30sp"
+        android:theme="@style/PrimaryFlatButton" />
+
+
 
 </LinearLayout>
