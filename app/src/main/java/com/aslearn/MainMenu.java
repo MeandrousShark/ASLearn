@@ -19,7 +19,7 @@ public class MainMenu extends AppCompatActivity {
      */
     public void greetings(View view) {
         //@TODO Figure out the lesson view (where all the signs in the lesson are)
-        // Intent intent = new Intent(this, MainMenu.class);
-        // startActivity(intent);
+         Intent intent = new Intent(this, InfoLesson.class);
+         startActivity(intent);
     }
 }
