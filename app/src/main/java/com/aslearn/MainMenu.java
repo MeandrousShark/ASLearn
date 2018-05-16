@@ -5,6 +5,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+/**
+ * This is the main module menu. From here, users can select lessons.
+ */
 public class MainMenu extends AppCompatActivity {
 
     @Override
@@ -14,8 +17,9 @@ public class MainMenu extends AppCompatActivity {
     }
 
     /**
-     *
-     * @param view
+     * Loads the InfoLesson activity when the user clicks on a lesson. (Currently only
+     * the Greetings button works)
+     * @param view the current view the user is on
      */
     public void greetings(View view) {
         //@TODO Figure out the lesson view (where all the signs in the lesson are)
