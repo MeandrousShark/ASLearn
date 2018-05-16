@@ -13,15 +13,13 @@ import android.widget.VideoView;
  * all of the code should be for it (or subclasses)
  */
 
-public class MoreInfo {
+public class MoreInfo extends AppCompatActivity{
     VideoView videoView;
     //TODO Fix AndroidManifest so that it gets the Android Label from button name
 
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.infopage);
-        videoView = (VideoView) findViewById(R.id.HelloGif);
-        Uri uri = Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.welcome);
-        videoView.setVideoURI(uri);
-        videoView.start();
+    protected void learnASL(View view) {
+        System.out.println("moduleMenu button clicked!");
+        Intent intent = new Intent(this, MoreInfo.class);
+        startActivity(intent);
+    }
 }
