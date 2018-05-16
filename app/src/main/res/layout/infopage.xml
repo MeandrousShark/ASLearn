@@ -24,7 +24,6 @@
 
     <EditText
         android:id="@+id/thegif"
-        r
         android:layout_width="200dp"
         android:layout_height="50dp"
         android:layout_marginBottom="50dp"
