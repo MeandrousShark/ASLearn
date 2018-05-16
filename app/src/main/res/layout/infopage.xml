@@ -1,39 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#c9ddff"
-    android:backgroundTint="#c9ddff"
-    android:orientation="vertical">
+    android:backgroundTint="#c9ddff">
 
-
-    <EditText
-        android:id="@+id/topinfo"
+    <TextView
+        android:id="@+id/textView2"
         android:layout_width="700dp"
         android:layout_height="250dp"
-        android:layout_marginStart="50dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
         android:layout_marginTop="50dp"
         android:background="#FFFFFF"
         android:backgroundTint="#FFFFFF"
         android:fontFamily="sans-serif"
+        android:textColor="#888888"
+        android:textSize="36sp"
+        android:text="Welcome
+Handshape: thumb in palm, fingers straight, palm up
+Movement: move hand across body
+Location: mid section"
         android:padding="10dp"
         android:paddingEnd="30dp"
         android:paddingStart="20dp"
-        android:text="Welcome
-Handshape: thumb in palm, fingers straight, palm up
-Movement: move hand across your body
-Location: mid section"
-        android:textColor="#888888"
-        android:textSize="36sp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/nextsign"
         android:layout_width="200dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="700dp"
-        android:layout_marginStart="50dp"
+        android:layout_height="65dp"
         android:background="#FFFFFF"
         android:backgroundTint="#FFFFFF"
         android:paddingEnd="10dp"
@@ -41,8 +41,24 @@ Location: mid section"
         android:text="Next Sign"
         android:textColor="#888888"
         android:textSize="30sp"
-        android:theme="@style/PrimaryFlatButton" />
+        android:theme="@style/PrimaryFlatButton"
+        tools:layout_editor_absoluteX="113dp"
+        tools:layout_editor_absoluteY="1006dp" />
+
+    <Button
+        android:id="@+id/moreinfo"
+        android:layout_width="200dp"
+        android:layout_height="65dp"
+        android:background="#FFFFFF"
+        android:backgroundTint="#FFFFFF"
+        android:paddingEnd="10dp"
+        android:paddingStart="10dp"
+        android:text="More Info"
+        android:textColor="#888888"
+        android:textSize="30sp"
+        android:theme="@style/PrimaryFlatButton"
+        tools:layout_editor_absoluteX="483dp"
+        tools:layout_editor_absoluteY="1006dp" />
 
 
-
-</LinearLayout>
+</android.support.constraint.ConstraintLayout>
