@@ -23,7 +23,7 @@
         android:text="Welcome"
         android:textColor="#888888"
         android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/HelloGif"
+        app:layout_constraintBottom_toTopOf="@+id/infoGif"
         app:layout_constraintStart_toStartOf="@+id/topinfo"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
@@ -45,7 +45,7 @@ Movement: move hand across body
 Location: mid section"
         android:textColor="#888888"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/HelloGif"
+        app:layout_constraintBottom_toTopOf="@+id/infoGif"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.307"
         app:layout_constraintStart_toStartOf="parent"
@@ -91,13 +91,13 @@ Location: mid section"
         app:layout_constraintVertical_bias="0.0" />
 
     <VideoView
-        android:id="@+id/HelloGif"
-        android:layout_width="383dp"
-        android:layout_height="223dp"
+        android:id="@+id/infoGif"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginBottom="93dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="w,1:1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/WelcomeText" />
 

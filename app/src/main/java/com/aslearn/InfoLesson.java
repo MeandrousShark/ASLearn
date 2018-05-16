@@ -21,7 +21,7 @@ public class InfoLesson extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.infopage);
-        videoView = (VideoView) findViewById(R.id.HelloGif);
+        videoView = (VideoView) findViewById(R.id.infoGif);
         Uri uri = Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.welcome);
         videoView.setVideoURI(uri);
         videoView.start();
