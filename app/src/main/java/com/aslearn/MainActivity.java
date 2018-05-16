@@ -22,6 +22,8 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, MainMenu.class);
         startActivity(intent);
     }
+
+
 //    protected void culture(View view) {
 //        System.out.println("moduleMenu button clicked!");
 //        Intent intent = new Intent(this, MainMenu.class);
