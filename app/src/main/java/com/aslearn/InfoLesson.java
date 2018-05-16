@@ -1,7 +1,11 @@
 package com.aslearn;
 
-import android.os.Bundle;
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.VideoView;
 
 /**
  *
@@ -11,9 +15,16 @@ import android.support.v7.app.AppCompatActivity;
 
 public class InfoLesson extends AppCompatActivity{
 
+    VideoView videoView;
+    //TODO Fix AndroidManifest so that it gets the Android Label from button name
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.infopage);
+        videoView = (VideoView) findViewById(R.id.HelloGif);
+        Uri uri = Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.welcome);
+        videoView.setVideoURI(uri);
+        videoView.start();
     }
 
 }
