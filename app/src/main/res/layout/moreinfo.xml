@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,12 +8,12 @@
     android:backgroundTint="#c9ddff">
 
     <TextView
-
-        android:id="@+id/WelcomeText"
+        android:id="@+id/WelcomeText2"
         android:layout_width="340dp"
-        android:layout_height="40dp"
-        android:layout_marginBottom="120dp"
-        android:layout_marginTop="10dp"
+        android:layout_height="45dp"
+        android:layout_marginBottom="30dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="16dp"
         android:background="#FFFFFF"
         android:backgroundTint="#FFFFFF"
         android:fontFamily="sans-serif"
@@ -24,41 +23,63 @@
         android:text="Welcome"
         android:textColor="#888888"
         android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/HelloGif"
-        app:layout_constraintStart_toStartOf="@+id/topinfo"
+        app:layout_constraintBottom_toTopOf="@+id/videoView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <VideoView
+        android:id="@+id/HelloGif"
+        android:layout_width="340dp"
+        android:layout_height="150dp"
+        android:layout_marginBottom="63dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="80dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView4"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/topinfo"
+        android:id="@+id/MoreInfoTitle"
         android:layout_width="340dp"
-        android:layout_height="110dp"
-        android:layout_marginBottom="5dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginTop="30dp"
+        android:layout_height="wrap_content"
         android:background="#FFFFFF"
         android:backgroundTint="#FFFFFF"
         android:fontFamily="sans-serif"
         android:padding="1dp"
         android:paddingStart="10dp"
-        android:text="Handshape: thumb in palm, fingers straight, palm up
-Movement: move hand across body
-Location: mid section"
+        android:singleLine="false"
+        android:text="More Info"
         android:textColor="#888888"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/HelloGif"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.647"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.641" />
+        android:textSize="23sp"
+        tools:layout_editor_absoluteX="22dp"
+        tools:layout_editor_absoluteY="250dp" />
+
+    <TextView
+        android:id="@+id/MoreInfoText"
+        android:layout_width="340dp"
+        android:layout_height="146dp"
+        android:background="#FFFFFF"
+        android:backgroundTint="#FFFFFF"
+        android:fontFamily="sans-serif"
+        android:padding="1dp"
+        android:paddingStart="10dp"
+        android:singleLine="false"
+        android:text="description here about the sign. if you want to make
+another line
+you can type it like this"
+        android:textColor="#888888"
+        android:textSize="18sp"
+        tools:layout_editor_absoluteX="22dp"
+        tools:layout_editor_absoluteY="283dp" />
+
 
     <Button
         android:id="@+id/nextsignbutton"
-        android:layout_width="156dp"
+        android:layout_width="157dp"
         android:layout_height="45dp"
         android:layout_marginBottom="16dp"
-        android:layout_marginStart="4dp"
+        android:layout_marginStart="2dp"
         android:background = "@drawable/buttonrounding"
         android:backgroundTint="@color/colorPrimary"
         android:paddingEnd="10dp"
@@ -76,11 +97,10 @@ Location: mid section"
 
     <Button
         android:id="@+id/moreinfobutton"
-        android:layout_width="156dp"
+        android:layout_width="157dp"
         android:layout_height="45dp"
         android:background = "@drawable/buttonrounding"
         android:backgroundTint="#FFFFFF"
-        android:onClick="MoreInfoButton"
         android:paddingEnd="10dp"
         android:paddingStart="10dp"
         android:text="More Info"
@@ -91,17 +111,5 @@ Location: mid section"
         app:layout_constraintEnd_toStartOf="@+id/nextsignbutton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/nextsignbutton"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <VideoView
-        android:id="@+id/HelloGif"
-        android:layout_width="340dp"
-        android:layout_height="230dp"
-        android:layout_marginBottom="70dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/WelcomeText" />
-
-
+        app:layout_constraintVertical_bias="0.0" />
 </android.support.constraint.ConstraintLayout>

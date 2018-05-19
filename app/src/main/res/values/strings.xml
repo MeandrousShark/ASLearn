@@ -19,4 +19,8 @@
     <string name="family">Family</string>
     <string name="weather">Weather</string>
     <string name="questions">Questions</string>
+    <string name="welcomeLesson">Welcome</string>
+    <string name="welcomeInfo">Handshape: thumb in palm, fingers straight, palm up\n
+Movement: move hand across body\n
+Location: mid section"</string>
 </resources>

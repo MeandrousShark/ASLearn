@@ -7,6 +7,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.VideoView;
 
+/**
+ * This is the main menu of our application.
+ * From here you can get to anywhere in the app!
+ */
 public class MainActivity extends AppCompatActivity {
     VideoView videoView;
     @Override
@@ -21,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Loads the module menu activity when the user clicks on "Learn ASL"
-     * @param view the current view the user is on?
+     * @param view the current view the user is on
      */
     protected void learnASL(View view) {
         System.out.println("moduleMenu button clicked!");
