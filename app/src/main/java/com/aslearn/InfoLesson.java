@@ -45,6 +45,7 @@ public class InfoLesson extends AppCompatActivity{
         title = findViewById(R.id.WelcomeText);
         title.setText(intent.getStringExtra(MainMenu.title));
         info = findViewById(R.id.topinfo);
+        info.setText(intent.getStringExtra(MainMenu.signInfo));
         videoView = (VideoView) findViewById(R.id.HelloGif);
         Uri uri = Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.welcome);
         videoView.setVideoURI(uri);
