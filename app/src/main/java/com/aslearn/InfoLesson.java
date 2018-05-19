@@ -27,9 +27,9 @@ public class InfoLesson extends AppCompatActivity{
 //            case "alphaButton":
 //                break;
 //            case "greetButton":
-//                title = findViewById(R.id.WelcomeText);
+//                signName = findViewById(R.id.WelcomeText);
 //                info = findViewById(R.id.topinfo);
-//                title.setText(R.string.welcomeLesson);
+//                signName.setText(R.string.welcomeLesson);
 //                info.setText(R.string.welcomeInfo);
 //                videoView = (VideoView) findViewById(R.id.HelloGif);
 //                Uri uri = Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.welcome);
@@ -43,7 +43,7 @@ public class InfoLesson extends AppCompatActivity{
         Intent intent = getIntent();
         String topInfo = intent.getStringExtra(MainMenu.signInfo);
         title = findViewById(R.id.WelcomeText);
-        title.setText(intent.getStringExtra(MainMenu.title));
+        title.setText(intent.getStringExtra(MainMenu.signName));
         info = findViewById(R.id.topinfo);
         info.setText(intent.getStringExtra(MainMenu.signInfo));
         videoView = (VideoView) findViewById(R.id.HelloGif);

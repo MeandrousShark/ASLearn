@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.TextView;
 
 /**
  * This is the main module menu. From here, users can select lessons.
@@ -12,7 +11,7 @@ import android.widget.TextView;
 public class MainMenu extends AppCompatActivity {
 
 
-    public static final String title = "com.aslearn.signName";
+    public static final String signName = "com.aslearn.signName";
     public static final String signInfo = "com.aslearn.infoText";
 
     @Override
@@ -31,7 +30,7 @@ public class MainMenu extends AppCompatActivity {
         Intent intent = new Intent(this, InfoLesson.class);
         String signName = "Welcome";
         String infoSection = "This is where the \nhow to sign info will go";
-        intent.putExtra(title, signName);
+        intent.putExtra(MainMenu.signName, signName);
         intent.putExtra(signInfo, infoSection);
         startActivity(intent);
        // InfoLesson lesson = new InfoLesson(buttonID, view.findViewById(view.getId()));
