@@ -30,7 +30,7 @@
     <VideoView
         android:id="@+id/HelloGif"
         android:layout_width="340dp"
-        android:layout_height="162dp"
+        android:layout_height="150dp"
         android:layout_marginBottom="63dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="80dp"
@@ -53,12 +53,12 @@
         android:textColor="#888888"
         android:textSize="23sp"
         tools:layout_editor_absoluteX="22dp"
-        tools:layout_editor_absoluteY="257dp" />
+        tools:layout_editor_absoluteY="250dp" />
 
     <TextView
         android:id="@+id/MoreInfoText"
         android:layout_width="340dp"
-        android:layout_height="wrap_content"
+        android:layout_height="146dp"
         android:background="#FFFFFF"
         android:backgroundTint="#FFFFFF"
         android:fontFamily="sans-serif"
@@ -71,14 +71,15 @@ you can type it like this"
         android:textColor="#888888"
         android:textSize="18sp"
         tools:layout_editor_absoluteX="22dp"
-        tools:layout_editor_absoluteY="290dp" />
+        tools:layout_editor_absoluteY="283dp" />
 
 
     <Button
         android:id="@+id/nextsignbutton"
-        android:layout_width="148dp"
+        android:layout_width="157dp"
         android:layout_height="45dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginStart="2dp"
         android:background="@color/colorPrimary"
         android:backgroundTint="@color/colorPrimary"
         android:paddingEnd="10dp"
@@ -96,7 +97,7 @@ you can type it like this"
 
     <Button
         android:id="@+id/moreinfobutton"
-        android:layout_width="148dp"
+        android:layout_width="157dp"
         android:layout_height="45dp"
         android:background="#FFFFFF"
         android:backgroundTint="#FFFFFF"

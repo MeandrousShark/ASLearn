@@ -13,8 +13,8 @@
         android:id="@+id/WelcomeText"
         android:layout_width="340dp"
         android:layout_height="40dp"
+        android:layout_marginBottom="120dp"
         android:layout_marginTop="10dp"
-        android:layout_marginBottom="128dp"
         android:background="#FFFFFF"
         android:backgroundTint="#FFFFFF"
         android:fontFamily="sans-serif"
@@ -33,7 +33,7 @@
         android:id="@+id/topinfo"
         android:layout_width="340dp"
         android:layout_height="110dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="5dp"
         android:layout_marginEnd="10dp"
         android:layout_marginTop="30dp"
         android:background="#FFFFFF"
@@ -51,13 +51,14 @@ Location: mid section"
         app:layout_constraintHorizontal_bias="0.647"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.65" />
+        app:layout_constraintVertical_bias="0.641" />
 
     <Button
         android:id="@+id/nextsignbutton"
         android:layout_width="156dp"
         android:layout_height="45dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginStart="4dp"
         android:background="@color/colorPrimary"
         android:backgroundTint="@color/colorPrimary"
         android:paddingEnd="10dp"
@@ -90,13 +91,13 @@ Location: mid section"
         app:layout_constraintEnd_toStartOf="@+id/nextsignbutton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/nextsignbutton"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <VideoView
         android:id="@+id/HelloGif"
         android:layout_width="340dp"
-        android:layout_height="223dp"
-        android:layout_marginBottom="93dp"
+        android:layout_height="230dp"
+        android:layout_marginBottom="70dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
