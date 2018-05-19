@@ -25,14 +25,14 @@ public class MainMenu extends AppCompatActivity {
      * the Greetings button works)
      * @param view the current view the user is on
      */
-//    public void openLesson(View view) {
-//        //@TODO Figure out the lesson view (where all the signs in the lesson are)
-//        String buttonID = view.getTag().toString();
-//        Intent intent = new Intent(this, InfoLesson.class);
-//        intent.putExtra(title, R.string.welcomeLesson);
-//        intent.putExtra(signInfo, R.string.welcomeInfo);
-//        startActivity(intent);
-//       // InfoLesson lesson = new InfoLesson(buttonID, view.findViewById(view.getId()));
-//    }
+    public void openLesson(View view) {
+        //@TODO Figure out the lesson view (where all the signs in the lesson are)
+        String buttonID = view.getTag().toString();
+        Intent intent = new Intent(this, InfoLesson.class);
+        intent.putExtra(title, R.string.welcomeLesson);
+        intent.putExtra(signInfo, R.string.welcomeInfo);
+        startActivity(intent);
+       // InfoLesson lesson = new InfoLesson(buttonID, view.findViewById(view.getId()));
+    }
 
 }
