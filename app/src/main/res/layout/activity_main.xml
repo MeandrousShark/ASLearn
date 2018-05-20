@@ -27,7 +27,7 @@
         android:layout_width="340dp"
         android:layout_height="47dp"
         android:layout_marginStart="16dp"
-        android:background = "@drawable/buttonrounding"
+        android:background="@drawable/buttonrounding"
         android:backgroundTint="#FFFFFF"
         android:onClick="learnASL"
         android:paddingEnd="20dp"
@@ -37,33 +37,12 @@
         android:textColor="#888888"
         android:textSize="20sp"
         android:theme="@style/PrimaryFlatButton"
-        app:layout_constraintBottom_toTopOf="@+id/culture"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.214"
-        app:layout_constraintHorizontal_weight="0.70"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-    <Button
-        android:id="@+id/culture"
-        android:layout_width="340dp"
-        android:layout_height="47dp"
-        android:layout_marginStart="16dp"
-        android:background="@drawable/buttonrounding"
-        android:backgroundTint="#FFFFFF"
-        android:paddingEnd="20dp"
-        android:paddingStart="30dp"
-        android:text="@string/culture"
-        android:textAlignment="textStart"
-        android:textColor="#888888"
-        android:textSize="20sp"
-        android:theme="@style/PrimaryFlatButton"
         app:layout_constraintBottom_toTopOf="@+id/dictionary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.214"
         app:layout_constraintHorizontal_weight="0.70"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/learnASL" />
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <Button
         android:id="@+id/dictionary"
@@ -84,7 +63,7 @@
         app:layout_constraintHorizontal_bias="0.214"
         app:layout_constraintHorizontal_weight="0.70"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/culture" />
+        app:layout_constraintTop_toBottomOf="@+id/learnASL" />
 
     <Button
         android:id="@+id/progress"
@@ -119,11 +98,11 @@
         android:layout_marginTop="95dp"
         android:contentDescription="@string/tododo"
         app:layout_constraintBottom_toTopOf="@+id/learnASL"
+        app:layout_constraintDimensionRatio="w,1:1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.32999998"
+        app:layout_constraintVertical_bias="0.323"
         app:layout_constraintVertical_chainStyle="spread" />
 
 </android.support.constraint.ConstraintLayout>

@@ -16,9 +16,9 @@ import android.widget.VideoView;
 
 public class InfoLesson extends AppCompatActivity{
 
-    TextView title;
-    TextView info;
-    VideoView videoView;
+    TextView wordView;
+    TextView infoView;
+    VideoView signView;
     //TODO Fix AndroidManifest so that it gets the Android Label from button name
 
 //    public InfoLesson(String buttonName, View view) {
@@ -42,14 +42,14 @@ public class InfoLesson extends AppCompatActivity{
         setContentView(R.layout.infopage);
         Intent intent = getIntent();
         String topInfo = intent.getStringExtra(MainMenu.signInfo);
-        title = findViewById(R.id.WelcomeText);
-        title.setText(intent.getStringExtra(MainMenu.signName));
-        info = findViewById(R.id.topinfo);
-        info.setText(intent.getStringExtra(MainMenu.signInfo));
-        videoView = (VideoView) findViewById(R.id.HelloGif);
+        wordView = findViewById(R.id.wordText);
+        wordView.setText(intent.getStringExtra(MainMenu.signName));
+        infoView = findViewById(R.id.topinfo);
+        infoView.setText(intent.getStringExtra(MainMenu.signInfo));
+        signView = (VideoView) findViewById(R.id.signVideo);
         Uri uri = Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.welcome);
-        videoView.setVideoURI(uri);
-        videoView.start();
+        signView.setVideoURI(uri);
+        signView.start();
     }
     protected void MoreInfoButton(View view) {
         System.out.println("moduleMenu button clicked!");
