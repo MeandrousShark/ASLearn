@@ -2,14 +2,15 @@ package com.aslearn.db;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.ForeignKey;
 import android.arch.persistence.room.PrimaryKey;
 
-@Entity(tableName = "words")
+@Entity(tableName = "words", foreignKeys = @ForeignKey(entity = Lesson.class,
+                                                        parentColumns = "lesson_id",
+                                                        childColumns = "lesson"))
 public class Word {
     @PrimaryKey (autoGenerate = true)
     private int word_id;
-
-
 
     @ColumnInfo(name="word")
     private String word;
@@ -23,5 +24,7 @@ public class Word {
     @ColumnInfo (name = "more_info")
     private String more_info;
 
+    @ColumnInfo (name="lesson")
+    private int lesson;
 
 }
