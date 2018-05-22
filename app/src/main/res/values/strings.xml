@@ -23,4 +23,7 @@
     <string name="welcomeInfo">Handshape: thumb in palm, fingers straight, palm up\n
 Movement: move hand across body\n
 Location: mid section"</string>
+    <string name="moreInfo">More info goes here</string>
+    <string name="backButtonText">Back</string>
+    <string name="moreInfoButtonText">More Info</string>
 </resources>

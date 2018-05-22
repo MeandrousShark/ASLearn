@@ -25,7 +25,6 @@
         <activity android:name=".InfoLesson"
             android:label="Greetings"
             android:parentActivityName=".MainMenu"/>
-        <activity android:name=".MoreInfo" />
     </application>
 
 </manifest>
