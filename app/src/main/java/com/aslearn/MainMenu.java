@@ -10,6 +10,10 @@ import android.view.View;
  */
 public class MainMenu extends AppCompatActivity {
 
+
+    public static final String signName = "com.aslearn.signName";
+    public static final String signInfo = "com.aslearn.infoText";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,10 +27,13 @@ public class MainMenu extends AppCompatActivity {
      */
     public void openLesson(View view) {
         //@TODO Figure out the lesson view (where all the signs in the lesson are)
-        String buttonID = view.getTag().toString();
-        System.out.println(buttonID);
         Intent intent = new Intent(this, InfoLesson.class);
+        String signName = "Welcome";
+        String infoSection = "This is where the \nhow to sign info will go";
+        intent.putExtra(MainMenu.signName, signName);
+        intent.putExtra(signInfo, infoSection);
         startActivity(intent);
        // InfoLesson lesson = new InfoLesson(buttonID, view.findViewById(view.getId()));
     }
+
 }

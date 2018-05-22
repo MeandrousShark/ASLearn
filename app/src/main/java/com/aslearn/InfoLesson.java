@@ -5,6 +5,8 @@ import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.MediaController;
 import android.widget.TextView;
 import android.widget.VideoView;
 
@@ -16,9 +18,12 @@ import android.widget.VideoView;
 
 public class InfoLesson extends AppCompatActivity{
 
-    TextView title;
-    TextView info;
-    VideoView videoView;
+    TextView wordView;
+    TextView infoView;
+    VideoView signView;
+    Intent intent;
+    Button moreInfoButton;
+    private int floater;
     //TODO Fix AndroidManifest so that it gets the Android Label from button name
 
 //    public InfoLesson(String buttonName, View view) {
@@ -27,9 +32,9 @@ public class InfoLesson extends AppCompatActivity{
 //            case "alphaButton":
 //                break;
 //            case "greetButton":
-//                title = findViewById(R.id.WelcomeText);
+//                signName = findViewById(R.id.WelcomeText);
 //                info = findViewById(R.id.topinfo);
-//                title.setText(R.string.welcomeLesson);
+//                signName.setText(R.string.welcomeLesson);
 //                info.setText(R.string.welcomeInfo);
 //                videoView = (VideoView) findViewById(R.id.HelloGif);
 //                Uri uri = Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.welcome);
@@ -40,10 +45,33 @@ public class InfoLesson extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.infopage);
-        videoView = (VideoView) findViewById(R.id.infoGif);
+        intent = getIntent();
+        floater = 0;
+        String topInfo = intent.getStringExtra(MainMenu.signInfo);
+        wordView = findViewById(R.id.wordText);
+        wordView.setText(intent.getStringExtra(MainMenu.signName));
+        infoView = findViewById(R.id.topInfo);
+        infoView.setText(intent.getStringExtra(MainMenu.signInfo));
+        signView = (VideoView) findViewById(R.id.signVideo);
+        moreInfoButton = findViewById(R.id.moreInfoButton);
         Uri uri = Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.welcome);
-        videoView.setVideoURI(uri);
-        videoView.start();
+        signView.setVideoURI(uri);
+        signView.setMediaController(new MediaController(this));
+        signView.start();
+    }
+
+    protected void moreInfoButton(View view) {
+        floater += 1;
+        System.out.println("don't copy me plz");
+
+        if(floater % 2 == 1) {
+            infoView.setText(R.string.moreInfo);
+            moreInfoButton.setText(R.string.backButtonText);
+            signView.start();
+        } else {
+            infoView.setText(getIntent().getStringExtra(MainMenu.signInfo));
+            moreInfoButton.setText(R.string.moreInfoButtonText);
+        }
     }
 
 }

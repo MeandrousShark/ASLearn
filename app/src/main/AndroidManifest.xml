@@ -25,6 +25,10 @@
         <activity android:name=".InfoLesson"
             android:label="Greetings"
             android:parentActivityName=".MainMenu"/>
+        <activity android:name=".LessonMenu"
+            android:label="Lessons"
+            android:parentActivityName=".MainMenu"/>
+
     </application>
 
 </manifest>
