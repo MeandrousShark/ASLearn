@@ -51,10 +51,10 @@ public class InfoLesson extends AppCompatActivity{
         wordView = findViewById(R.id.wordText);
         wordView.setText(intent.getStringExtra(MainMenu.signName));
         infoView = findViewById(R.id.topInfo);
-        infoView.setText(intent.getStringExtra(MainMenu.signInfo));
+        infoView.setText(topInfo);
         signView = (VideoView) findViewById(R.id.signVideo);
         moreInfoButton = findViewById(R.id.moreInfoButton);
-        Uri uri = Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.welcome);
+        Uri uri = Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.welcome); //TODO make this modular
         signView.setVideoURI(uri);
         signView.setMediaController(new MediaController(this));
         signView.start();
