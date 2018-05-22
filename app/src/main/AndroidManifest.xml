@@ -22,7 +22,7 @@
         <activity
             android:name=".MainMenu"
             android:label="@string/module_menu"
-            android:parentActivityName=".MainActivity"></activity>
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".InfoLesson"
             android:label="Greetings"
@@ -31,7 +31,9 @@
             android:name=".LessonMenu"
             android:label="Lessons"
             android:parentActivityName=".MainMenu" />
-        <activity android:name=".fingerspelling_questions"></activity>
+        <activity
+            android:name=".FingerSpelling"
+            android:label=".questions" />
     </application>
 
 </manifest>
