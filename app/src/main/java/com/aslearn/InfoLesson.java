@@ -10,6 +10,8 @@ import android.widget.MediaController;
 import android.widget.TextView;
 import android.widget.VideoView;
 
+import com.aslearn.db.AppDatabase;
+
 /**
  *
  * The Java Class that handles the Info Lessons. This is where
@@ -24,6 +26,9 @@ public class InfoLesson extends AppCompatActivity{
     Intent intent;
     Button moreInfoButton;
     private int floater;
+
+    AppDatabase appDatabase;
+
     //TODO Fix AndroidManifest so that it gets the Android Label from button name
 
 //    public InfoLesson(String buttonName, View view) {
@@ -47,6 +52,7 @@ public class InfoLesson extends AppCompatActivity{
         setContentView(R.layout.infopage);
         intent = getIntent();
         floater = 0;
+        appDatabase = AppDatabase.getInstance(InfoLesson.this); //idk if this will workkk
         String topInfo = intent.getStringExtra(MainMenu.signInfo);
         wordView = findViewById(R.id.wordText);
         wordView.setText(intent.getStringExtra(MainMenu.signName));
