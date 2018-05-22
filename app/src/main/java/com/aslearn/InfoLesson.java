@@ -59,9 +59,11 @@ public class InfoLesson extends AppCompatActivity{
         signView.setMediaController(new MediaController(this));
         signView.start();
     }
+
     protected void moreInfoButton(View view) {
         floater += 1;
         System.out.println("don't copy me plz");
+
         if(floater % 2 == 1) {
             infoView.setText(R.string.moreInfo);
             moreInfoButton.setText(R.string.backButtonText);
@@ -71,4 +73,5 @@ public class InfoLesson extends AppCompatActivity{
             moreInfoButton.setText(R.string.moreInfoButtonText);
         }
     }
+
 }
