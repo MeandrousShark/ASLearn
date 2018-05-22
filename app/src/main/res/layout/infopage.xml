@@ -10,7 +10,7 @@
     <TextView
 
         android:id="@+id/wordText"
-        android:layout_width="297dp"
+        android:layout_width="340dp"
         android:layout_height="41dp"
         android:fontFamily="sans-serif"
         android:padding="1dp"
@@ -25,10 +25,11 @@
 
     <TextView
         android:id="@+id/topInfo"
-        android:layout_width="299dp"
+        android:layout_width="340dp"
         android:layout_height="137dp"
+        android:layout_marginStart="16dp"
         android:layout_marginBottom="5dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginEnd="16dp"
         android:background="#FFFFFF"
         android:backgroundTint="#FFFFFF"
         android:contentDescription="The description of how to sign the sign"
@@ -48,7 +49,7 @@
         android:id="@+id/nextSignButton"
         android:layout_width="156dp"
         android:layout_height="45dp"
-        android:layout_marginEnd="28dp"
+        android:layout_marginEnd="22dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/buttonrounding"
         android:backgroundTint="@color/colorPrimary"
@@ -69,7 +70,7 @@
         android:layout_width="156dp"
         android:layout_height="45dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginStart="28dp"
+        android:layout_marginStart="22dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/buttonrounding"
         android:backgroundTint="#FFFFFF"
@@ -82,6 +83,7 @@
         android:theme="@style/PrimaryFlatButton"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/nextSignButton"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="@+id/signVideo"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/signVideo"
@@ -89,7 +91,7 @@
 
     <VideoView
         android:id="@+id/signVideo"
-        android:layout_width="299dp"
+        android:layout_width="340dp"
         android:layout_height="200dp"
         android:layout_marginBottom="70dp"
         app:layout_constraintBottom_toBottomOf="parent"
