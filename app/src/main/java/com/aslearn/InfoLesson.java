@@ -62,7 +62,6 @@ public class InfoLesson extends AppCompatActivity{
 
     protected void moreInfoButton(View view) {
         floater += 1;
-        System.out.println("don't copy me plz");
 
         if(floater % 2 == 1) {
             infoView.setText(R.string.moreInfo);
@@ -74,4 +73,8 @@ public class InfoLesson extends AppCompatActivity{
         }
     }
 
+    public void quizStart(View view) {
+        Intent intent = new Intent(this, FingerSpelling.class);
+        startActivity(intent);
+    }
 }
