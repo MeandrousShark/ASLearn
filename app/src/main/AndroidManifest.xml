@@ -34,6 +34,7 @@
         <activity
             android:name=".FingerSpelling"
             android:label="Fingerspelling Quiz" />
+        <activity android:name=".MultipleChoice" />
     </application>
 
 </manifest>
