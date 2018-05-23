@@ -30,7 +30,7 @@ public class Word {
     private int fluencyVal;
 
     //Constructors
-    private Word (String word, String visualFile, String basicInfo, String moreInfo, String lesson){
+    Word (String word, String visualFile, String basicInfo, String moreInfo, String lesson){
         this.word=word;
         this.visualFile=visualFile;
         this.basicInfo=basicInfo;
@@ -40,6 +40,10 @@ public class Word {
     }
 
     //Getters and Setters
+    public int getWord_id() {return word_id;}
+
+    public void setWord_id(int word_id) { this.word_id = word_id; }
+
     public String getWord() {
         return word;
     }

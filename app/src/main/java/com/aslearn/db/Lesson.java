@@ -2,12 +2,14 @@ package com.aslearn.db;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
+import android.support.annotation.NonNull;
 
 @Entity(tableName = "lessons")
 public class Lesson {
 
-    @PrimaryKey
+    @PrimaryKey @NonNull
     private String lessonName;
 
     @ColumnInfo(name="moduleName")
@@ -23,6 +25,7 @@ public class Lesson {
     private String nextLesson;
 
     //Constructors
+    @Ignore
     public Lesson(String lessonName, String moduleName, String nextLesson){
         this.lessonName=lessonName;
         this.moduleName=moduleName;

@@ -10,6 +10,8 @@ import android.widget.MediaController;
 import android.widget.TextView;
 import android.widget.VideoView;
 
+import com.aslearn.db.AppDatabase;
+
 /**
  *
  * The Java Class that handles the Info Lessons. This is where
@@ -24,6 +26,9 @@ public class InfoLesson extends AppCompatActivity{
     Intent intent;
     Button moreInfoButton;
     private int floater;
+
+    AppDatabase appDatabase;
+
     //TODO Fix AndroidManifest so that it gets the Android Label from button name
 
 //    public InfoLesson(String buttonName, View view) {
@@ -47,14 +52,15 @@ public class InfoLesson extends AppCompatActivity{
         setContentView(R.layout.infopage);
         intent = getIntent();
         floater = 0;
+        appDatabase = AppDatabase.getInstance(InfoLesson.this); //idk if this will workkk
         String topInfo = intent.getStringExtra(MainMenu.signInfo);
         wordView = findViewById(R.id.wordText);
         wordView.setText(intent.getStringExtra(MainMenu.signName));
         infoView = findViewById(R.id.topInfo);
-        infoView.setText(intent.getStringExtra(MainMenu.signInfo));
+        infoView.setText(topInfo);
         signView = (VideoView) findViewById(R.id.signVideo);
         moreInfoButton = findViewById(R.id.moreInfoButton);
-        Uri uri = Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.welcome);
+        Uri uri = Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.welcome); //TODO Make all of this code in a new class
         signView.setVideoURI(uri);
         signView.setMediaController(new MediaController(this));
         signView.start();
@@ -62,7 +68,6 @@ public class InfoLesson extends AppCompatActivity{
 
     protected void moreInfoButton(View view) {
         floater += 1;
-        System.out.println("don't copy me plz");
 
         if(floater % 2 == 1) {
             infoView.setText(R.string.moreInfo);
@@ -74,4 +79,8 @@ public class InfoLesson extends AppCompatActivity{
         }
     }
 
+    public void quizStart(View view) {
+        Intent intent = new Intent(this, FingerSpelling.class);
+        startActivity(intent);
+    }
 }
