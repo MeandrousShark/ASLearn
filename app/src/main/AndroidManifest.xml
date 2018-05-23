@@ -33,7 +33,7 @@
             android:parentActivityName=".MainMenu" />
         <activity
             android:name=".FingerSpelling"
-            android:label=".questions" />
+            android:label="Fingerspelling Quiz" />
     </application>
 
 </manifest>

@@ -9,7 +9,7 @@ import android.support.annotation.NonNull;
 
 import java.util.concurrent.Executors;
 
-@Database(entities= {Word.class, Lesson.class}, version=1)
+@Database(entities= {Word.class, Lesson.class}, version=1, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase{
 
     private static AppDatabase instance;

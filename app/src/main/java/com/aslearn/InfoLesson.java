@@ -60,7 +60,7 @@ public class InfoLesson extends AppCompatActivity{
         infoView.setText(topInfo);
         signView = (VideoView) findViewById(R.id.signVideo);
         moreInfoButton = findViewById(R.id.moreInfoButton);
-        Uri uri = Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.welcome); //TODO make this modular
+        Uri uri = Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.welcome); //TODO Make all of this code in a new class
         signView.setVideoURI(uri);
         signView.setMediaController(new MediaController(this));
         signView.start();
