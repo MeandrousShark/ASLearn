@@ -27,11 +27,11 @@ public class MainMenu extends AppCompatActivity {
      */
     public void openLesson(View view) {
         //@TODO Figure out the lesson view (where all the signs in the lesson are)
-        Intent intent = new Intent(this, InfoLesson.class);
-        String signName = "Welcome";
-        String infoSection = "This is where the \nhow to sign info will go";
-        intent.putExtra(MainMenu.signName, signName);
-        intent.putExtra(signInfo, infoSection);
+        Intent intent = new Intent(this, LessonMenu.class);
+//        String signName = "Welcome";
+//        String infoSection = "This is where the \nhow to sign info will go";
+//        intent.putExtra(MainMenu.signName, signName);
+//        intent.putExtra(signInfo, infoSection);
         startActivity(intent);
        // InfoLesson lesson = new InfoLesson(buttonID, view.findViewById(view.getId()));
     }

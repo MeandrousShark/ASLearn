@@ -34,10 +34,10 @@ public class Lesson {
 //        this.nextLesson=nextLesson;
 //    }
 
-    public Lesson(String lessonName, String moduleName, int lessonOrder, int unlocked){
+    public Lesson(String lessonName, String moduleName, int unlocked, int completed, int lessonOrder){
         this.lessonName=lessonName;
         this.moduleName=moduleName;
-        this.completed=0;
+        this.completed=completed;
         this.unlocked=unlocked;
         this.lessonOrder=lessonOrder;
     }
