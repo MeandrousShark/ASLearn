@@ -9,7 +9,8 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.aslearn.db.DatabaseManager;
+//import com.aslearn.db.DatabaseManager;
+import com.aslearn.db.DatabaseAccess;
 import com.aslearn.db.Lesson;
 
 import java.util.ArrayList;
@@ -17,13 +18,15 @@ import java.util.ArrayList;
 
 
 public class LessonMenu extends AppCompatActivity{
-    private DatabaseManager dbManager;
+  //  private DatabaseManager dbManager;
+    private DatabaseAccess dbManager;
     private ArrayList<Lesson> lessons;
     TextView test;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        dbManager = new DatabaseManager(this);
+      //  dbManager = new DatabaseManager(this);
+        dbManager = DatabaseAccess.getInstance(this);
         setContentView(R.layout.lesson_menu);
         Intent intent = getIntent();
         String moduleName = intent.getStringExtra(MainMenu.moduleName);
