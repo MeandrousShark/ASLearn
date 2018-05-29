@@ -37,6 +37,7 @@ public class LessonMenu extends AppCompatActivity{
         }
     }
 
+    //TODO add a button 'Practice Worse Signs' at the bottom- quizzes you on 5(?) worst signs in this section
     private void setupLessons() {
         LinearLayout layout = findViewById(R.id.linearLayout);
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(

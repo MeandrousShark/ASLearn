@@ -77,7 +77,6 @@
                 android:background="@drawable/buttonrounding"
                 android:backgroundTint="#FFFFFF"
                 android:onClick="openLessonMenu"
-
                 android:paddingEnd="20dp"
                 android:paddingStart="30dp"
                 android:tag="greetButton"

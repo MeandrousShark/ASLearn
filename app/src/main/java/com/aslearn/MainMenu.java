@@ -26,6 +26,8 @@ public class MainMenu extends AppCompatActivity {
      * the Greetings button works)
      * @param view the current view the user is on
      */
+
+    //TODO add percentage sign to right side of button that indicates amount of lesson completed
     public void openLessonMenu(View view) {
         //@TODO Figure out the lesson view (where all the signs in the lesson are)
         Intent intent = new Intent(this, LessonMenu.class);
