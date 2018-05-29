@@ -32,7 +32,9 @@ public class LessonMenu extends AppCompatActivity{
         String moduleName = intent.getStringExtra(MainMenu.moduleName);
         System.out.println(moduleName);
         lessons = dbManager.selectLessonsByModule(moduleName);
-        setupLessons();
+        if (lessons != null) {
+            setupLessons();
+        }
     }
 
     private void setupLessons() {

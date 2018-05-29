@@ -13,6 +13,7 @@ public class DatabaseAccess {
     private static DatabaseAccess instance;
     private static final String TABLE_LESSON = "Lessons";
     private static final String TABLE_WORD = "Words";
+    private static final String TABLE_QUESTIONS = "Questions";
 
    // Cursor cursor = null;
 
@@ -63,7 +64,7 @@ public class DatabaseAccess {
 
     //Get all words from the specified lesson
     public ArrayList<Word> selectWordsByLesson(String lesson){
-        String sqlQuery = "SELECT word_id, word, visual_file, basic_info, more_info, lesson, fluency FROM " +
+        String sqlQuery = "SELECT word_id, word, visual_file, basic_info, more_info, lesson, fluency_val FROM " +
                 TABLE_WORD + "WHERE lesson = '" + lesson +"'";
 
         db = openHelper.getWritableDatabase();
@@ -81,4 +82,100 @@ public class DatabaseAccess {
         db.close();
         return words;
     }
+
+    //Get all questions from the specified lesson
+    public ArrayList<Question> selectQuestionsByLesson(String lesson){
+        String sqlQuery = "SELECT question_id, question, answer, lesson, related_words, visual_file, type FROM " +
+                TABLE_QUESTIONS + "WHERE lesson = '" + lesson +"'";
+
+        db = openHelper.getWritableDatabase();
+        Cursor cursor = db.rawQuery(sqlQuery, null);
+
+        ArrayList<Question> questions = new ArrayList<Question>();
+
+        while(cursor.moveToNext()){
+            Question currQuest = new Question(Integer.parseInt(cursor.getString(0)),
+                    cursor.getString(1), cursor.getString(2),
+                    cursor.getString(3), cursor.getString(4),
+                    cursor.getString(5), cursor.getString(6));
+            questions.add(currQuest);
+        }
+        db.close();
+        return questions;
+    }
+
+    // Get word info for a specified word
+    public ArrayList<Word> selectWord(String word){
+        String sqlQuery = "SELECT word_id, word, visual_file, basic_info, more_info, lesson, fluency_val FROM " +
+                TABLE_WORD + "WHERE word LIKE '" + word +"'";
+
+        db = openHelper.getWritableDatabase();
+        Cursor cursor = db.rawQuery(sqlQuery, null);
+
+        ArrayList<Word> words = new ArrayList<Word>();
+
+        while(cursor.moveToNext()){
+            Word currWord = new Word(Integer.parseInt(cursor.getString(0)),
+                    cursor.getString(1), cursor.getString(2),
+                    cursor.getString(3), cursor.getString(4),
+                    Integer.parseInt(cursor.getString(5)), Integer.parseInt(cursor.getString(6)));
+            words.add(currWord);
+        }
+        db.close();
+        return words;
+    }
+
+    // Get a list of the completed modules
+    public ArrayList<String> selectCompletedModules(){
+        String sqlQuery = "SELECT module FROM " +
+                " (SELECT * FROM Lessons GROUP BY module)" +
+                " WHERE completed = 1";
+
+        db = openHelper.getWritableDatabase();
+        Cursor cursor = db.rawQuery(sqlQuery, null);
+
+        ArrayList<String> modules = new ArrayList<String>();
+
+        while(cursor.moveToNext()){
+            modules.add(cursor.getString(0));
+        }
+        return modules;
+    }
+
+    //Get the five best words from completed lessons
+    public ArrayList<String> select5BestWords(){
+        String sqlQuery = "SELECT word from Lessons JOIN Words " +
+                "ON Lessons.lesson_name = Words.lesson " +
+                "WHERE Lessons.completed = 1 " +
+                "ORDER BY Words.fluency_val DESC LIMIT 5";
+
+        db = openHelper.getWritableDatabase();
+        Cursor cursor = db.rawQuery(sqlQuery, null);
+
+        ArrayList<String> words = new ArrayList<String>();
+
+        while(cursor.moveToNext()){
+            words.add(cursor.getString(0));
+        }
+        return words;
+    }
+
+    //Get the five worst words from completed lessons
+    public ArrayList<String> select5WorstWords(){
+        String sqlQuery = "SELECT word from Lessons JOIN Words " +
+                "ON Lessons.lesson_name = Words.lesson " +
+                "WHERE Lessons.completed = 1 " +
+                "ORDER BY Words.fluency_val ASC LIMIT 5";
+
+        db = openHelper.getWritableDatabase();
+        Cursor cursor = db.rawQuery(sqlQuery, null);
+
+        ArrayList<String> words = new ArrayList<String>();
+
+        while(cursor.moveToNext()){
+            words.add(cursor.getString(0));
+        }
+        return words;
+    }
+
 }
