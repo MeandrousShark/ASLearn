@@ -10,7 +10,7 @@ import android.widget.MediaController;
 import android.widget.TextView;
 import android.widget.VideoView;
 
-import com.aslearn.db.AppDatabase;
+//import com.aslearn.db.AppDatabase;
 
 /**
  *
@@ -27,7 +27,7 @@ public class InfoLesson extends AppCompatActivity{
     Button moreInfoButton;
     private int floater;
 
-    AppDatabase appDatabase;
+   // AppDatabase appDatabase;
 
     //TODO Fix AndroidManifest so that it gets the Android Label from button name
 
@@ -52,7 +52,7 @@ public class InfoLesson extends AppCompatActivity{
         setContentView(R.layout.infopage);
         intent = getIntent();
         floater = 0;
-        appDatabase = AppDatabase.getInstance(InfoLesson.this); //idk if this will workkk
+       // appDatabase = AppDatabase.getInstance(InfoLesson.this); //idk if this will workkk
         String topInfo = intent.getStringExtra(MainMenu.signInfo);
         wordView = findViewById(R.id.wordText);
         wordView.setText(intent.getStringExtra(MainMenu.signName));

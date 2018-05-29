@@ -1,41 +1,41 @@
 package com.aslearn.db;
 
-import android.arch.persistence.room.ColumnInfo;
-import android.arch.persistence.room.Entity;
-import android.arch.persistence.room.ForeignKey;
-import android.arch.persistence.room.PrimaryKey;
+//import android.arch.persistence.room.ColumnInfo;
+//import android.arch.persistence.room.Entity;
+//import android.arch.persistence.room.ForeignKey;
+//import android.arch.persistence.room.PrimaryKey;
 
-@Entity(tableName = "words", foreignKeys = @ForeignKey(entity = Lesson.class,
-                                                        parentColumns = "lessonName",
-                                                        childColumns = "lesson"))
+//@Entity(tableName = "words", foreignKeys = @ForeignKey(entity = Lesson.class,
+//                                                        parentColumns = "lessonName",
+//                                                        childColumns = "lesson"))
 public class Word {
-    @PrimaryKey (autoGenerate = true)
+  //  @PrimaryKey (autoGenerate = true)
     private int word_id;
 
-    @ColumnInfo(name="word")
+    //@ColumnInfo(name="word")
     private String word;
 
-    @ColumnInfo (name="visual_file")
+   // @ColumnInfo (name="visual_file")
     private String visualFile;
 
-    @ColumnInfo (name = "basic_info")
+  //  @ColumnInfo (name = "basic_info")
     private String basicInfo;
 
-    @ColumnInfo (name = "more_info")
+   // @ColumnInfo (name = "more_info")
     private String moreInfo;
 
-    @ColumnInfo (name="lesson")
-    private String lesson;
+  //  @ColumnInfo (name="lesson")
+    private int lesson_id;
 
     private int fluencyVal;
 
     //Constructors
-    Word (String word, String visualFile, String basicInfo, String moreInfo, String lesson){
+    Word (String word, String visualFile, String basicInfo, String moreInfo, int lesson){
         this.word=word;
         this.visualFile=visualFile;
         this.basicInfo=basicInfo;
         this.moreInfo=moreInfo;
-        this.lesson=lesson;
+        this.lesson_id=lesson;
         this.fluencyVal=0;
     }
 
@@ -76,12 +76,12 @@ public class Word {
         this.moreInfo = moreInfo;
     }
 
-    public String getLesson() {
-        return lesson;
+    public int getLesson() {
+        return lesson_id;
     }
 
-    public void setLesson(String lesson) {
-        this.lesson = lesson;
+    public void setLesson(int lesson) {
+        this.lesson_id = lesson;
     }
 
     public int getFluencyVal() {
