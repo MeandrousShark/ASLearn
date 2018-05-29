@@ -36,4 +36,8 @@ public class MainMenu extends AppCompatActivity {
        // InfoLesson lesson = new InfoLesson(buttonID, view.findViewById(view.getId()));
     }
 
+    public void runMultipleChoice(View view) {
+        Intent intent = new Intent(this, MultipleChoice.class);
+        startActivity(intent);
+    }
 }
