@@ -63,6 +63,7 @@ public class InfoLesson extends AppCompatActivity{
         }
     }
 
+
     public void quizStart(View view) {
         Intent intent = new Intent(this, FingerSpelling.class);
         startActivity(intent);
