@@ -73,6 +73,7 @@
         android:layout_marginStart="16dp"
         android:background="@drawable/buttonrounding"
         android:backgroundTint="#FFFFFF"
+        android:onClick="myProgress"
         android:paddingEnd="20dp"
         android:paddingStart="30dp"
         android:text="@string/progress"

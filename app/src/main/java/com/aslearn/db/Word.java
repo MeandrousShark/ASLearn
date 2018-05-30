@@ -25,18 +25,18 @@ public class Word {
     private String moreInfo;
 
   //  @ColumnInfo (name="lesson")
-    private int lesson_id;
+    private String lesson;
 
     private int fluencyVal;
 
     //Constructors
-    Word (int word_id, String word, String visualFile, String basicInfo, String moreInfo, int lesson, int fluencyVal){
+    Word (int word_id, String word, String visualFile, String basicInfo, String moreInfo, String lesson, int fluencyVal){
         this.word_id = word_id;
         this.word=word;
         this.visualFile=visualFile;
         this.basicInfo=basicInfo;
         this.moreInfo=moreInfo;
-        this.lesson_id=lesson;
+        this.lesson =lesson;
         this.fluencyVal=fluencyVal;
     }
 
@@ -77,12 +77,12 @@ public class Word {
         this.moreInfo = moreInfo;
     }
 
-    public int getLesson() {
-        return lesson_id;
+    public String getLesson() {
+        return lesson;
     }
 
-    public void setLesson(int lesson) {
-        this.lesson_id = lesson;
+    public void setLesson(String lesson) {
+        this.lesson = lesson;
     }
 
     public int getFluencyVal() {

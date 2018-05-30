@@ -16,11 +16,15 @@ import com.aslearn.db.Lesson;
 import java.util.ArrayList;
 
 
-
+/**
+ * The sub menu that lets you select the lessons inside a specific module.
+ * Builds the list of buttons from the database.
+ */
 public class LessonMenu extends AppCompatActivity{
   //  private DatabaseManager dbManager;
     private DatabaseAccess dbManager;
     private ArrayList<Lesson> lessons;
+    private Button[] lessonButtons;
     TextView test;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +39,7 @@ public class LessonMenu extends AppCompatActivity{
         if (lessons != null) {
             setupLessons();
         }
+        setTitle(moduleName);
     }
 
     //TODO add a button 'Practice Worse Signs' at the bottom- quizzes you on 5(?) worst signs in this section
@@ -44,8 +49,9 @@ public class LessonMenu extends AppCompatActivity{
                 LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         layoutParams.setMargins(30, 20, 30, 20);
         layoutParams.height = 300;
-        Button[] lessonButtons = new Button[lessons.size()];
+        lessonButtons = new Button[lessons.size()];
         for (int i = 0; i < lessonButtons.length; i++) {
+            final int I = i;
             Button lessonButton = lessonButtons[i];
             lessonButton = new Button(this);
             lessonButton.setBackground(getDrawable(R.drawable.buttonrounding));
@@ -56,6 +62,34 @@ public class LessonMenu extends AppCompatActivity{
             lessonButton.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_START);
             lessonButton.setPadding(90,0,90,0);
             layout.addView(lessonButton, layoutParams);
+            lessonButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(LessonMenu.this, InfoLesson.class);
+                    intent.putExtra("lessonName", lessons.get(I).getLessonName());
+                    startActivity(intent);
+                }
+            });
         }
+      //  startLessons();
     }
+
+   // private void startLessons() {
+//        for (int i = 0; i < lessonButtons.length; i++) {
+//            final int I = i;
+//            Button lessonButton = lessonButtons[i];
+//            lessonButton.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    Intent intent = new Intent(LessonMenu.this, InfoLesson.class);
+//                    intent.putExtra("lessonName", lessons.get(I).getLessonName());
+//                    startActivity(intent);
+//                }
+//            });
+//        Button lessonButton = lessonButtons[0];
+//
+//
+//    }
+
+
 }

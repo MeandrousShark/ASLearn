@@ -65,7 +65,7 @@ public class DatabaseAccess {
     //Get all words from the specified lesson
     public ArrayList<Word> selectWordsByLesson(String lesson){
         String sqlQuery = "SELECT word_id, word, visual_file, basic_info, more_info, lesson, fluency_val FROM " +
-                TABLE_WORD + "WHERE lesson = '" + lesson +"'";
+                TABLE_WORD + " WHERE lesson = '" + lesson +"'";
 
         db = openHelper.getWritableDatabase();
         Cursor cursor = db.rawQuery(sqlQuery, null);
@@ -76,7 +76,7 @@ public class DatabaseAccess {
             Word currWord = new Word(Integer.parseInt(cursor.getString(0)),
                     cursor.getString(1), cursor.getString(2),
                     cursor.getString(3), cursor.getString(4),
-                    Integer.parseInt(cursor.getString(5)), Integer.parseInt(cursor.getString(6)));
+                    cursor.getString(5), Integer.parseInt(cursor.getString(6)));
             words.add(currWord);
         }
         db.close();
@@ -118,7 +118,7 @@ public class DatabaseAccess {
             Word currWord = new Word(Integer.parseInt(cursor.getString(0)),
                     cursor.getString(1), cursor.getString(2),
                     cursor.getString(3), cursor.getString(4),
-                    Integer.parseInt(cursor.getString(5)), Integer.parseInt(cursor.getString(6)));
+                    cursor.getString(5), Integer.parseInt(cursor.getString(6)));
             words.add(currWord);
         }
         db.close();
