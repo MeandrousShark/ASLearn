@@ -1,45 +1,45 @@
 package com.aslearn.db;
 
-import android.arch.persistence.room.ColumnInfo;
-import android.arch.persistence.room.Entity;
-import android.arch.persistence.room.Ignore;
-import android.arch.persistence.room.PrimaryKey;
-import android.support.annotation.NonNull;
-
-@Entity(tableName = "lessons")
+//import android.arch.persistence.room.ColumnInfo;
+//import android.arch.persistence.room.Entity;
+//import android.arch.persistence.room.Ignore;
+//import android.arch.persistence.room.PrimaryKey;
+//import android.support.annotation.NonNull;
+//
+//@Entity(tableName = "lessons")
 public class Lesson {
 
-    @PrimaryKey @NonNull
+//    @PrimaryKey @NonNull
     private String lessonName;
 
-    @ColumnInfo(name="moduleName")
+  //  @ColumnInfo(name="moduleName")
     private String moduleName;
 
-    @ColumnInfo(name="unlocked")
-    private boolean unlocked;
+   // @ColumnInfo(name="unlocked")
+    private int unlocked;
 
-    @ColumnInfo(name="completed")
-    private boolean completed;
+   // @ColumnInfo(name="completed")
+    private int completed;
 
-    @ColumnInfo(name="nextLesson")
-    private String nextLesson;
+  //  @ColumnInfo(name="nextLesson")
+    private int lessonOrder;
 
     //Constructors
-    @Ignore
-    public Lesson(String lessonName, String moduleName, String nextLesson){
-        this.lessonName=lessonName;
-        this.moduleName=moduleName;
-        this.completed=false;
-        this.unlocked=false;
-        this.nextLesson=nextLesson;
-    }
+   // @Ignore
+//    public Lesson(String lessonName, String moduleName, String nextLesson){
+//        this.lessonName=lessonName;
+//        this.moduleName=moduleName;
+//        this.completed=false;
+//        this.unlocked=false;
+//        this.nextLesson=nextLesson;
+//    }
 
-    public Lesson(String lessonName, String moduleName, String nextLesson, boolean unlocked){
+    public Lesson(String lessonName, String moduleName, int unlocked, int completed, int lessonOrder){
         this.lessonName=lessonName;
         this.moduleName=moduleName;
-        this.completed=false;
+        this.completed=completed;
         this.unlocked=unlocked;
-        this.nextLesson=nextLesson;
+        this.lessonOrder=lessonOrder;
     }
 
     //Getters and Setters
@@ -59,30 +59,30 @@ public class Lesson {
         this.moduleName=module;
     }
 
-    public boolean isUnlocked(){
+    public int getUnlocked(){
         return this.unlocked;
     }
 
-    public void setUnlocked(boolean unlocked){
+    public void setUnlocked(int unlocked){
         this.unlocked=unlocked;
     }
 
-    public boolean isCompleted() {
+    public int getCompleted() {
         return this.completed;
     }
 
-    public void setCompleted(boolean completed) {
+    public void setCompleted(int completed) {
         this.completed = completed;
-        if (this.nextLesson != null){
-            this.unlocked=true;
-        }
+//        if (this.nextLesson != null){
+//            this.unlocked=true;
+//        }
     }
 
-    public String getNextLesson() {
-        return this.nextLesson;
+    public int getLessonOrder() {
+        return this.lessonOrder;
     }
 
-    public void setNextLesson(String nextLesson) {
-        this.nextLesson = nextLesson;
+    public void setLessonOrder(int lessonOrder) {
+        this.lessonOrder = lessonOrder;
     }
 }

@@ -10,7 +10,7 @@ import android.widget.MediaController;
 import android.widget.TextView;
 import android.widget.VideoView;
 
-import com.aslearn.db.AppDatabase;
+//import com.aslearn.db.AppDatabase;
 
 /**
  *
@@ -27,37 +27,21 @@ public class InfoLesson extends AppCompatActivity{
     Button moreInfoButton;
     private int floater;
 
-    AppDatabase appDatabase;
+   // AppDatabase appDatabase;
 
     //TODO Fix AndroidManifest so that it gets the Android Label from button name
 
-//    public InfoLesson(String buttonName, View view) {
-//        setContentView(R.layout.infopage);
-//        switch(buttonName) {
-//            case "alphaButton":
-//                break;
-//            case "greetButton":
-//                signName = findViewById(R.id.WelcomeText);
-//                info = findViewById(R.id.topinfo);
-//                signName.setText(R.string.welcomeLesson);
-//                info.setText(R.string.welcomeInfo);
-//                videoView = (VideoView) findViewById(R.id.HelloGif);
-//                Uri uri = Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.welcome);
-//                videoView.setVideoURI(uri);
-//                videoView.start();
-//        }
-//    }
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.infopage);
-        intent = getIntent();
+        //intent = getIntent();
         floater = 0;
-        appDatabase = AppDatabase.getInstance(InfoLesson.this); //idk if this will workkk
-        String topInfo = intent.getStringExtra(MainMenu.signInfo);
+       // appDatabase = AppDatabase.getInstance(InfoLesson.this); //idk if this will workkk
+        //String topInfo = intent.getStringExtra(MainMenu.signInfo);
         wordView = findViewById(R.id.wordText);
-        wordView.setText(intent.getStringExtra(MainMenu.signName));
+        //wordView.setText(intent.getStringExtra(MainMenu.signName));
         infoView = findViewById(R.id.topInfo);
-        infoView.setText(topInfo);
+        //infoView.setText(topInfo);
         signView = (VideoView) findViewById(R.id.signVideo);
         moreInfoButton = findViewById(R.id.moreInfoButton);
         Uri uri = Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.welcome); //TODO Make all of this code in a new class
@@ -78,6 +62,7 @@ public class InfoLesson extends AppCompatActivity{
             moreInfoButton.setText(R.string.moreInfoButtonText);
         }
     }
+
 
     public void quizStart(View view) {
         Intent intent = new Intent(this, FingerSpelling.class);
