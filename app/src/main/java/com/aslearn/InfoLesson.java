@@ -6,11 +6,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.MediaController;
 import android.widget.TextView;
 import android.widget.VideoView;
 
-import com.aslearn.db.AppDatabase;
+import com.aslearn.db.DatabaseAccess;
+import com.aslearn.db.Word;
+
+import java.util.ArrayList;
+
+//import com.aslearn.db.AppDatabase;
 
 /**
  *
@@ -22,65 +28,76 @@ public class InfoLesson extends AppCompatActivity{
 
     TextView wordView;
     TextView infoView;
-    VideoView signView;
+    VideoView videoView;
+    ImageView imageView;
     Intent intent;
     Button moreInfoButton;
     private int floater;
+    private Word word;
+    private ArrayList<Word> words;
+    private DatabaseAccess dbAccess;
+    private int index;
 
-    AppDatabase appDatabase;
+   // AppDatabase appDatabase;
 
     //TODO Fix AndroidManifest so that it gets the Android Label from button name
 
-//    public InfoLesson(String buttonName, View view) {
-//        setContentView(R.layout.infopage);
-//        switch(buttonName) {
-//            case "alphaButton":
-//                break;
-//            case "greetButton":
-//                signName = findViewById(R.id.WelcomeText);
-//                info = findViewById(R.id.topinfo);
-//                signName.setText(R.string.welcomeLesson);
-//                info.setText(R.string.welcomeInfo);
-//                videoView = (VideoView) findViewById(R.id.HelloGif);
-//                Uri uri = Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.welcome);
-//                videoView.setVideoURI(uri);
-//                videoView.start();
-//        }
-//    }
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        index = 0;
+        dbAccess = DatabaseAccess.getInstance(this);
+        Intent intent = getIntent();
+        words = dbAccess.selectWordsByLesson(intent.getStringExtra("lessonName"));
         setContentView(R.layout.infopage);
-        intent = getIntent();
-        floater = 0;
-        appDatabase = AppDatabase.getInstance(InfoLesson.this); //idk if this will workkk
-        String topInfo = intent.getStringExtra(MainMenu.signInfo);
         wordView = findViewById(R.id.wordText);
-        wordView.setText(intent.getStringExtra(MainMenu.signName));
+        imageView = findViewById(R.id.signJpg);
         infoView = findViewById(R.id.topInfo);
-        infoView.setText(topInfo);
-        signView = (VideoView) findViewById(R.id.signVideo);
+        videoView = (VideoView) findViewById(R.id.signVideo);
         moreInfoButton = findViewById(R.id.moreInfoButton);
-        Uri uri = Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.welcome); //TODO Make all of this code in a new class
-        signView.setVideoURI(uri);
-        signView.setMediaController(new MediaController(this));
-        signView.start();
+        setupSign();
+    }
+
+    private void setupSign() {
+        word = words.get(index);
+        wordView.setText(word.getWord());
+        infoView.setText(word.getBasicInfo());
+        String fileName = word.getVisualFile();
+        System.out.println(fileName);
+        String[] fileNameSplit = fileName.split("\\.");
+        System.out.println(fileNameSplit.length);
+        fileName = fileNameSplit[0];
+        int resID = getResources().getIdentifier(fileName, "drawable", getPackageName());
+        if(fileNameSplit[1].equals(("jpg"))) {
+            videoView.setVisibility(View.INVISIBLE);
+            imageView.setImageResource(resID);
+            imageView.setVisibility(View.VISIBLE);
+        } else {
+            Uri uri = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.welcome);
+            videoView.setVideoURI(uri);
+            videoView.setMediaController(new MediaController(this));
+            videoView.start();
+        }
     }
 
     protected void moreInfoButton(View view) {
         floater += 1;
-
         if(floater % 2 == 1) {
-            infoView.setText(R.string.moreInfo);
+            infoView.setText(word.getMoreInfo());
             moreInfoButton.setText(R.string.backButtonText);
-            signView.start();
+            videoView.start();
         } else {
-            infoView.setText(getIntent().getStringExtra(MainMenu.signInfo));
+            infoView.setText(word.getBasicInfo());
             moreInfoButton.setText(R.string.moreInfoButtonText);
         }
     }
 
-    public void quizStart(View view) {
-        Intent intent = new Intent(this, FingerSpelling.class);
-        startActivity(intent);
+
+    public void nextSign(View view) {
+        index++;
+        if(index < words.size()) {
+            setupSign();
+        } else {
+            //TODO go to quiz
+        }
     }
 }

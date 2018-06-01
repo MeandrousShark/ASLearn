@@ -34,6 +34,11 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void myProgress(View view) {
+        Intent intent = new Intent(this, MyProgress.class);
+        startActivity(intent);
+    }
+
 
 
 //    protected void culture(View view) {
