@@ -85,7 +85,7 @@ public class DatabaseAccess {
 
     //Get all questions from the specified lesson
     public ArrayList<Question> selectQuestionsByLesson(String lesson){
-        String sqlQuery = "SELECT question_id, question, answer, lesson, related_words, visual_file, type FROM " +
+        String sqlQuery = "SELECT question_id, question, answer, lesson, related_words, visual_file, type, wrong_answers FROM " +
                 TABLE_QUESTIONS + "WHERE lesson = '" + lesson +"'";
 
         db = openHelper.getWritableDatabase();
@@ -97,7 +97,8 @@ public class DatabaseAccess {
             Question currQuest = new Question(Integer.parseInt(cursor.getString(0)),
                     cursor.getString(1), cursor.getString(2),
                     cursor.getString(3), cursor.getString(4),
-                    cursor.getString(5), cursor.getString(6));
+                    cursor.getString(5), cursor.getString(6),
+                    cursor.getString(7));
             questions.add(currQuest);
         }
         db.close();
