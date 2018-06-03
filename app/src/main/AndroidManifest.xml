@@ -34,7 +34,12 @@
         <activity
             android:name=".FingerSpelling"
             android:label="Fingerspelling Quiz" />
-        <activity android:name=".MultipleChoice" />
+        <activity
+            android:name=".MultipleChoice" />
+        <activity
+            android:name=".MyProgress"
+            android:label="My Progress"
+            android:parentActivityName=".MainActivity" />
     </application>
 
 </manifest>
