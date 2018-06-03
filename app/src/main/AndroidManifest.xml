@@ -42,8 +42,7 @@
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".Quiz"
-            android:label="Quiz"
-            android:parentActivityName=".MainActivity" />
+            android:label="Quiz" />
     </application>
 
 </manifest>
