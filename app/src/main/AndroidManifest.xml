@@ -40,6 +40,10 @@
             android:name=".MyProgress"
             android:label="My Progress"
             android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".Quiz"
+            android:label="Quiz"
+            android:parentActivityName=".MainActivity" />
     </application>
 
 </manifest>
