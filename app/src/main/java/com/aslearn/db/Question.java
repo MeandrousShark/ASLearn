@@ -1,6 +1,7 @@
 package com.aslearn.db;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Question {
     private int questionID;
@@ -10,9 +11,10 @@ public class Question {
     private String relatedWords; //This is in the form of a list of words separated by commas
     private String visualFile;
     private String type;
+    private String wrongAnswers;
 
     //Constructor
-    public Question (int questionID, String question, String answer, String lesson, String relatedWords, String visualFile, String type){
+    public Question (int questionID, String question, String answer, String lesson, String relatedWords, String visualFile, String type, String wrongAnswers){
         this.questionID=questionID;
         this.question=question;
         this.answer=answer;
@@ -20,6 +22,7 @@ public class Question {
         this.relatedWords=relatedWords;
         this.visualFile=visualFile;
         this.type=type;
+        this.wrongAnswers= wrongAnswers;
     }
 
     //Getters and Setters
@@ -63,6 +66,11 @@ public class Question {
         return relatedWords;
     }
 
+    public ArrayList<String> getRelatedWordsAsList(){
+        String[] list = relatedWords.split(",");
+        return new ArrayList<>(Arrays.asList(list));
+    }
+
     public void setVisualFile(String visualFile) {
         this.visualFile = visualFile;
     }
@@ -77,5 +85,16 @@ public class Question {
 
     public String getType(){
         return type;
+    }
+
+    public void setWrongAnswers(String wrongAnswers){
+        this.wrongAnswers=wrongAnswers;
+    }
+
+    public String getWrongAnswers(){ return wrongAnswers;}
+
+    public ArrayList<String>getWrongAnswersAsList(){
+        String[] list = wrongAnswers.split(",");
+        return new ArrayList<>(Arrays.asList(list));
     }
 }

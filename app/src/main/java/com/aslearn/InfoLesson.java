@@ -35,28 +35,31 @@ public class InfoLesson extends AppCompatActivity{
     private int floater;
     private Word word;
     private ArrayList<Word> words;
-    private DatabaseAccess dbAccess;
     private int index;
 
    // AppDatabase appDatabase;
 
-    //TODO Fix AndroidManifest so that it gets the Android Label from button name
-
+    /**
+     * Finds the views from the xml, loads the database to an array of Words, then
+     * @param savedInstanceState used for the super method call
+     */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        index = 0;
-        dbAccess = DatabaseAccess.getInstance(this);
         Intent intent = getIntent();
-        words = dbAccess.selectWordsByLesson(intent.getStringExtra("lessonName"));
-        setContentView(R.layout.infopage);
+        index = 0;
         wordView = findViewById(R.id.wordText);
         imageView = findViewById(R.id.signJpg);
         infoView = findViewById(R.id.topInfo);
         videoView = (VideoView) findViewById(R.id.signVideo);
         moreInfoButton = findViewById(R.id.moreInfoButton);
+        DatabaseAccess dbAccess = DatabaseAccess.getInstance(this);
+        words = dbAccess.selectWordsByLesson(intent.getStringExtra("lessonName"));
+        setContentView(R.layout.infopage);
         setupSign();
     }
 
+    //fills in the views with data about each sign. It also checks if the given media is a picture
+    //or a video, and will assign it to the correct view.
     private void setupSign() {
         word = words.get(index);
         wordView.setText(word.getWord());
@@ -79,7 +82,13 @@ public class InfoLesson extends AppCompatActivity{
         }
     }
 
+    /**
+     * On pressing the more info button, it will display additional info about a sign if there
+     * is any.
+     * @param view the more info button
+     */
     protected void moreInfoButton(View view) {
+        //this magical value will change the button's text between back and more info
         floater += 1;
         if(floater % 2 == 1) {
             infoView.setText(word.getMoreInfo());
@@ -91,13 +100,19 @@ public class InfoLesson extends AppCompatActivity{
         }
     }
 
-
+    /**
+     * Loads the next sign.  If it has reached the end of the index, it will present the quiz
+     * for the lesson.
+     * @param view the nextSign button
+     */
     public void nextSign(View view) {
         index++;
         if(index < words.size()) {
             setupSign();
         } else {
-            //TODO go to quiz
+            Intent intent = new Intent(this, Quiz.class);
+            intent.putExtra("lessonName", word.getLesson());
+            startActivity(intent);
         }
     }
 }
