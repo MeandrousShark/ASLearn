@@ -25,6 +25,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
+
     <TextView
         android:id="@+id/NumberLearnedSigns"
         android:layout_width="match_parent"
@@ -43,6 +44,7 @@
         app:layout_constraintBottom_toTopOf="@+id/BestAndWorstSigns"
         app:layout_constraintEnd_toEndOf="parent" />
 
+
     <TextView
         android:id="@+id/BestAndWorstSigns"
         android:layout_width="match_parent"
@@ -59,6 +61,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/NumberLearnedSigns"
         app:layout_constraintBottom_toTopOf="@id/Columns"/>
+
 
     <LinearLayout
         android:id="@+id/Columns"
@@ -94,6 +97,7 @@
             android:textSize="18sp" />
     </LinearLayout>
 
+
     <TextView
         android:id="@+id/MyBadges"
         android:layout_width="match_parent"
@@ -112,290 +116,229 @@
         android:textColor="#888888"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Columns" />
+        app:layout_constraintTop_toBottomOf="@+id/Columns"
+        app:layout_constraintBottom_toTopOf="@id/BadgeDisplays1" />
 
-    <ImageView
-        android:id="@+id/Badge1"
-        android:layout_width="53dp"
-        android:layout_height="55dp"
-        android:layout_marginBottom="18dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginStart="35dp"
-        android:layout_marginTop="35dp"
-        android:background="#FFFFFF"
+
+    <LinearLayout
+        android:id="@+id/PlaceHolders1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="5"
+        android:layout_marginStart="12dp"
+        app:layout_constraintBottom_toTopOf="@id/BadgeDisplays2"
+        app:layout_constraintTop_toBottomOf="@id/MyBadges">
+
+        <TextView
+            android:layout_width="5dp"
+            android:layout_height="5dp"
+            android:layout_marginStart="35dp"
+            android:layout_marginEnd="35dp"
+            android:background="#888888" />
+        <TextView
+            android:layout_width="5dp"
+            android:layout_height="5dp"
+            android:layout_marginStart="35dp"
+            android:layout_marginEnd="35dp"
+            android:background="#888888" />
+        <TextView
+            android:layout_width="5dp"
+            android:layout_height="5dp"
+            android:layout_marginStart="35dp"
+            android:layout_marginEnd="35dp"
+            android:background="#888888" />
+        <TextView
+            android:layout_width="5dp"
+            android:layout_height="5dp"
+            android:layout_marginStart="35dp"
+            android:layout_marginEnd="35dp"
+            android:background="#888888" />
+        <TextView
+            android:layout_width="5dp"
+            android:layout_height="5dp"
+            android:layout_marginStart="35dp"
+            android:layout_marginEnd="35dp"
+            android:background="#888888" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/PlaceHolders2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:layout_marginStart="12dp"
+        android:weightSum="5"
+        app:layout_constraintTop_toBottomOf="@id/PlaceHolders1">
+
+        <TextView
+            android:layout_width="5dp"
+            android:layout_height="5dp"
+            android:layout_marginStart="35dp"
+            android:layout_marginEnd="35dp"
+            android:background="#888888" />
+        <TextView
+            android:layout_width="5dp"
+            android:layout_height="5dp"
+            android:layout_marginStart="35dp"
+            android:layout_marginEnd="35dp"
+            android:background="#888888" />
+        <TextView
+            android:layout_width="5dp"
+            android:layout_height="5dp"
+            android:layout_marginStart="35dp"
+            android:layout_marginEnd="35dp"
+            android:background="#888888" />
+        <TextView
+            android:layout_width="5dp"
+            android:layout_height="5dp"
+            android:layout_marginStart="35dp"
+            android:layout_marginEnd="35dp"
+            android:background="#888888" />
+        <TextView
+            android:layout_width="5dp"
+            android:layout_height="5dp"
+            android:layout_marginStart="35dp"
+            android:layout_marginEnd="35dp"
+            android:background="#888888" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/BadgeDisplays1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:weightSum="5"
+        android:layout_marginTop="12dp"
         android:elevation="2dp"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toTopOf="@+id/Badge6"
-        app:layout_constraintEnd_toStartOf="@+id/Badge2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/MyBadges"
-        app:srcCompat="@drawable/badge1" />
+        app:layout_constraintTop_toBottomOf="@id/MyBadges">
 
-    <ImageView
-        android:id="@+id/Badge2"
-        android:layout_width="50dp"
-        android:layout_height="55dp"
-        android:layout_marginBottom="18dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="35dp"
-        android:background="#FFFFFF"
+        <ImageView
+            android:id="@+id/Badge1"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_margin="12dp"
+            app:srcCompat="@drawable/badge1"
+            android:background="#FFFFFF"
+            android:visibility="invisible"
+            app:layout_constraintTop_toBottomOf="@id/MyBadges" />
+
+        <ImageView
+            android:id="@+id/Badge2"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_margin="12dp"
+            app:srcCompat="@drawable/badge2"
+            android:background="#FFFFFF"
+            android:visibility="invisible"
+            app:layout_constraintStart_toEndOf="@id/Badge1"
+            app:layout_constraintTop_toBottomOf="@id/MyBadges" />
+
+        <ImageView
+            android:id="@+id/Badge3"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_margin="12dp"
+            app:srcCompat="@drawable/badge3"
+            android:background="#FFFFFF"
+            android:visibility="invisible"
+            app:layout_constraintStart_toEndOf="@id/Badge2"
+            app:layout_constraintTop_toBottomOf="@id/MyBadges" />
+
+        <ImageView
+            android:id="@+id/Badge4"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_margin="12dp"
+            app:srcCompat="@drawable/badge4"
+            android:background="#FFFFFF"
+            android:visibility="invisible"
+            app:layout_constraintStart_toEndOf="@id/Badge3"
+            app:layout_constraintTop_toBottomOf="@id/MyBadges" />
+
+        <ImageView
+            android:id="@+id/Badge5"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_margin="12dp"
+            app:srcCompat="@drawable/badge5"
+            android:background="#FFFFFF"
+            android:visibility="invisible"
+            app:layout_constraintStart_toEndOf="@id/Badge4"
+            app:layout_constraintTop_toBottomOf="@id/MyBadges" />
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:id="@+id/BadgeDisplays2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:weightSum="5"
         android:elevation="2dp"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toTopOf="@+id/Badge7"
-        app:layout_constraintEnd_toStartOf="@+id/Badge3"
-        app:layout_constraintStart_toEndOf="@+id/Badge1"
-        app:layout_constraintTop_toBottomOf="@+id/MyBadges"
-        app:srcCompat="@drawable/badge2" />
+        app:layout_constraintTop_toBottomOf="@id/BadgeDisplays1">
 
-    <ImageView
-        android:id="@+id/Badge3"
-        android:layout_width="50dp"
-        android:layout_height="55dp"
-        android:layout_marginBottom="18dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="35dp"
-        android:background="#FFFFFF"
-        android:elevation="2dp"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toTopOf="@+id/Badge8"
-        app:layout_constraintEnd_toStartOf="@+id/Badge4"
-        app:layout_constraintStart_toEndOf="@+id/Badge2"
-        app:layout_constraintTop_toBottomOf="@+id/MyBadges"
-        app:srcCompat="@drawable/badge3" />
+        <ImageView
+            android:id="@+id/Badge6"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_margin="12dp"
+            app:srcCompat="@drawable/badge6"
+            android:background="#FFFFFF"
+            android:visibility="invisible"
+            app:layout_constraintTop_toBottomOf="@id/BadgeDisplays1" />
 
-    <ImageView
-        android:id="@+id/Badge4"
-        android:layout_width="50dp"
-        android:layout_height="55dp"
-        android:layout_marginBottom="18dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="35dp"
-        android:background="#FFFFFF"
-        android:elevation="2dp"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toTopOf="@+id/Badge9"
-        app:layout_constraintEnd_toStartOf="@+id/Badge5"
-        app:layout_constraintStart_toEndOf="@+id/Badge3"
-        app:layout_constraintTop_toBottomOf="@+id/MyBadges"
-        app:srcCompat="@drawable/badge4" />
+        <ImageView
+            android:id="@+id/Badge7"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_margin="12dp"
+            app:srcCompat="@drawable/badge7"
+            android:background="#FFFFFF"
+            android:visibility="invisible"
+            app:layout_constraintStart_toEndOf="@id/Badge6"
+            app:layout_constraintTop_toBottomOf="@id/BadgeDisplays1" />
 
-    <ImageView
-        android:id="@+id/Badge5"
-        android:layout_width="50dp"
-        android:layout_height="55dp"
-        android:layout_marginBottom="18dp"
-        android:layout_marginStart="18dp"
-        android:layout_marginTop="35dp"
-        android:background="#FFFFFF"
-        android:elevation="2dp"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toTopOf="@+id/Badge10"
-        app:layout_constraintStart_toEndOf="@+id/Badge4"
-        app:layout_constraintTop_toBottomOf="@+id/MyBadges"
-        app:srcCompat="@drawable/badge5" />
+        <ImageView
+            android:id="@+id/Badge8"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_margin="12dp"
+            app:srcCompat="@drawable/badge8"
+            android:background="#FFFFFF"
+            android:visibility="invisible"
+            app:layout_constraintStart_toEndOf="@id/Badge7"
+            app:layout_constraintTop_toBottomOf="@id/BadgeDisplays1" />
 
-    <ImageView
-        android:id="@+id/Badge6"
-        android:layout_width="53dp"
-        android:layout_height="55dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginStart="35dp"
-        android:layout_marginTop="15dp"
-        android:background="#FFFFFF"
-        android:elevation="2dp"
-        android:visibility="invisible"
-        app:layout_constraintEnd_toStartOf="@+id/Badge7"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Badge1"
-        app:srcCompat="@drawable/badge6" />
+        <ImageView
+            android:id="@+id/Badge9"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_margin="12dp"
+            app:srcCompat="@drawable/badge9"
+            android:background="#FFFFFF"
+            android:visibility="invisible"
+            app:layout_constraintStart_toEndOf="@id/Badge8"
+            app:layout_constraintTop_toBottomOf="@id/BadgeDisplays1" />
 
-    <ImageView
-        android:id="@+id/Badge7"
-        android:layout_width="50dp"
-        android:layout_height="55dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="15dp"
-        android:background="#FFFFFF"
-        android:elevation="2dp"
-        android:visibility="invisible"
-        app:layout_constraintEnd_toStartOf="@+id/Badge8"
-        app:layout_constraintStart_toEndOf="@+id/Badge6"
-        app:layout_constraintTop_toBottomOf="@+id/Badge2"
-        app:srcCompat="@drawable/badge7" />
+        <ImageView
+            android:id="@+id/Badge10"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_margin="12dp"
+            app:srcCompat="@drawable/badge10"
+            android:background="#FFFFFF"
+            android:visibility="invisible"
+            app:layout_constraintStart_toEndOf="@id/Badge9"
+            app:layout_constraintTop_toBottomOf="@id/BadgeDisplays1" />
 
-    <ImageView
-        android:id="@+id/Badge8"
-        android:layout_width="50dp"
-        android:layout_height="55dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="15dp"
-        android:background="#FFFFFF"
-        android:elevation="2dp"
-        android:visibility="invisible"
-        app:layout_constraintEnd_toStartOf="@+id/Badge9"
-        app:layout_constraintStart_toEndOf="@+id/Badge7"
-        app:layout_constraintTop_toBottomOf="@+id/Badge3"
-        app:srcCompat="@drawable/badge8" />
-
-    <ImageView
-        android:id="@+id/Badge9"
-        android:layout_width="50dp"
-        android:layout_height="55dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="25dp"
-        android:background="#FFFFFF"
-        android:elevation="2dp"
-        android:visibility="invisible"
-        app:layout_constraintEnd_toStartOf="@+id/Badge10"
-        app:layout_constraintStart_toEndOf="@+id/Badge8"
-        app:layout_constraintTop_toBottomOf="@+id/Badge4"
-        app:srcCompat="@drawable/badge9" />
-
-    <ImageView
-        android:id="@+id/Badge10"
-        android:layout_width="50dp"
-        android:layout_height="55dp"
-        android:layout_marginStart="18dp"
-        android:layout_marginTop="15dp"
-        android:background="#FFFFFF"
-        android:elevation="2dp"
-        android:visibility="invisible"
-        app:layout_constraintStart_toEndOf="@+id/Badge9"
-        app:layout_constraintTop_toBottomOf="@+id/Badge5"
-        app:srcCompat="@drawable/badge10" />
-
-
-    <TextView
-        android:id="@+id/badgeBackground1"
-        android:layout_width="5dp"
-        android:layout_height="5dp"
-        android:layout_marginBottom="40dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginStart="35dp"
-        android:layout_marginTop="55dp"
-        android:background="#888888"
-        app:layout_constraintBottom_toTopOf="@+id/Badge6"
-        app:layout_constraintEnd_toStartOf="@+id/Badge2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/MyBadges" />
-
-    <TextView
-        android:id="@+id/badgeBackground2"
-        android:layout_width="5dp"
-        android:layout_height="5dp"
-        android:layout_marginBottom="40dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="55dp"
-        android:background="#888888"
-        app:layout_constraintBottom_toTopOf="@+id/Badge7"
-        app:layout_constraintEnd_toStartOf="@+id/Badge3"
-        app:layout_constraintStart_toEndOf="@+id/Badge1"
-        app:layout_constraintTop_toBottomOf="@+id/MyBadges" />
-
-    <TextView
-        android:id="@+id/badgeBackground3"
-        android:layout_width="5dp"
-        android:layout_height="5dp"
-        android:layout_marginBottom="40dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="55dp"
-        android:background="#888888"
-        app:layout_constraintBottom_toTopOf="@+id/Badge8"
-        app:layout_constraintEnd_toStartOf="@+id/Badge4"
-        app:layout_constraintStart_toEndOf="@+id/Badge2"
-        app:layout_constraintTop_toBottomOf="@+id/MyBadges" />
-
-    <TextView
-        android:id="@+id/badgeBackground4"
-        android:layout_width="5dp"
-        android:layout_height="5dp"
-        android:layout_marginBottom="40dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="45dp"
-        android:background="#888888"
-        app:layout_constraintBottom_toTopOf="@+id/Badge9"
-        app:layout_constraintEnd_toStartOf="@+id/Badge5"
-        app:layout_constraintStart_toEndOf="@+id/Badge3"
-        app:layout_constraintTop_toBottomOf="@+id/MyBadges" />
-
-    <TextView
-        android:id="@+id/badgeBackground5"
-        android:layout_width="5dp"
-        android:layout_height="5dp"
-        android:layout_marginBottom="40dp"
-        android:layout_marginStart="35dp"
-        android:layout_marginTop="55dp"
-        android:background="#888888"
-        app:layout_constraintBottom_toTopOf="@+id/Badge10"
-        app:layout_constraintStart_toEndOf="@+id/Badge4"
-        app:layout_constraintTop_toBottomOf="@+id/MyBadges" />
-
-    <TextView
-        android:id="@+id/badgeBackground6"
-        android:layout_width="5dp"
-        android:layout_height="5dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginStart="35dp"
-        android:layout_marginTop="40dp"
-        android:background="#888888"
-        app:layout_constraintEnd_toStartOf="@+id/Badge7"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Badge1" />
-
-    <TextView
-        android:id="@+id/badgeBackground7"
-        android:layout_width="5dp"
-        android:layout_height="5dp"
-        android:layout_marginEnd="9dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="40dp"
-        android:background="#888888"
-        app:layout_constraintEnd_toStartOf="@+id/Badge8"
-        app:layout_constraintStart_toEndOf="@+id/Badge6"
-        app:layout_constraintTop_toBottomOf="@+id/Badge2" />
-
-    <TextView
-        android:id="@+id/badgeBackground8"
-        android:layout_width="5dp"
-        android:layout_height="5dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="40dp"
-        android:background="#888888"
-        app:layout_constraintEnd_toStartOf="@+id/Badge9"
-        app:layout_constraintStart_toEndOf="@+id/Badge7"
-        app:layout_constraintTop_toBottomOf="@+id/Badge3" />
-
-    <TextView
-        android:id="@+id/badgeBackground9"
-        android:layout_width="5dp"
-        android:layout_height="5dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="40dp"
-        android:background="#888888"
-        app:layout_constraintEnd_toStartOf="@+id/Badge10"
-        app:layout_constraintStart_toEndOf="@+id/Badge8"
-        app:layout_constraintTop_toBottomOf="@+id/Badge4" />
-
-    <TextView
-        android:id="@+id/badgeBackground10"
-        android:layout_width="5dp"
-        android:layout_height="5dp"
-        android:layout_marginStart="35dp"
-        android:layout_marginTop="40dp"
-        android:background="#888888"
-        app:layout_constraintStart_toEndOf="@+id/Badge9"
-        app:layout_constraintTop_toBottomOf="@+id/Badge5" />
+    </LinearLayout>
 
 
 </android.support.constraint.ConstraintLayout>
