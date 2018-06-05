@@ -48,7 +48,7 @@ public class LessonMenu extends AppCompatActivity{
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         layoutParams.setMargins(30, 20, 30, 20);
-        layoutParams.height = 300;
+        layoutParams.height = 250;
         lessonButtons = new Button[lessons.size()];
         for (int i = 0; i < lessonButtons.length; i++) {
             final int I = i;

@@ -36,6 +36,7 @@ public class MyProgress extends AppCompatActivity {
         bestWords = findViewById(R.id.BestSignsColumn);
         numSignsLearned = findViewById(R.id.NumberLearnedSigns);
 
+        badges = new HashMap<String, ImageView>();
         badges.put("Alphabet", (ImageView)findViewById(R.id.Badge1));
         badges.put("Numbers", (ImageView)findViewById(R.id.Badge2));
         badges.put("Greetings", (ImageView)findViewById(R.id.Badge3));
@@ -70,7 +71,7 @@ public class MyProgress extends AppCompatActivity {
 
     private void setBestWords(){
         ArrayList<String> bestWordList = dbAccess.select5BestWords();
-        String text = "Great Work!:\n";
+        String text = "Great Work!\n";
         for (String word:bestWordList) {
             text += word + "\n";
         }
@@ -80,7 +81,7 @@ public class MyProgress extends AppCompatActivity {
 
     private void setWorstWords(){
         ArrayList<String> worstWordList = dbAccess.select5WorstWords();
-        String text = "Could Improve:\n";
+        String text = "Could Improve\n";
         for (String word:worstWordList) {
             text += word + "\n";
         }
