@@ -76,13 +76,14 @@ public class InfoLesson extends AppCompatActivity{
         String[] fileNameSplit = fileName.split("\\.");
         System.out.println(fileNameSplit.length);
         fileName = fileNameSplit[0];
-        int resID = getResources().getIdentifier(fileName, "drawable", getPackageName());
         if(fileNameSplit[1].equals(("jpg"))) {
+            int resID = getResources().getIdentifier(fileName, "drawable", getPackageName());
             videoView.setVisibility(View.INVISIBLE);
             imageView.setImageResource(resID);
             imageView.setVisibility(View.VISIBLE);
         } else {
-            Uri uri = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.welcome);
+            int resID = getResources().getIdentifier(fileName, "raw", getPackageName());
+            android.net.Uri uri = Uri.parse("android.resource://" + getPackageName() + "/" + resID);
             videoView.setVideoURI(uri);
             videoView.setMediaController(new MediaController(this));
             videoView.start();

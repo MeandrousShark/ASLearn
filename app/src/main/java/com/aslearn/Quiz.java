@@ -1,14 +1,17 @@
 package com.aslearn;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.MediaController;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.VideoView;
 
 import com.aslearn.db.DatabaseAccess;
@@ -43,6 +46,7 @@ public class Quiz extends AppCompatActivity {
 
     private void nextQuestion(){
         //End quiz if there are no more questions
+        chosenAnswer = "";
         if (questions.isEmpty()){
             System.out.println("No more questions");
             dbAccess.updateFinishedLesson(currQuestion.getLesson());
@@ -63,16 +67,23 @@ public class Quiz extends AppCompatActivity {
                 break;
             case "eng2sign":
                 //TODO make multiple choice
-                setContentView(R.layout.eng2sign_mc);
+                //setContentView(R.layout.eng2sign_mc);
                 break;
             case "textEntry":
-              //  setContentView(R.layout.fingerspelling_questions);
+                setContentView(R.layout.text_entry);
+                makeTextEntryQuestion();
                 break;
             case "matching":
                 //TODO make matching
         //        setContentView(R.layout.matching);
                 break;
         }
+
+    }
+
+    //Make the layout for the text entry question
+    private void makeTextEntryQuestion(){
+        VideoView videoView = findViewById(R.id.questionVideo);
 
     }
 
@@ -101,13 +112,14 @@ public class Quiz extends AppCompatActivity {
         String[] fileNameSplit = fileName.split("\\.");
         System.out.println(fileNameSplit.length);
         fileName = fileNameSplit[0];
-        int resID = getResources().getIdentifier(fileName, "drawable", getPackageName());
         if(fileNameSplit[1].equals(("jpg"))) {
+            int resID = getResources().getIdentifier(fileName, "drawable", getPackageName());
             videoView.setVisibility(View.INVISIBLE);
             imageView.setImageResource(resID);
             imageView.setVisibility(View.VISIBLE);
         } else {
-            android.net.Uri uri = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.welcome);
+            int resID = getResources().getIdentifier(fileName, "raw", getPackageName());
+            android.net.Uri uri = Uri.parse("android.resource://" + getPackageName() + "/" + resID);
             videoView.setVideoURI(uri);
             videoView.setMediaController(new MediaController(this));
             videoView.start();
@@ -125,6 +137,9 @@ public class Quiz extends AppCompatActivity {
             System.out.println("Fluency val for " + upword.getWord() + " after: " + upword.getFluencyVal());
         }
         //TODO: Display correct/congrats
+        Context context = getApplicationContext();
+        Toast toast = Toast.makeText(context, "Correct!", Toast.LENGTH_SHORT);
+        toast.show();
         nextQuestion();
 
     }
@@ -136,7 +151,9 @@ public class Quiz extends AppCompatActivity {
             dbAccess.updateFluencyVal(word, -1);
         }
         //TODO: display wrong, show correct answer
-
+        Context context = getApplicationContext();
+        Toast toast = Toast.makeText(context, "Incorrect", Toast.LENGTH_SHORT);
+        toast.show();
         questions.add(currQuestion);
         nextQuestion();
     }
@@ -147,6 +164,19 @@ public class Quiz extends AppCompatActivity {
     }
 
     public void MCCheckAnswer(View view) {
+        if (chosenAnswer.equals(currQuestion.getAnswer())){
+            System.out.println("correct!");
+            gotCorrectAnswer();
+
+        } else {
+            System.out.println("incorrect");
+            gotWrongAnswer();
+        }
+    }
+
+    public void TxtCheckAnswer(View view){
+        EditText answerInput = findViewById(R.id.answerInput);
+        chosenAnswer = answerInput.getText().toString();
         if (chosenAnswer.equals(currQuestion.getAnswer())){
             System.out.println("correct!");
             gotCorrectAnswer();
