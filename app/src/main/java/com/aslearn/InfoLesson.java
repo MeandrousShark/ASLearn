@@ -56,12 +56,13 @@ public class InfoLesson extends AppCompatActivity{
         DatabaseAccess dbAccess = DatabaseAccess.getInstance(this);
         words = dbAccess.selectWordsByLesson(intent.getStringExtra("lessonName"));
         System.out.println("Number of words: " + words.size());
-
         setupSign();
     }
 
-    //fills in the views with data about each sign. It also checks if the given media is a picture
-    //or a video, and will assign it to the correct view.
+    /**
+     * Fills in the views with data about each sign. It also checks if the given media is a picture
+     * or a video, and will assign it to the correct view.
+     */
     private void setupSign() {
         word = words.get(index);
         System.out.println("Word: " + word.getWord());

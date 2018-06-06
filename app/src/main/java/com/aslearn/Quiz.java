@@ -63,7 +63,7 @@ public class Quiz extends AppCompatActivity {
                 break;
             case "eng2sign":
                 //TODO make multiple choice
-              //  setContentView(R.layout.multiple_choice);
+                setContentView(R.layout.eng2sign_mc);
                 break;
             case "textEntry":
               //  setContentView(R.layout.fingerspelling_questions);
@@ -85,7 +85,6 @@ public class Quiz extends AppCompatActivity {
         buttons[1] = (Button)findViewById(R.id.MCSecondGuess);
         buttons[2] = (Button)findViewById(R.id.MCThirdGuess);
         buttons[3] = (Button)findViewById(R.id.MCFourthGuess);
-        Button confirmButton = findViewById(R.id.MCConfirmButton);
 
         int correctIndex = new Random().nextInt(4);
         ArrayList<String> answerList = currQuestion.getWrongAnswersAsList();
