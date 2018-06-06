@@ -6,20 +6,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#c9ddff"
-    android:backgroundTint="#c9ddff"
-    tools:layout_editor_absoluteY="81dp">
+    android:backgroundTint="#c9ddff">
 
     <TextView
         android:id="@+id/MCQuestion"
-        android:layout_width="340dp"
-        android:layout_height="65dp"
-        android:layout_marginBottom="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginEnd="22dp"
         android:layout_marginStart="22dp"
         android:layout_marginTop="7dp"
         android:fontFamily="sans-serif"
-        android:padding="1dp"
-        android:paddingStart="0dp"
         android:singleLine="false"
         android:text="What is the English meaning for the following sign?"
         android:textAlignment="center"
@@ -31,7 +27,7 @@
 
     <VideoView
         android:id="@+id/signVideo"
-        android:layout_width="340dp"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginBottom="10dp"
         android:layout_marginEnd="22dp"
@@ -40,9 +36,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/MCQuestion" />
+
     <ImageView
         android:id="@+id/signImage"
-        android:layout_width="340dp"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginBottom="10dp"
         android:layout_marginEnd="22dp"
@@ -55,8 +52,8 @@
 
     <Button
         android:id="@+id/MCFirstGuess"
-        android:layout_width="340dp"
-        android:layout_height="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:layout_marginEnd="22dp"
         android:layout_marginStart="22dp"
@@ -75,8 +72,8 @@
 
     <Button
         android:id="@+id/MCSecondGuess"
-        android:layout_width="340dp"
-        android:layout_height="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:layout_marginEnd="21dp"
         android:layout_marginStart="21dp"
@@ -95,8 +92,8 @@
 
     <Button
         android:id="@+id/MCThirdGuess"
-        android:layout_width="340dp"
-        android:layout_height="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:layout_marginEnd="22dp"
         android:layout_marginStart="22dp"
@@ -115,8 +112,8 @@
 
     <Button
         android:id="@+id/MCFourthGuess"
-        android:layout_width="340dp"
-        android:layout_height="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:layout_marginEnd="22dp"
         android:layout_marginStart="22dp"
@@ -136,7 +133,7 @@
     <Button
         android:id="@+id/MCConfirmButton"
         android:layout_width="156dp"
-        android:layout_height="40dp"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:background="@drawable/buttonrounding"
         android:backgroundTint="@color/colorPrimary"
