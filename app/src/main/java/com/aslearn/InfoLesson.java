@@ -86,7 +86,6 @@ public class InfoLesson extends AppCompatActivity{
             int resID = getResources().getIdentifier(fileName, "raw", getPackageName());
             android.net.Uri uri = Uri.parse("android.resource://" + getPackageName() + "/" + resID);
             videoView.setVideoURI(uri);
-            //videoView.setMediaController(new MediaController(this));
             videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
                 @Override
                 public void onPrepared(MediaPlayer mp) {

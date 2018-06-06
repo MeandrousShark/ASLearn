@@ -2,6 +2,7 @@ package com.aslearn;
 
 import android.content.Context;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
@@ -91,7 +92,12 @@ public class Quiz extends AppCompatActivity {
         int resID = getResources().getIdentifier(fileName, "raw", getPackageName());
         android.net.Uri uri = Uri.parse("android.resource://" + getPackageName() + "/" + resID);
         videoView.setVideoURI(uri);
-        videoView.setMediaController(new MediaController(this));
+        videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+            @Override
+            public void onPrepared(MediaPlayer mp) {
+                mp.setLooping(true);
+            }
+        });
         videoView.start();
     }
 
@@ -117,24 +123,6 @@ public class Quiz extends AppCompatActivity {
 
         String fileName = currQuestion.getQuestion();
         switchGraphic(fileName, imageView, videoView);
-//        System.out.println(fileName);
-//        String[] fileNameSplit = fileName.split("\\.");
-//        System.out.println(fileNameSplit.length);
-//        fileName = fileNameSplit[0];
-//        if(fileNameSplit[1].equals(("jpg"))) {
-//            int resID = getResources().getIdentifier(fileName, "drawable", getPackageName());
-//            videoView.setVisibility(View.INVISIBLE);
-//            imageView.setImageResource(resID);
-//            imageView.setVisibility(View.VISIBLE);
-//        } else {
-//            int resID = getResources().getIdentifier(fileName, "raw", getPackageName());
-//            android.net.Uri uri = Uri.parse("android.resource://" + getPackageName() + "/" + resID);
-//            videoView.setVideoURI(uri);
-//            videoView.setMediaController(new MediaController(this));
-//            videoView.setVisibility(View.VISIBLE);
-//            imageView.setVisibility(View.INVISIBLE);
-//            videoView.start();
-//        }
     }
 
     private void switchGraphic(String fileName, ImageView imageView, VideoView videoView){
@@ -151,7 +139,12 @@ public class Quiz extends AppCompatActivity {
             int resID = getResources().getIdentifier(fileName, "raw", getPackageName());
             android.net.Uri uri = Uri.parse("android.resource://" + getPackageName() + "/" + resID);
             videoView.setVideoURI(uri);
-            videoView.setMediaController(new MediaController(this));
+            videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+                @Override
+                public void onPrepared(MediaPlayer mp) {
+                    mp.setLooping(true);
+                }
+            });
             videoView.setVisibility(View.VISIBLE);
             imageView.setVisibility(View.INVISIBLE);
             videoView.start();
