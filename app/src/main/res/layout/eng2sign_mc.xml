@@ -12,20 +12,12 @@
         android:id="@+id/MCQuestion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp"
-        android:layout_marginEnd="22dp"
-        android:layout_marginStart="22dp"
-        android:layout_marginTop="24dp"
         android:fontFamily="sans-serif"
         android:text="What is the sign for the following English word?"
         android:textAlignment="center"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/MCGuessesRow1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <LinearLayout
         android:id="@+id/MCGuessesRow1"
@@ -33,34 +25,62 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:weightSum="2"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
         app:layout_constraintBottom_toTopOf="@id/MCGuessesRow2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/MCQuestion">
 
-        <ImageButton
+        <ImageView
             android:id="@+id/imageButtonMC1"
-            android:layout_width="0dp"
-            android:layout_height="155dp"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
             android:layout_weight="1"
-            android:layout_marginBottom="10dp"
-            android:layout_marginEnd="22dp"
-            android:layout_marginStart="22dp"
-            android:elevation="2dp"
-            android:visibility="invisible"/>
-
-        <ImageButton
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:elevation="2dp"/>
+        <ImageView
             android:id="@+id/imageButtonMC2"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="155dp"
             android:layout_weight="1"
-            android:layout_marginBottom="10dp"
-            android:layout_marginEnd="22dp"
-            android:layout_marginStart="22dp"
             android:elevation="2dp"
-            android:visibility="visible"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
             app:layout_constraintStart_toEndOf="@id/imageButtonMC1"/>
+
     </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/FirstRowVideos"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        android:layout_marginTop="25dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
+        app:layout_constraintTop_toBottomOf="@id/MCQuestion">
+
+        <VideoView
+            android:id="@+id/MCVideo1"
+            android:layout_width="match_parent"
+            android:layout_height="155dp"
+            android:layout_weight="1"
+            android:layout_margin="12dp"
+            android:visibility="visible"
+            />
+        <VideoView
+            android:id="@+id/MCVideo2"
+            android:layout_width="match_parent"
+            android:layout_height="155dp"
+            android:layout_weight="1"
+            android:layout_margin="12dp"
+            app:layout_constraintStart_toEndOf="@+id/MCVideo1"/>
+
+    </LinearLayout>
+
 
     <LinearLayout
         android:id="@+id/MCGuessesRow2"
@@ -68,39 +88,67 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:weightSum="2"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
         app:layout_constraintBottom_toTopOf="@id/MCConfirmButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/MCGuessesRow1">
 
-        <ImageButton
+        <ImageView
             android:id="@+id/imageButtonMC3"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="155dp"
             android:layout_weight="1"
-            android:layout_marginBottom="10dp"
-            android:layout_marginEnd="22dp"
-            android:layout_marginStart="22dp"
-            android:elevation="2dp"
-            android:visibility="invisible" />
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:elevation="2dp"/>
 
-        <ImageButton
+        <ImageView
             android:id="@+id/imageButtonMC4"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="155dp"
             android:layout_weight="1"
-            android:layout_marginBottom="10dp"
-            android:layout_marginEnd="22dp"
-            android:layout_marginStart="22dp"
-            android:visibility="visible"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
             app:layout_constraintStart_toEndOf="@id/imageButtonMC3" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/SecondRowVideos"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="2"
+        android:orientation="horizontal"
+        android:layout_margin="12dp"
+        app:layout_constraintTop_toBottomOf="@id/FirstRowVideos">
+
+        <VideoView
+            android:id="@+id/MCVideo3"
+            android:layout_width="match_parent"
+            android:layout_height="155dp"
+            android:layout_weight="1"
+            android:layout_marginTop="14dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:visibility="visible"/>
+        <VideoView
+            android:id="@+id/MCVideo4"
+            android:layout_width="match_parent"
+            android:layout_height="155dp"
+            android:layout_weight="1"
+            android:layout_marginTop="14dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            app:layout_constraintStart_toEndOf="@+id/MCVideo3"/>
+
     </LinearLayout>
 
     <Button
         android:id="@+id/MCConfirmButton"
         android:layout_width="156dp"
-        android:layout_height="40dp"
-        android:layout_marginBottom="16dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
         android:background="@drawable/buttonrounding"
         android:backgroundTint="@color/colorPrimary"
         android:onClick="MCCheckAnswer"
@@ -112,6 +160,7 @@
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/SecondRowVideos" />
 
 </android.support.constraint.ConstraintLayout>
