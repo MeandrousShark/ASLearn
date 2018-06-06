@@ -85,6 +85,14 @@ public class Quiz extends AppCompatActivity {
     private void makeTextEntryQuestion(){
         VideoView videoView = findViewById(R.id.questionVideo);
 
+        String fileName = currQuestion.getQuestion();
+        String[] fileNameSplit = fileName.split("\\.");
+        fileName = fileNameSplit[0];
+        int resID = getResources().getIdentifier(fileName, "raw", getPackageName());
+        android.net.Uri uri = Uri.parse("android.resource://" + getPackageName() + "/" + resID);
+        videoView.setVideoURI(uri);
+        videoView.setMediaController(new MediaController(this));
+        videoView.start();
     }
 
     //Make the layout for the ASL-->English multiple choice question
@@ -108,6 +116,28 @@ public class Quiz extends AppCompatActivity {
         }
 
         String fileName = currQuestion.getQuestion();
+        switchGraphic(fileName, imageView, videoView);
+//        System.out.println(fileName);
+//        String[] fileNameSplit = fileName.split("\\.");
+//        System.out.println(fileNameSplit.length);
+//        fileName = fileNameSplit[0];
+//        if(fileNameSplit[1].equals(("jpg"))) {
+//            int resID = getResources().getIdentifier(fileName, "drawable", getPackageName());
+//            videoView.setVisibility(View.INVISIBLE);
+//            imageView.setImageResource(resID);
+//            imageView.setVisibility(View.VISIBLE);
+//        } else {
+//            int resID = getResources().getIdentifier(fileName, "raw", getPackageName());
+//            android.net.Uri uri = Uri.parse("android.resource://" + getPackageName() + "/" + resID);
+//            videoView.setVideoURI(uri);
+//            videoView.setMediaController(new MediaController(this));
+//            videoView.setVisibility(View.VISIBLE);
+//            imageView.setVisibility(View.INVISIBLE);
+//            videoView.start();
+//        }
+    }
+
+    private void switchGraphic(String fileName, ImageView imageView, VideoView videoView){
         System.out.println(fileName);
         String[] fileNameSplit = fileName.split("\\.");
         System.out.println(fileNameSplit.length);
@@ -122,6 +152,8 @@ public class Quiz extends AppCompatActivity {
             android.net.Uri uri = Uri.parse("android.resource://" + getPackageName() + "/" + resID);
             videoView.setVideoURI(uri);
             videoView.setMediaController(new MediaController(this));
+            videoView.setVisibility(View.VISIBLE);
+            imageView.setVisibility(View.INVISIBLE);
             videoView.start();
         }
     }
@@ -180,7 +212,6 @@ public class Quiz extends AppCompatActivity {
         if (chosenAnswer.equals(currQuestion.getAnswer())){
             System.out.println("correct!");
             gotCorrectAnswer();
-
         } else {
             System.out.println("incorrect");
             gotWrongAnswer();

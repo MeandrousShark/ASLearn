@@ -1,6 +1,7 @@
 package com.aslearn;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -85,7 +86,15 @@ public class InfoLesson extends AppCompatActivity{
             int resID = getResources().getIdentifier(fileName, "raw", getPackageName());
             android.net.Uri uri = Uri.parse("android.resource://" + getPackageName() + "/" + resID);
             videoView.setVideoURI(uri);
-            videoView.setMediaController(new MediaController(this));
+            //videoView.setMediaController(new MediaController(this));
+            videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+                @Override
+                public void onPrepared(MediaPlayer mp) {
+                    mp.setLooping(true);
+                }
+            });
+            videoView.setVisibility(View.VISIBLE);
+            imageView.setVisibility(View.INVISIBLE);
             videoView.start();
         }
     }
