@@ -47,6 +47,7 @@ public class InfoLesson extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         Intent intent = getIntent();
         index = 0;
+        setContentView(R.layout.infopage);
         wordView = findViewById(R.id.wordText);
         imageView = findViewById(R.id.signJpg);
         infoView = findViewById(R.id.topInfo);
@@ -54,7 +55,8 @@ public class InfoLesson extends AppCompatActivity{
         moreInfoButton = findViewById(R.id.moreInfoButton);
         DatabaseAccess dbAccess = DatabaseAccess.getInstance(this);
         words = dbAccess.selectWordsByLesson(intent.getStringExtra("lessonName"));
-        setContentView(R.layout.infopage);
+        System.out.println("Number of words: " + words.size());
+
         setupSign();
     }
 
@@ -62,6 +64,10 @@ public class InfoLesson extends AppCompatActivity{
     //or a video, and will assign it to the correct view.
     private void setupSign() {
         word = words.get(index);
+        System.out.println("Word: " + word.getWord());
+        if (wordView == null){
+            System.out.println("Wordview null");
+        }
         wordView.setText(word.getWord());
         infoView.setText(word.getBasicInfo());
         String fileName = word.getVisualFile();
