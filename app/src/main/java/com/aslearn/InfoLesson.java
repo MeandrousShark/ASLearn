@@ -47,6 +47,7 @@ public class InfoLesson extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         Intent intent = getIntent();
         index = 0;
+        setContentView(R.layout.infopage);
         wordView = findViewById(R.id.wordText);
         imageView = findViewById(R.id.signJpg);
         infoView = findViewById(R.id.topInfo);
@@ -54,14 +55,20 @@ public class InfoLesson extends AppCompatActivity{
         moreInfoButton = findViewById(R.id.moreInfoButton);
         DatabaseAccess dbAccess = DatabaseAccess.getInstance(this);
         words = dbAccess.selectWordsByLesson(intent.getStringExtra("lessonName"));
-        setContentView(R.layout.infopage);
+        System.out.println("Number of words: " + words.size());
         setupSign();
     }
 
-    //fills in the views with data about each sign. It also checks if the given media is a picture
-    //or a video, and will assign it to the correct view.
+    /**
+     * Fills in the views with data about each sign. It also checks if the given media is a picture
+     * or a video, and will assign it to the correct view.
+     */
     private void setupSign() {
         word = words.get(index);
+        System.out.println("Word: " + word.getWord());
+        if (wordView == null){
+            System.out.println("Wordview null");
+        }
         wordView.setText(word.getWord());
         infoView.setText(word.getBasicInfo());
         String fileName = word.getVisualFile();
@@ -69,13 +76,14 @@ public class InfoLesson extends AppCompatActivity{
         String[] fileNameSplit = fileName.split("\\.");
         System.out.println(fileNameSplit.length);
         fileName = fileNameSplit[0];
-        int resID = getResources().getIdentifier(fileName, "drawable", getPackageName());
         if(fileNameSplit[1].equals(("jpg"))) {
+            int resID = getResources().getIdentifier(fileName, "drawable", getPackageName());
             videoView.setVisibility(View.INVISIBLE);
             imageView.setImageResource(resID);
             imageView.setVisibility(View.VISIBLE);
         } else {
-            Uri uri = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.welcome);
+            int resID = getResources().getIdentifier(fileName, "raw", getPackageName());
+            android.net.Uri uri = Uri.parse("android.resource://" + getPackageName() + "/" + resID);
             videoView.setVideoURI(uri);
             videoView.setMediaController(new MediaController(this));
             videoView.start();

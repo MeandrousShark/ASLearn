@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#c9ddff"
+    android:backgroundTint="#c9ddff">
+
+
+    <TextView
+        android:id="@+id/MCQuestion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:layout_marginEnd="22dp"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="24dp"
+        android:fontFamily="sans-serif"
+        android:text="What is the sign for the following English word?"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/MCGuessesRow1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <LinearLayout
+        android:id="@+id/MCGuessesRow1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        app:layout_constraintBottom_toTopOf="@id/MCGuessesRow2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/MCQuestion">
+
+        <ImageButton
+            android:id="@+id/imageButtonMC1"
+            android:layout_width="0dp"
+            android:layout_height="155dp"
+            android:layout_weight="1"
+            android:layout_marginBottom="10dp"
+            android:layout_marginEnd="22dp"
+            android:layout_marginStart="22dp"
+            android:elevation="2dp"
+            android:visibility="invisible"/>
+
+        <ImageButton
+            android:id="@+id/imageButtonMC2"
+            android:layout_width="0dp"
+            android:layout_height="155dp"
+            android:layout_weight="1"
+            android:layout_marginBottom="10dp"
+            android:layout_marginEnd="22dp"
+            android:layout_marginStart="22dp"
+            android:elevation="2dp"
+            android:visibility="visible"
+            app:layout_constraintStart_toEndOf="@id/imageButtonMC1"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/MCGuessesRow2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        app:layout_constraintBottom_toTopOf="@id/MCConfirmButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/MCGuessesRow1">
+
+        <ImageButton
+            android:id="@+id/imageButtonMC3"
+            android:layout_width="0dp"
+            android:layout_height="155dp"
+            android:layout_weight="1"
+            android:layout_marginBottom="10dp"
+            android:layout_marginEnd="22dp"
+            android:layout_marginStart="22dp"
+            android:elevation="2dp"
+            android:visibility="invisible" />
+
+        <ImageButton
+            android:id="@+id/imageButtonMC4"
+            android:layout_width="0dp"
+            android:layout_height="155dp"
+            android:layout_weight="1"
+            android:layout_marginBottom="10dp"
+            android:layout_marginEnd="22dp"
+            android:layout_marginStart="22dp"
+            android:visibility="visible"
+            app:layout_constraintStart_toEndOf="@id/imageButtonMC3" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/MCConfirmButton"
+        android:layout_width="156dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/buttonrounding"
+        android:backgroundTint="@color/colorPrimary"
+        android:onClick="MCCheckAnswer"
+        android:paddingEnd="10dp"
+        android:paddingStart="10dp"
+        android:text="Confirm"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</android.support.constraint.ConstraintLayout>

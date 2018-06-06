@@ -85,8 +85,8 @@ public class DatabaseAccess {
 
     //Get all questions from the specified lesson
     public ArrayList<Question> selectQuestionsByLesson(String lesson){
-        String sqlQuery = "SELECT question_id, question, answer, lesson, related_words, visual_file, type, wrong_answers FROM " +
-                TABLE_QUESTIONS + "WHERE lesson = '" + lesson +"'";
+        String sqlQuery = "SELECT question_id, question, answer, lesson, related_words, type, wrong_answers FROM " +
+                TABLE_QUESTIONS + " WHERE lesson = '" + lesson +"'";
 
         db = openHelper.getWritableDatabase();
         Cursor cursor = db.rawQuery(sqlQuery, null);
@@ -97,8 +97,7 @@ public class DatabaseAccess {
             Question currQuest = new Question(Integer.parseInt(cursor.getString(0)),
                     cursor.getString(1), cursor.getString(2),
                     cursor.getString(3), cursor.getString(4),
-                    cursor.getString(5), cursor.getString(6),
-                    cursor.getString(7));
+                    cursor.getString(5), cursor.getString(6));
             questions.add(currQuest);
         }
         db.close();
@@ -108,7 +107,7 @@ public class DatabaseAccess {
     // Get word info for a specified word
     public ArrayList<Word> selectWord(String word){
         String sqlQuery = "SELECT word_id, word, visual_file, basic_info, more_info, lesson, fluency_val FROM " +
-                TABLE_WORD + "WHERE word LIKE '" + word +"'";
+                TABLE_WORD + " WHERE word = '" + word +"'";
 
         db = openHelper.getWritableDatabase();
         Cursor cursor = db.rawQuery(sqlQuery, null);
@@ -140,6 +139,7 @@ public class DatabaseAccess {
         while(cursor.moveToNext()){
             modules.add(cursor.getString(0));
         }
+        db.close();
         return modules;
     }
 
@@ -158,6 +158,7 @@ public class DatabaseAccess {
         while(cursor.moveToNext()){
             words.add(cursor.getString(0));
         }
+        db.close();
         return words;
     }
 
@@ -176,7 +177,31 @@ public class DatabaseAccess {
         while(cursor.moveToNext()){
             words.add(cursor.getString(0));
         }
+        db.close();
         return words;
+    }
+
+    //Updates the fluency value of a word
+    public void updateFluencyVal(String word, int i){
+        String sqlUpdate = "UPDATE Words " +
+                "SET fluency_val = fluency_val + " + i +
+                " WHERE word = '" + word + "'";
+        db = openHelper.getWritableDatabase();
+        db.execSQL(sqlUpdate);
+        db.close();
+    }
+
+    //Marks a finished lesson as complete and the next lesson as unlocked
+    public void updateFinishedLesson(String lesson){
+        String sqlUpdateCompleted = "UPDATE Lessons SET completed = 1 WHERE lesson_name = '" + lesson + "'";
+        String sqlUpdateUnlocked = "UPDATE Lessons SET unlocked = 1 " +
+                "WHERE module = (SELECT module FROM Lessons WHERE lesson_name = '"+ lesson +"') " +
+                "AND lesson_order = " +
+                "(SELECT lesson_order + 1 FROM Lessons WHERE lesson_name = '"+ lesson +"')";
+        db = openHelper.getWritableDatabase();
+        db.execSQL(sqlUpdateCompleted);
+        db.execSQL(sqlUpdateUnlocked);
+        db.close();
     }
 
 }
