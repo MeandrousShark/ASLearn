@@ -107,7 +107,7 @@ public class DatabaseAccess {
     // Get word info for a specified word
     public ArrayList<Word> selectWord(String word){
         String sqlQuery = "SELECT word_id, word, visual_file, basic_info, more_info, lesson, fluency_val FROM " +
-                TABLE_WORD + " WHERE word = '" + word +"'";
+                TABLE_WORD + " WHERE word LIKE '" + word +"'";
 
         db = openHelper.getWritableDatabase();
         Cursor cursor = db.rawQuery(sqlQuery, null);

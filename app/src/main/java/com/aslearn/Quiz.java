@@ -259,7 +259,7 @@ public class Quiz extends AppCompatActivity {
     public void TxtCheckAnswer(View view){
         EditText answerInput = findViewById(R.id.answerInput);
         chosenAnswer = answerInput.getText().toString();
-        if (chosenAnswer.equals(currQuestion.getAnswer())){
+        if (chosenAnswer.equalsIgnoreCase(currQuestion.getAnswer())){
             System.out.println("correct!");
             gotCorrectAnswer();
         } else {
