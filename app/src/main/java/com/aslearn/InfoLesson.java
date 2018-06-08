@@ -105,6 +105,14 @@ public class InfoLesson extends AppCompatActivity{
      */
     protected void moreInfoButton(View view) {
         //this magical value will change the button's text between back and more info
+        if(word.getMoreInfo() == null) {
+            view.setEnabled(false);
+            view.setAlpha(0.5f);
+        } else {
+            view.setEnabled(true);
+            view.setAlpha(1f);
+        }
+
         floater += 1;
         if(floater % 2 == 1) {
             infoView.setText(word.getMoreInfo());
