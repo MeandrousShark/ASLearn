@@ -51,6 +51,11 @@
             android:name=".HistoryLesson"
             android:parentActivityName=".MainMenu"
             />
+        <activity
+            android:name=".SignDictionary"
+            android:parentActivityName=".Dictionary"
+            />
+
     </application>
 
 </manifest>
