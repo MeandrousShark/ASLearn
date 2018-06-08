@@ -6,6 +6,7 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -52,7 +53,7 @@ public class Quiz extends AppCompatActivity {
             System.out.println("No more questions");
             dbAccess.updateFinishedLesson(currQuestion.getLesson());
             //TODO: Something to say quiz is completed
-            setContentView(R.layout.finished_activity);
+
         } else{
             //Move on to next question
             currQuestion = questions.remove();
@@ -68,8 +69,7 @@ public class Quiz extends AppCompatActivity {
                 break;
             case "eng2sign":
                 //TODO make multiple choice
-                setContentView(R.layout.eng2sign_mc);
-                makeEng2SignQuestion();
+                //setContentView(R.layout.eng2sign_mc);
                 break;
             case "textEntry":
                 setContentView(R.layout.text_entry);
@@ -126,37 +126,6 @@ public class Quiz extends AppCompatActivity {
         switchGraphic(fileName, imageView, videoView);
     }
 
-    private void makeEng2SignQuestion(){
-        TextView questionTextView = findViewById(R.id.MCQuestion);
-        VideoView[] videoViews = new VideoView[4];
-        ImageView[] imageViews = new ImageView[4];
-
-        videoViews[0] = findViewById(R.id.MCVideo1);
-        videoViews[1] = findViewById(R.id.MCVideo2);
-        videoViews[2] = findViewById(R.id.MCVideo3);
-        videoViews[3] = findViewById(R.id.MCVideo4);
-
-        imageViews[0] = findViewById(R.id.MCImage1);
-        imageViews[1] = findViewById(R.id.MCImage2);
-        imageViews[2] = findViewById(R.id.MCImage3);
-        imageViews[3] = findViewById(R.id.MCImage4);
-
-        int correctIndex = new Random().nextInt(4);
-        ArrayList<String> answerList = currQuestion.getWrongAnswersAsList();
-        answerList.add(correctIndex, currQuestion.getAnswer());
-
-        String questionText = "What is the sign for '"+ currQuestion.getQuestion() + "'?";
-        questionTextView.setText(questionText);
-
-        for(int i=0; i<4; i++){
-            switchGraphic(answerList.get(i), imageViews[i], videoViews[i]);
-            imageViews[i].setContentDescription(answerList.get(i));
-            videoViews[i].setContentDescription(answerList.get(i));
-            System.out.println("Content Description for image is: " + imageViews[i].getContentDescription().toString());
-            System.out.println("Content Description for video is: " + videoViews[i].getContentDescription().toString());
-        }
-    }
-
     private void switchGraphic(String fileName, ImageView imageView, VideoView videoView){
         System.out.println(fileName);
         String[] fileNameSplit = fileName.split("\\.");
@@ -193,14 +162,12 @@ public class Quiz extends AppCompatActivity {
             upword = dbAccess.selectWord(word).get(0);
             System.out.println("Fluency val for " + upword.getWord() + " after: " + upword.getFluencyVal());
         }
-        //TODO: Display correct/congrats
         Context context = getApplicationContext();
         Toast toast = Toast.makeText(context, "Correct!", Toast.LENGTH_SHORT);
         toast.show();
         nextQuestion();
 
     }
-
     private void gotWrongAnswer(){
         //decrement fluency values of related words in the DB
         ArrayList<String> relatedWords = currQuestion.getRelatedWordsAsList();
@@ -209,7 +176,7 @@ public class Quiz extends AppCompatActivity {
         }
         //TODO: display wrong, show correct answer
         Context context = getApplicationContext();
-        Toast toast = Toast.makeText(context, "Incorrect", Toast.LENGTH_SHORT);
+        Toast toast = Toast.makeText(context, "Incorrect \n Correct Answer: " + currQuestion.getAnswer(), Toast.LENGTH_SHORT);
         toast.show();
         questions.add(currQuestion);
         nextQuestion();
@@ -218,11 +185,7 @@ public class Quiz extends AppCompatActivity {
     public void MCAnswer(View view){
         chosenAnswer = ((Button)view).getText().toString();
         System.out.println("Answer clicked: " + chosenAnswer);
-    }
 
-    public void MCEng2SignAnswer(View view){
-        chosenAnswer = view.getContentDescription().toString();
-        System.out.println("Answer clicked: " + chosenAnswer);
     }
 
     public void MCCheckAnswer(View view) {
@@ -246,10 +209,5 @@ public class Quiz extends AppCompatActivity {
             System.out.println("incorrect");
             gotWrongAnswer();
         }
-    }
-
-    public void backToLessons(View view){
-        Intent intent = new Intent(this, MainMenu.class);
-        startActivity(intent);
     }
 }

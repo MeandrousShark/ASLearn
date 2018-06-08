@@ -32,6 +32,7 @@ public class InfoLesson extends AppCompatActivity{
     VideoView videoView;
     ImageView imageView;
     Intent intent;
+    Button nextSignButton;
     Button moreInfoButton;
     private int floater;
     private Word word;
@@ -53,6 +54,7 @@ public class InfoLesson extends AppCompatActivity{
         imageView = findViewById(R.id.signJpg);
         infoView = findViewById(R.id.topInfo);
         videoView = (VideoView) findViewById(R.id.signVideo);
+        nextSignButton = findViewById(R.id.nextSignButton);
         moreInfoButton = findViewById(R.id.moreInfoButton);
         DatabaseAccess dbAccess = DatabaseAccess.getInstance(this);
         words = dbAccess.selectWordsByLesson(intent.getStringExtra("lessonName"));
@@ -66,6 +68,7 @@ public class InfoLesson extends AppCompatActivity{
      */
     private void setupSign() {
         word = words.get(index);
+        if(index == words.size() - 1) nextSignButton.setText("To Quiz");
         System.out.println("Word: " + word.getWord());
         if (wordView == null){
             System.out.println("Wordview null");
@@ -96,6 +99,13 @@ public class InfoLesson extends AppCompatActivity{
             imageView.setVisibility(View.INVISIBLE);
             videoView.start();
         }
+        if(word.getMoreInfo() == null) {
+            moreInfoButton.setEnabled(false);
+            moreInfoButton.setAlpha(0.5f);
+        } else {
+            moreInfoButton.setEnabled(true);
+            moreInfoButton.setAlpha(1f);
+        }
     }
 
     /**
@@ -105,13 +115,7 @@ public class InfoLesson extends AppCompatActivity{
      */
     protected void moreInfoButton(View view) {
         //this magical value will change the button's text between back and more info
-        if(word.getMoreInfo() == null) {
-            view.setEnabled(false);
-            view.setAlpha(0.5f);
-        } else {
-            view.setEnabled(true);
-            view.setAlpha(1f);
-        }
+
 
         floater += 1;
         if(floater % 2 == 1) {
@@ -132,6 +136,7 @@ public class InfoLesson extends AppCompatActivity{
     public void nextSign(View view) {
         index++;
         if(index < words.size()) {
+            moreInfoButton.setText("More Info");
             setupSign();
         } else {
             Intent intent = new Intent(this, Quiz.class);
