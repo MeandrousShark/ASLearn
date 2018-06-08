@@ -40,6 +40,7 @@
             android:layout_marginStart="12dp"
             android:layout_marginEnd="12dp"
             android:clickable="true"
+            android:background="@drawable/borders"
             android:onClick="MCEng2SignAnswer"
             />
         <ImageView
@@ -51,6 +52,7 @@
             android:layout_marginStart="12dp"
             android:layout_marginEnd="12dp"
             android:clickable="true"
+            android:background="@drawable/borders"
             android:onClick="MCEng2SignAnswer"
             app:layout_constraintStart_toEndOf="@id/MCImage1"/>
 
@@ -75,6 +77,7 @@
             android:layout_margin="12dp"
             android:layout_weight="1"
             android:clickable="true"
+            android:background="@drawable/borders"
             android:onClick="MCEng2SignAnswer"/>
         <VideoView
             android:id="@+id/MCVideo2"
@@ -83,6 +86,7 @@
             android:layout_weight="1"
             android:layout_margin="12dp"
             android:clickable="true"
+            android:background="@drawable/borders"
             android:onClick="MCEng2SignAnswer"
             app:layout_constraintStart_toEndOf="@+id/MCVideo1"/>
 
@@ -110,6 +114,7 @@
             android:layout_marginStart="12dp"
             android:layout_marginEnd="12dp"
             android:clickable="true"
+            android:background="@drawable/borders"
             android:onClick="MCEng2SignAnswer"
             />
 
@@ -121,6 +126,7 @@
             android:layout_marginStart="12dp"
             android:layout_marginEnd="12dp"
             android:clickable="true"
+            android:background="@drawable/borders"
             android:onClick="MCEng2SignAnswer"
             app:layout_constraintStart_toEndOf="@id/MCImage3" />
     </LinearLayout>
@@ -143,6 +149,7 @@
             android:layout_marginStart="12dp"
             android:layout_marginEnd="12dp"
             android:clickable="true"
+            android:background="@drawable/borders"
             android:onClick="MCEng2SignAnswer"
             android:visibility="visible"/>
         <VideoView
@@ -154,6 +161,7 @@
             android:layout_marginStart="12dp"
             android:layout_marginEnd="12dp"
             android:clickable="true"
+            android:background="@drawable/borders"
             android:onClick="MCEng2SignAnswer"
             app:layout_constraintStart_toEndOf="@+id/MCVideo3"/>
 
