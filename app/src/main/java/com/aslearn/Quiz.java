@@ -52,7 +52,7 @@ public class Quiz extends AppCompatActivity {
             System.out.println("No more questions");
             dbAccess.updateFinishedLesson(currQuestion.getLesson());
             //TODO: Something to say quiz is completed
-
+            setContentView(R.layout.finished_activity);
         } else{
             //Move on to next question
             currQuestion = questions.remove();
@@ -68,7 +68,8 @@ public class Quiz extends AppCompatActivity {
                 break;
             case "eng2sign":
                 //TODO make multiple choice
-                //setContentView(R.layout.eng2sign_mc);
+                setContentView(R.layout.eng2sign_mc);
+                makeEng2SignQuestion();
                 break;
             case "textEntry":
                 setContentView(R.layout.text_entry);
@@ -123,6 +124,37 @@ public class Quiz extends AppCompatActivity {
 
         String fileName = currQuestion.getQuestion();
         switchGraphic(fileName, imageView, videoView);
+    }
+
+    private void makeEng2SignQuestion(){
+        TextView questionTextView = findViewById(R.id.MCQuestion);
+        VideoView[] videoViews = new VideoView[4];
+        ImageView[] imageViews = new ImageView[4];
+
+        videoViews[0] = findViewById(R.id.MCVideo1);
+        videoViews[1] = findViewById(R.id.MCVideo2);
+        videoViews[2] = findViewById(R.id.MCVideo3);
+        videoViews[3] = findViewById(R.id.MCVideo4);
+
+        imageViews[0] = findViewById(R.id.MCImage1);
+        imageViews[1] = findViewById(R.id.MCImage2);
+        imageViews[2] = findViewById(R.id.MCImage3);
+        imageViews[3] = findViewById(R.id.MCImage4);
+
+        int correctIndex = new Random().nextInt(4);
+        ArrayList<String> answerList = currQuestion.getWrongAnswersAsList();
+        answerList.add(correctIndex, currQuestion.getAnswer());
+
+        String questionText = "What is the sign for '"+ currQuestion.getQuestion() + "'?";
+        questionTextView.setText(questionText);
+
+        for(int i=0; i<4; i++){
+            switchGraphic(answerList.get(i), imageViews[i], videoViews[i]);
+            imageViews[i].setContentDescription(answerList.get(i));
+            videoViews[i].setContentDescription(answerList.get(i));
+            System.out.println("Content Description for image is: " + imageViews[i].getContentDescription().toString());
+            System.out.println("Content Description for video is: " + videoViews[i].getContentDescription().toString());
+        }
     }
 
     private void switchGraphic(String fileName, ImageView imageView, VideoView videoView){
@@ -188,6 +220,11 @@ public class Quiz extends AppCompatActivity {
         System.out.println("Answer clicked: " + chosenAnswer);
     }
 
+    public void MCEng2SignAnswer(View view){
+        chosenAnswer = view.getContentDescription().toString();
+        System.out.println("Answer clicked: " + chosenAnswer);
+    }
+
     public void MCCheckAnswer(View view) {
         if (chosenAnswer.equals(currQuestion.getAnswer())){
             System.out.println("correct!");
@@ -209,5 +246,10 @@ public class Quiz extends AppCompatActivity {
             System.out.println("incorrect");
             gotWrongAnswer();
         }
+    }
+
+    public void backToLessons(View view){
+        Intent intent = new Intent(this, MainMenu.class);
+        startActivity(intent);
     }
 }
