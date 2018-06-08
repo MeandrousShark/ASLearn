@@ -43,6 +43,10 @@
         <activity
             android:name=".Quiz"
             android:label="Quiz" />
+        <activity
+            android:name=".HistoryLesson"
+            android:parentActivityName=".MainMenu"
+            />
     </application>
 
 </manifest>

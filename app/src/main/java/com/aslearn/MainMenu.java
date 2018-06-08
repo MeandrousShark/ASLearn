@@ -6,6 +6,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.aslearn.db.Module;
+
+import java.util.ArrayList;
+
 /**
  * This is the main module menu. From here, users can select lessons.
  */
@@ -14,11 +18,14 @@ public class MainMenu extends AppCompatActivity {
 
     public static final String moduleName = "com.aslearn.moduleName";
     public static final String signInfo = "com.aslearn.infoText";
+    private ArrayList<Module> modules;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.module_menu);
+        modules = new ArrayList<Module>();
+        //modules = dbManager.getModules();
     }
 
     /**
