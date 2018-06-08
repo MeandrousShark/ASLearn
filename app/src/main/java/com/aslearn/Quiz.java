@@ -238,6 +238,11 @@ public class Quiz extends AppCompatActivity {
     public void MCEng2SignAnswer(View view){
         chosenAnswer = view.getContentDescription().toString();
         System.out.println("Answer clicked: " + chosenAnswer);
+        if (selectedView != null){
+            selectedView.setSelected(false);
+        }
+        selectedView = view;
+        view.setSelected(true);
     }
 
     public void MCCheckAnswer(View view) {
