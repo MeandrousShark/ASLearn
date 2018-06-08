@@ -34,7 +34,8 @@ public class Quiz extends AppCompatActivity {
     private Question currQuestion;
     private DatabaseAccess dbAccess;
     private String chosenAnswer;
-
+    private View selectedView;
+    private View correctView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +54,7 @@ public class Quiz extends AppCompatActivity {
             System.out.println("No more questions");
             dbAccess.updateFinishedLesson(currQuestion.getLesson());
             //TODO: Something to say quiz is completed
-
+            setContentView(R.layout.finished_activity);
         } else{
             //Move on to next question
             currQuestion = questions.remove();
@@ -69,7 +70,8 @@ public class Quiz extends AppCompatActivity {
                 break;
             case "eng2sign":
                 //TODO make multiple choice
-                //setContentView(R.layout.eng2sign_mc);
+                setContentView(R.layout.eng2sign_mc);
+                makeEng2SignQuestion();
                 break;
             case "textEntry":
                 setContentView(R.layout.text_entry);
@@ -119,14 +121,52 @@ public class Quiz extends AppCompatActivity {
         for(int i=0; i<4; i++){
             Button currButton = buttons[i];
             currButton.setText(answerList.get(i));
+            if (i == correctIndex){
+                correctView = currButton;
+            }
             //currButton.setOnClickListener();
         }
 
         String fileName = currQuestion.getQuestion();
         switchGraphic(fileName, imageView, videoView);
     }
+    private void makeEng2SignQuestion(){
+        TextView questionTextView = findViewById(R.id.MCQuestion);
+        VideoView[] videoViews = new VideoView[4];
+        ImageView[] imageViews = new ImageView[4];
 
-    private void switchGraphic(String fileName, ImageView imageView, VideoView videoView){
+        videoViews[0] = findViewById(R.id.MCVideo1);
+        videoViews[1] = findViewById(R.id.MCVideo2);
+        videoViews[2] = findViewById(R.id.MCVideo3);
+        videoViews[3] = findViewById(R.id.MCVideo4);
+
+        imageViews[0] = findViewById(R.id.MCImage1);
+        imageViews[1] = findViewById(R.id.MCImage2);
+        imageViews[2] = findViewById(R.id.MCImage3);
+        imageViews[3] = findViewById(R.id.MCImage4);
+
+        int correctIndex = new Random().nextInt(4);
+        ArrayList<String> answerList = currQuestion.getWrongAnswersAsList();
+        answerList.add(correctIndex, currQuestion.getAnswer());
+
+        String questionText = "What is the sign for '"+ currQuestion.getQuestion() + "'?";
+        questionTextView.setText(questionText);
+
+        for(int i=0; i<4; i++){
+            boolean isImageView = switchGraphic(answerList.get(i), imageViews[i], videoViews[i]);
+            if (isImageView){
+                imageViews[i].setContentDescription(answerList.get(i));
+                System.out.println("Content Description for image is: " + imageViews[i].getContentDescription().toString());
+                correctView = imageViews[i];
+            } else {
+                videoViews[i].setContentDescription(answerList.get(i));
+                System.out.println("Content Description for video is: " + videoViews[i].getContentDescription().toString());
+                correctView = videoViews[i];
+            }
+        }
+    }
+
+    private boolean switchGraphic(String fileName, ImageView imageView, VideoView videoView){
         System.out.println(fileName);
         String[] fileNameSplit = fileName.split("\\.");
         System.out.println(fileNameSplit.length);
@@ -136,6 +176,7 @@ public class Quiz extends AppCompatActivity {
             videoView.setVisibility(View.INVISIBLE);
             imageView.setImageResource(resID);
             imageView.setVisibility(View.VISIBLE);
+            return true;
         } else {
             int resID = getResources().getIdentifier(fileName, "raw", getPackageName());
             android.net.Uri uri = Uri.parse("android.resource://" + getPackageName() + "/" + resID);
@@ -149,6 +190,7 @@ public class Quiz extends AppCompatActivity {
             videoView.setVisibility(View.VISIBLE);
             imageView.setVisibility(View.INVISIBLE);
             videoView.start();
+            return false;
         }
     }
 
@@ -184,8 +226,18 @@ public class Quiz extends AppCompatActivity {
 
     public void MCAnswer(View view){
         chosenAnswer = ((Button)view).getText().toString();
+        if (selectedView != null){
+            selectedView.setSelected(false);
+        }
+        selectedView = view;
+        view.setSelected(true);
         System.out.println("Answer clicked: " + chosenAnswer);
 
+    }
+
+    public void MCEng2SignAnswer(View view){
+        chosenAnswer = view.getContentDescription().toString();
+        System.out.println("Answer clicked: " + chosenAnswer);
     }
 
     public void MCCheckAnswer(View view) {
@@ -209,5 +261,10 @@ public class Quiz extends AppCompatActivity {
             System.out.println("incorrect");
             gotWrongAnswer();
         }
+    }
+
+    public void backToLessons(View view){
+        Intent intent = new Intent(this, MainMenu.class);
+        startActivity(intent);
     }
 }
