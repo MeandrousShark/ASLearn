@@ -1,6 +1,7 @@
 package com.aslearn.db;
 
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -11,6 +12,7 @@ public class DatabaseAccess {
     private SQLiteOpenHelper openHelper;
     private SQLiteDatabase db;
     private static DatabaseAccess instance;
+    private static final String TABLE_MODULE = "Modules";
     private static final String TABLE_LESSON = "Lessons";
     private static final String TABLE_WORD = "Words";
     private static final String TABLE_QUESTIONS = "Questions";
@@ -40,6 +42,28 @@ public class DatabaseAccess {
 //            this.db.close();
 //        }
 //    }
+
+    // Get all modules
+    public ArrayList<Module> selectAllModules(){
+        String sqlQuery = "SELECT module_name, type, m_unlocked, m_completed, module_order FROM " +
+                TABLE_MODULE + "ORDER BY module_order";
+
+        db = openHelper.getWritableDatabase();
+        Cursor cursor = db.rawQuery(sqlQuery, null);
+
+        ArrayList<Module> modules = new ArrayList<>();
+
+        while(cursor.moveToNext()){
+            Module currModule = new Module(cursor.getString(0), cursor.getString(1),
+                    Integer.parseInt(cursor.getString(2)),
+                    Integer.parseInt(cursor.getString(3)),
+                    Integer.parseInt(cursor.getString(4)));
+            modules.add(currModule);
+        }
+
+        db.close();
+        return modules;
+    }
 
     //Get all lessons from the specified module
     public ArrayList<Lesson> selectLessonsByModule(String module){

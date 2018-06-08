@@ -53,7 +53,7 @@
         app:layout_constraintTop_toBottomOf="@+id/questionVideo" />
 
     <Button
-        android:id="@+id/confirm"
+        android:id="@+id/checkAnswer"
         android:layout_width="156dp"
         android:layout_height="40dp"
         android:layout_marginBottom="10dp"
@@ -66,6 +66,27 @@
         android:textAllCaps="false"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/answerInput"
+        app:layout_constraintVertical_bias="0.435" />
+
+    <Button
+        android:id="@+id/nextQuestion"
+        android:layout_width="156dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/buttonrounding"
+        android:backgroundTint="@color/colorPrimary"
+        android:onClick="nextQuestionClicked"
+        android:paddingEnd="10dp"
+        android:paddingStart="10dp"
+        android:text="Next Question"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

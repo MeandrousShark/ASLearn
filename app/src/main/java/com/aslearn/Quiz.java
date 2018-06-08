@@ -36,6 +36,8 @@ public class Quiz extends AppCompatActivity {
     private String chosenAnswer;
     private View selectedView;
     private View correctView;
+    private Button checkAnswerButton;
+    private Button nextButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +52,8 @@ public class Quiz extends AppCompatActivity {
     private void nextQuestion(){
         //End quiz if there are no more questions
         chosenAnswer = "";
+        selectedView = null;
+        correctView = null;
         if (questions.isEmpty()){
             System.out.println("No more questions");
             dbAccess.updateFinishedLesson(currQuestion.getLesson());
@@ -87,6 +91,9 @@ public class Quiz extends AppCompatActivity {
 
     //Make the layout for the text entry question
     private void makeTextEntryQuestion(){
+        checkAnswerButton = findViewById(R.id.checkAnswer);
+        nextButton = findViewById(R.id.nextQuestion);
+
         VideoView videoView = findViewById(R.id.questionVideo);
 
         String fileName = currQuestion.getQuestion();
@@ -106,6 +113,9 @@ public class Quiz extends AppCompatActivity {
 
     //Make the layout for the ASL-->English multiple choice question
     private void makeSign2EngQuestion(){
+        checkAnswerButton = findViewById(R.id.MCConfirmButton);
+        nextButton = findViewById(R.id.nextQuestion);
+
         ImageView imageView = findViewById(R.id.signImage);
         VideoView videoView = findViewById(R.id.signVideo);
         Button[] buttons = new Button[4];
@@ -131,6 +141,9 @@ public class Quiz extends AppCompatActivity {
         switchGraphic(fileName, imageView, videoView);
     }
     private void makeEng2SignQuestion(){
+        checkAnswerButton = findViewById(R.id.MCConfirmButton);
+        nextButton = findViewById(R.id.nextQuestion);
+
         TextView questionTextView = findViewById(R.id.MCQuestion);
         VideoView[] videoViews = new VideoView[4];
         ImageView[] imageViews = new ImageView[4];
@@ -207,8 +220,8 @@ public class Quiz extends AppCompatActivity {
         Context context = getApplicationContext();
         Toast toast = Toast.makeText(context, "Correct!", Toast.LENGTH_SHORT);
         toast.show();
-        nextQuestion();
-
+        checkAnswerButton.setVisibility(View.INVISIBLE);
+        nextButton.setVisibility(View.VISIBLE);
     }
     private void gotWrongAnswer(){
         //decrement fluency values of related words in the DB
@@ -221,7 +234,8 @@ public class Quiz extends AppCompatActivity {
         Toast toast = Toast.makeText(context, "Incorrect \n Correct Answer: " + currQuestion.getAnswer(), Toast.LENGTH_SHORT);
         toast.show();
         questions.add(currQuestion);
-        nextQuestion();
+        checkAnswerButton.setVisibility(View.INVISIBLE);
+        nextButton.setVisibility(View.VISIBLE);
     }
 
     public void MCAnswer(View view){
@@ -271,5 +285,9 @@ public class Quiz extends AppCompatActivity {
     public void backToLessons(View view){
         Intent intent = new Intent(this, MainMenu.class);
         startActivity(intent);
+    }
+
+    public void nextQuestionClicked(View view){
+        nextQuestion();
     }
 }

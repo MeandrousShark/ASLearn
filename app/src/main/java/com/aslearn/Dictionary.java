@@ -25,7 +25,7 @@ public class Dictionary extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         dbAccess = DatabaseAccess.getInstance(this);
-        setContentView(R.layout.dictionary);
+        setContentView(R.layout.dictionary_old);
     }
 
     public void searchDictionary(View view) {
