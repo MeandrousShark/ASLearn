@@ -2,6 +2,7 @@ package com.aslearn;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.net.Uri;
@@ -212,8 +213,22 @@ public class Quiz extends AppCompatActivity {
         Context context = getApplicationContext();
         Toast toast = Toast.makeText(context, "Correct!", Toast.LENGTH_SHORT);
         toast.show();
+        EditText answerInput = findViewById(R.id.answerInput);
+        switch(currQuestion.getType()) {
+            case "sign2eng":
+                correctView.setBackground(getDrawable(R.drawable.correctanswerbutton));
+                break;
+            case "eng2sign":
+                correctView.setBackground(getDrawable(R.drawable.correctanswerbutton));
+                break;
+            case "textEntry":
+                answerInput.setTextColor(Color.GREEN);
+                break;
+        }
+
         checkAnswerButton.setVisibility(View.INVISIBLE);
         nextButton.setVisibility(View.VISIBLE);
+
     }
     private void gotWrongAnswer(){
         //decrement fluency values of related words in the DB
@@ -226,6 +241,20 @@ public class Quiz extends AppCompatActivity {
         Toast toast = Toast.makeText(context, "Incorrect \n Correct Answer: " + currQuestion.getAnswer(), Toast.LENGTH_SHORT);
         toast.show();
         questions.add(currQuestion);
+        EditText answerInput = findViewById(R.id.answerInput);
+        switch(currQuestion.getType()) {
+            case "sign2eng":
+                correctView.setBackground(getDrawable(R.drawable.correctanswerbutton));
+                correctView.setBackground(getDrawable(R.drawable.wronganswerbutton));
+                break;
+            case "eng2sign":
+                correctView.setBackground(getDrawable(R.drawable.correctanswerbutton));
+                correctView.setBackground(getDrawable(R.drawable.wronganswerbutton));
+                break;
+            case "textEntry":
+                answerInput.setTextColor(Color.RED);
+                break;
+        }
         checkAnswerButton.setVisibility(View.INVISIBLE);
         nextButton.setVisibility(View.VISIBLE);
     }
