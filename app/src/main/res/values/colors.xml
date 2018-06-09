@@ -4,4 +4,10 @@
     <color name="colorPrimaryDark">#2c517e</color>
     <color name="colorAccent">#FF4081</color>
     <color name="background_material_light">#c9ddff</color>
+    <color name="button_pressed">#c9ddff</color>
+    <color name="button_disabled">#2c517e</color>
+    <color name="button_selected">#345f94</color>
+
+
+
 </resources>

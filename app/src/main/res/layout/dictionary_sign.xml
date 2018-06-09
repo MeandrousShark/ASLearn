@@ -46,49 +46,26 @@
         app:layout_constraintTop_toBottomOf="@id/wordText" />
 
     <Button
-        android:id="@+id/nextSignButton"
-        android:layout_width="156dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="22dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/buttonrounding"
-        android:backgroundTint="@color/colorPrimary"
-        android:onClick="nextSign"
-        android:paddingEnd="10dp"
-        android:paddingStart="10dp"
-        android:text="Next Sign"
-        android:textColor="#FFFFFF"
-        android:textSize="25sp"
-        android:textAllCaps="false"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintTop_toBottomOf="@+id/signVideo"
-        app:layout_constraintVertical_bias="0.258" />
-
-    <Button
         android:id="@+id/moreInfoButton"
         android:layout_width="156dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
-        android:layout_marginStart="22dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/buttonrounding"
         android:backgroundTint="#FFFFFF"
-        android:onClick="moreInfoButton"
+        android:onClick="dictMoreInfoButton"
         android:paddingEnd="10dp"
         android:paddingStart="10dp"
         android:text="More Info"
+        android:textAllCaps="false"
         android:textColor="#888888"
         android:textSize="25sp"
-        android:textAllCaps="false"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/nextSignButton"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="@+id/signVideo"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/signVideo"
-        app:layout_constraintVertical_bias="0.258" />
+        app:layout_constraintVertical_bias="0.243" />
 
     <VideoView
         android:id="@+id/signVideo"

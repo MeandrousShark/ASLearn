@@ -34,6 +34,19 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    /**
+     * Loads the dictionary_old activity when the user clicks on "ASL Dictionary"
+     * @param view the current view the user is on
+     */
+    public void ASLDictionary(View view) {
+        Intent intent = new Intent(this, Dictionary.class);
+        startActivity(intent);
+    }
+
+    /**
+     * Loads the My Progress activity when the user clicks on "My Progress"
+     * @param view the current view the user is on
+     */
     public void myProgress(View view) {
         Intent intent = new Intent(this, MyProgress.class);
         startActivity(intent);
@@ -46,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
 //        Intent intent = new Intent(this, MainMenu.class);
 //        startActivity(intent);
 //    }
-//        protected void dictionary(View view) {
+//        protected void dictionary_old(View view) {
 //        System.out.println("moduleMenu button clicked!");
 //        Intent intent = new Intent(this, MainMenu.class);
 //        startActivity(intent);

@@ -21,26 +21,31 @@ import java.util.ArrayList;
  * Builds the list of buttons from the database.
  */
 public class LessonMenu extends AppCompatActivity{
-  //  private DatabaseManager dbManager;
-    private DatabaseAccess dbManager;
+  //  private DatabaseManager dbAccess;
+    private DatabaseAccess dbAccess;
     private ArrayList<Lesson> lessons;
     private Button[] lessonButtons;
     TextView test;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-      //  dbManager = new DatabaseManager(this);
-        dbManager = DatabaseAccess.getInstance(this);
+      //  dbAccess = new DatabaseManager(this);
+        dbAccess = DatabaseAccess.getInstance(this);
         setContentView(R.layout.lesson_menu);
         Intent intent = getIntent();
         String moduleName = intent.getStringExtra(MainMenu.moduleName);
         System.out.println(moduleName);
-        lessons = dbManager.selectLessonsByModule(moduleName);
+        lessons = dbAccess.selectLessonsByModule(moduleName);
         if (lessons != null) {
             setupLessons();
         }
         setTitle(moduleName);
     }
+
+    //this is how you fix the button coloring when pressed, but I dont know quite how to do it in here
+    //if pressed == true
+        //lessonButton.setBackground(getColor(R.color.button_pressed));
+
 
     //TODO add a button 'Practice Worse Signs' at the bottom- quizzes you on 5(?) worst signs in this section
     private void setupLessons() {
@@ -48,7 +53,7 @@ public class LessonMenu extends AppCompatActivity{
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         layoutParams.setMargins(30, 20, 30, 20);
-        layoutParams.height = 300;
+        layoutParams.height = 250;
         lessonButtons = new Button[lessons.size()];
         for (int i = 0; i < lessonButtons.length; i++) {
             final int I = i;

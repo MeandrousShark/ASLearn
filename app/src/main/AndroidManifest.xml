@@ -43,6 +43,19 @@
         <activity
             android:name=".Quiz"
             android:label="Quiz" />
+        <activity
+            android:name=".Dictionary"
+            android:label="Dictionary"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".HistoryLesson"
+            android:parentActivityName=".MainMenu"
+            />
+        <activity
+            android:name=".SignDictionary"
+            android:parentActivityName=".Dictionary"
+            />
+
     </application>
 
 </manifest>
