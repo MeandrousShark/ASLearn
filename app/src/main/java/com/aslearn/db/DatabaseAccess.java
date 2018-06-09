@@ -46,7 +46,7 @@ public class DatabaseAccess {
     // Get all modules
     public ArrayList<Module> selectAllModules(){
         String sqlQuery = "SELECT module_name, type, m_unlocked, m_completed, module_order FROM " +
-                TABLE_MODULE + "ORDER BY module_order";
+                TABLE_MODULE + " ORDER BY module_order";
 
         db = openHelper.getWritableDatabase();
         Cursor cursor = db.rawQuery(sqlQuery, null);
@@ -151,14 +151,12 @@ public class DatabaseAccess {
 
     // Get a list of the completed modules
     public ArrayList<String> selectCompletedModules(){
-        String sqlQuery = "SELECT module FROM " +
-                " (SELECT * FROM Lessons GROUP BY module)" +
-                " WHERE completed = 1";
+        String sqlQuery = "SELECT module FROM " + TABLE_MODULE + " WHERE completed = 1";
 
         db = openHelper.getWritableDatabase();
         Cursor cursor = db.rawQuery(sqlQuery, null);
 
-        ArrayList<String> modules = new ArrayList<String>();
+        ArrayList<String> modules = new ArrayList<>();
 
         while(cursor.moveToNext()){
             modules.add(cursor.getString(0));
@@ -177,7 +175,7 @@ public class DatabaseAccess {
         db = openHelper.getWritableDatabase();
         Cursor cursor = db.rawQuery(sqlQuery, null);
 
-        ArrayList<String> words = new ArrayList<String>();
+        ArrayList<String> words = new ArrayList<>();
 
         while(cursor.moveToNext()){
             words.add(cursor.getString(0));
@@ -196,7 +194,7 @@ public class DatabaseAccess {
         db = openHelper.getWritableDatabase();
         Cursor cursor = db.rawQuery(sqlQuery, null);
 
-        ArrayList<String> words = new ArrayList<String>();
+        ArrayList<String> words = new ArrayList<>();
 
         while(cursor.moveToNext()){
             words.add(cursor.getString(0));
@@ -215,17 +213,58 @@ public class DatabaseAccess {
         db.close();
     }
 
+    //Marks a finished module as complete and the next module as unlocked
+    public void updateFinishedModule(String module){
+        String sqlUpdateModuleCompleted = "UPDATE Modules SET completed = 1 " +
+                "WHERE module = '"+module+"';";
+        String sqlUpdateModuleUnlocked = "UPDATE Modules SET unlocked = 1 " +
+                "WHERE module_order = (SELECT module_order +1 FROM Modules " +
+                "WHERE module = '"+module+"');";
+        db = openHelper.getWritableDatabase();
+        db.execSQL(sqlUpdateModuleCompleted);
+        db.execSQL(sqlUpdateModuleUnlocked);
+        db.close();
+    }
+
     //Marks a finished lesson as complete and the next lesson as unlocked
     public void updateFinishedLesson(String lesson){
         String sqlUpdateCompleted = "UPDATE Lessons SET completed = 1 WHERE lesson_name = '" + lesson + "'";
-        String sqlUpdateUnlocked = "UPDATE Lessons SET unlocked = 1 " +
-                "WHERE module = (SELECT module FROM Lessons WHERE lesson_name = '"+ lesson +"') " +
-                "AND lesson_order = " +
-                "(SELECT lesson_order + 1 FROM Lessons WHERE lesson_name = '"+ lesson +"')";
+
+        String sqlQueryLessonInfo = "SELECT lesson_name, module, unlocked, completed, lesson_order FROM " +
+                TABLE_LESSON + " WHERE lesson_name = '" + lesson +"'";
         db = openHelper.getWritableDatabase();
-        db.execSQL(sqlUpdateCompleted);
-        db.execSQL(sqlUpdateUnlocked);
-        db.close();
+
+
+
+        Cursor cursor = db.rawQuery(sqlQueryLessonInfo, null);
+        if(cursor.moveToNext()){
+            Lesson lessonInfo = new Lesson(cursor.getString(0), cursor.getString(1),
+                    Integer.parseInt(cursor.getString(2)),
+                    Integer.parseInt(cursor.getString(3)),
+                    Integer.parseInt(cursor.getString(4)));
+
+            String sqlUpdateUnlocked = "UPDATE Lessons SET unlocked = 1 " +
+                    "WHERE module = '" + lessonInfo.getModuleName() +"' "+
+                    "AND lesson_order = " + lessonInfo.getLessonOrder()+1;
+
+            db.execSQL(sqlUpdateCompleted);
+            db.execSQL(sqlUpdateUnlocked);
+
+            String sqlSelectLessonCount = "SELECT COUNT(*) FROM Lessons WHERE module = '"+lessonInfo.getModuleName()+"'";
+            cursor = db.rawQuery(sqlSelectLessonCount, null);
+            cursor.moveToNext();
+            int numLessons = cursor.getInt(0);
+
+            db.close();
+
+            //last lesson in the module is completed
+            if (numLessons == lessonInfo.getLessonOrder()){
+                updateFinishedModule(lessonInfo.getModuleName());
+            }
+        } else {
+            db.close();
+        }
+
     }
 
 }
