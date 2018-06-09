@@ -4,10 +4,12 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.aslearn.db.DatabaseAccess;
 import com.aslearn.db.Word;
@@ -34,9 +36,16 @@ public class Dictionary extends AppCompatActivity {
         String searchWord = searchInput.getText().toString();
         final ArrayList<Word> resultList = dbAccess.selectSimilarWords(searchWord);
         final LinearLayout layout = findViewById(R.id.DictionaryEntries);
+
         layout.removeAllViewsInLayout();
         if (resultList.isEmpty()){
             //TODO: display "Sorry, no results found" to the user
+            TextView resultView = new TextView(this);
+            resultView.setText("Sorry, no match found");
+            resultView.setTextSize(24);
+            //resultView.setPadding(90, 0, 90, 0);
+            resultView.setGravity(Gravity.CENTER_HORIZONTAL);
+            layout.addView(resultView);
 
         }else {
             Button[] resultButtons = new Button[resultList.size()];

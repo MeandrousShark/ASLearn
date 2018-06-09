@@ -37,7 +37,7 @@ public class SignDictionary extends AppCompatActivity {
         wordView = findViewById(R.id.wordText);
         imageView = findViewById(R.id.signJpg);
         infoView = findViewById(R.id.topInfo);
-        videoView = (VideoView) findViewById(R.id.signVideo);
+        videoView = findViewById(R.id.signVideo);
         moreInfoButton = findViewById(R.id.moreInfoButton);
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
