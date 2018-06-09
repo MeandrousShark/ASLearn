@@ -32,7 +32,7 @@ public class Dictionary extends AppCompatActivity {
         //TODO Bug: When Entering multiple inputs to the dictionary search, it will just keep adding things
         EditText searchInput = findViewById(R.id.searchInput);
         String searchWord = searchInput.getText().toString();
-        final ArrayList<Word> resultList = dbAccess.selectWord(searchWord);
+        final ArrayList<Word> resultList = dbAccess.selectSimilarWords(searchWord);
         final LinearLayout layout = findViewById(R.id.DictionaryEntries);
         layout.removeAllViewsInLayout();
         if (resultList.isEmpty()){
@@ -58,6 +58,9 @@ public class Dictionary extends AppCompatActivity {
                     public void onClick(View v) {
                         Intent intent = new Intent(Dictionary.this, SignDictionary.class);
                         intent.putExtra("wordName", resultList.get(I).getWord());
+                        intent.putExtra("basicInfo", resultList.get(I).getBasicInfo());
+                        intent.putExtra("moreInfo", resultList.get(I).getMoreInfo());
+                        intent.putExtra("visualFile", resultList.get(I).getVisualFile());
                         startActivity(intent);
                     }
                 });

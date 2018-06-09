@@ -129,7 +129,7 @@ public class DatabaseAccess {
     }
 
     // Get word info for a specified word
-    public ArrayList<Word> selectWord(String word){
+    public ArrayList<Word> selectSimilarWords(String word){
         String sqlQuery = "SELECT word_id, word, visual_file, basic_info, more_info, lesson, fluency_val FROM " +
                 TABLE_WORD + " WHERE word LIKE '" + word +"'";
 
@@ -147,6 +147,27 @@ public class DatabaseAccess {
         }
         db.close();
         return words;
+    }
+
+    // Get word info for a specified word
+    public Word selectExactWord(String word){
+        String sqlQuery = "SELECT word_id, word, visual_file, basic_info, more_info, lesson, fluency_val FROM " +
+                TABLE_WORD + " WHERE word = '" + word +"'";
+
+        db = openHelper.getWritableDatabase();
+        Cursor cursor = db.rawQuery(sqlQuery, null);
+
+        ArrayList<Word> words = new ArrayList<Word>();
+
+        while(cursor.moveToNext()){
+            Word currWord = new Word(Integer.parseInt(cursor.getString(0)),
+                    cursor.getString(1), cursor.getString(2),
+                    cursor.getString(3), cursor.getString(4),
+                    cursor.getString(5), Integer.parseInt(cursor.getString(6)));
+            words.add(currWord);
+        }
+        db.close();
+        return words.get(0);
     }
 
     // Get a list of the completed modules

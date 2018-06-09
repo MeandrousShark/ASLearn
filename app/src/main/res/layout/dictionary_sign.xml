@@ -54,7 +54,7 @@
         android:layout_marginTop="8dp"
         android:background="@drawable/buttonrounding"
         android:backgroundTint="#FFFFFF"
-        android:onClick="moreInfoButton"
+        android:onClick="dictMoreInfoButton"
         android:paddingEnd="10dp"
         android:paddingStart="10dp"
         android:text="More Info"

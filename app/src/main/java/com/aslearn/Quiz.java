@@ -6,12 +6,10 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.MediaController;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
@@ -57,7 +55,6 @@ public class Quiz extends AppCompatActivity {
         if (questions.isEmpty()){
             System.out.println("No more questions");
             dbAccess.updateFinishedLesson(currQuestion.getLesson());
-            //TODO: Something to say quiz is completed
             setContentView(R.layout.finished_activity);
         } else{
             //Move on to next question
@@ -73,17 +70,12 @@ public class Quiz extends AppCompatActivity {
                 makeSign2EngQuestion();
                 break;
             case "eng2sign":
-                //TODO make multiple choice
                 setContentView(R.layout.eng2sign_mc);
                 makeEng2SignQuestion();
                 break;
             case "textEntry":
                 setContentView(R.layout.text_entry);
                 makeTextEntryQuestion();
-                break;
-            case "matching":
-                //TODO make matching
-        //        setContentView(R.layout.matching);
                 break;
         }
 
@@ -211,10 +203,10 @@ public class Quiz extends AppCompatActivity {
         //increment fluency values of related words in the DB
         ArrayList<String> relatedWords = currQuestion.getRelatedWordsAsList();
         for (String word: relatedWords){
-            Word upword = dbAccess.selectWord(word).get(0);
+            Word upword = dbAccess.selectSimilarWords(word).get(0);
             System.out.println("fluency val for " + word + " before: " + upword.getFluencyVal());
             dbAccess.updateFluencyVal(word, 1);
-            upword = dbAccess.selectWord(word).get(0);
+            upword = dbAccess.selectSimilarWords(word).get(0);
             System.out.println("Fluency val for " + upword.getWord() + " after: " + upword.getFluencyVal());
         }
         Context context = getApplicationContext();
