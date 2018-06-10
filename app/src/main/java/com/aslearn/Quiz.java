@@ -216,10 +216,10 @@ public class Quiz extends AppCompatActivity {
         EditText answerInput = findViewById(R.id.answerInput);
         switch(currQuestion.getType()) {
             case "sign2eng":
-                correctView.setBackground(getDrawable(R.drawable.correctanswerbutton));
+                selectedView.setBackground(getDrawable(R.drawable.correctanswerbutton));
                 break;
             case "eng2sign":
-                correctView.setBackground(getDrawable(R.drawable.correctanswerbutton));
+                selectedView.setBackgroundColor(Color.GREEN);
                 break;
             case "textEntry":
                 answerInput.setTextColor(Color.GREEN);
@@ -238,21 +238,25 @@ public class Quiz extends AppCompatActivity {
         }
         //TODO: display wrong, show correct answer
         Context context = getApplicationContext();
-        Toast toast = Toast.makeText(context, "Incorrect \n Correct Answer: " + currQuestion.getAnswer(), Toast.LENGTH_SHORT);
-        toast.show();
         questions.add(currQuestion);
         EditText answerInput = findViewById(R.id.answerInput);
         switch(currQuestion.getType()) {
             case "sign2eng":
                 correctView.setBackground(getDrawable(R.drawable.correctanswerbutton));
-                correctView.setBackground(getDrawable(R.drawable.wronganswerbutton));
+                if (selectedView != null) {
+                    selectedView.setBackground(getDrawable(R.drawable.wronganswerbutton));
+                }
                 break;
             case "eng2sign":
-                correctView.setBackground(getDrawable(R.drawable.correctanswerbutton));
-                correctView.setBackground(getDrawable(R.drawable.wronganswerbutton));
+                correctView.setBackgroundColor(Color.GREEN);
+                if (selectedView != null) {
+                    selectedView.setBackgroundColor(Color.RED);
+                }
                 break;
             case "textEntry":
                 answerInput.setTextColor(Color.RED);
+                Toast toast = Toast.makeText(context, "Incorrect \n Correct Answer: " + currQuestion.getAnswer(), Toast.LENGTH_SHORT);
+                toast.show();
                 break;
         }
         checkAnswerButton.setVisibility(View.INVISIBLE);
