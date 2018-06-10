@@ -215,6 +215,7 @@ public class Quiz extends AppCompatActivity {
         switch(currQuestion.getType()) {
             case "sign2eng":
                 selectedView.setBackground(getDrawable(R.drawable.correctanswerbutton));
+                ((TextView)correctView).setTextColor(Color.WHITE);
                 break;
             case "eng2sign":
                 selectedView.setBackgroundColor(Color.GREEN);
@@ -241,8 +242,10 @@ public class Quiz extends AppCompatActivity {
         switch(currQuestion.getType()) {
             case "sign2eng":
                 correctView.setBackground(getDrawable(R.drawable.correctanswerbutton));
+                ((TextView)correctView).setTextColor(Color.WHITE);
                 if (selectedView != null) {
                     selectedView.setBackground(getDrawable(R.drawable.wronganswerbutton));
+                    ((TextView)selectedView).setTextColor(Color.WHITE);
                 }
                 break;
             case "eng2sign":

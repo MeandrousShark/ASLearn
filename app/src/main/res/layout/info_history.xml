@@ -15,6 +15,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical" >
             <TextView
+                android:id="@+id/historyTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="History and Culture"
@@ -22,7 +23,10 @@
                 android:textAlignment="center"
                 android:layout_marginTop="12dp"
                 android:layout_marginLeft="12dp"
-                android:layout_marginRight="12dp"/>
+                android:layout_marginRight="12dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/historyText" />
 
             <TextView
                 android:id="@+id/historyText"
@@ -37,7 +41,8 @@
                 android:textSize="24sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toTopOf="@+id/historyButton" />
+                app:layout_constraintBottom_toTopOf="@+id/historyButton"
+                app:layout_constraintTop_toBottomOf="@id/historyTitle"/>
 
             <Button
                 android:id="@+id/historyButton"
