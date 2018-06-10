@@ -48,26 +48,23 @@ public class MyProgress extends AppCompatActivity {
         badges.put("Weather", (ImageView)findViewById(R.id.Badge9));
         badges.put("Questions", (ImageView)findViewById(R.id.Badge10));
 
-        //setNumSignsLearned();
+        setNumSignsLearned();
         setBestWords();
         setWorstWords();
         setBadges();
     }
 
 
-
-    /*
-    **
-    **the database is not set up for this yet
-    **
-    **
+    /**
+     * Sets the text to show the number of signs learned
+     */
     private void setNumSignsLearned(){
-        ArrayList<String> totalSignsLearned = dbAccess.selectNumSignsLearned();
-        String text = "Number of Signs Learned:\n"+ length.totalSignsLearned() + " signs!";
-        bestWords.setText(text);
+        int totalSignsLearned = dbAccess.selectNumWordsLearned();
+        String text = "Number of Signs Learned:\n"+ totalSignsLearned + " signs!";
+        numSignsLearned.setText(text);
     }
 
-*/
+
 
     private void setBestWords(){
         ArrayList<String> bestWordList = dbAccess.select5BestWords();

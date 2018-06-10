@@ -75,6 +75,13 @@ public class LessonMenu extends AppCompatActivity{
                     startActivity(intent);
                 }
             });
+            System.out.println(lessons.get(I).getLessonName());
+            System.out.println("Completed: "+lessons.get(I).getCompleted());
+            System.out.println("Unlocked: "+ lessons.get(I).getUnlocked());
+            if (lessons.get(I).getUnlocked() == 0){
+                lessonButton.setEnabled(false);
+                lessonButton.setAlpha(0.5f);
+            }
         }
       //  startLessons();
     }
