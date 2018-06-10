@@ -24,7 +24,7 @@ public class MainMenu extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.module_menu);
-        modules = new ArrayList<Module>();
+        modules = new ArrayList<>();
         //modules = dbManager.getModules();
     }
 

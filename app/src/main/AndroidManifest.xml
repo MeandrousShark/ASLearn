@@ -32,9 +32,6 @@
             android:label="Lessons"
             android:parentActivityName=".MainMenu" />
         <activity
-            android:name=".FingerSpelling"
-            android:label="Fingerspelling Quiz" />
-        <activity
             android:name=".MultipleChoice" />
         <activity
             android:name=".MyProgress"
