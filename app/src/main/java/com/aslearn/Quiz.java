@@ -7,6 +7,7 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -210,9 +211,6 @@ public class Quiz extends AppCompatActivity {
             upword = dbAccess.selectSimilarWords(word).get(0);
             System.out.println("Fluency val for " + upword.getWord() + " after: " + upword.getFluencyVal());
         }
-        Context context = getApplicationContext();
-        Toast toast = Toast.makeText(context, "Correct!", Toast.LENGTH_SHORT);
-        toast.show();
         EditText answerInput = findViewById(R.id.answerInput);
         switch(currQuestion.getType()) {
             case "sign2eng":
@@ -256,6 +254,7 @@ public class Quiz extends AppCompatActivity {
             case "textEntry":
                 answerInput.setTextColor(Color.RED);
                 Toast toast = Toast.makeText(context, "Incorrect \n Correct Answer: " + currQuestion.getAnswer(), Toast.LENGTH_SHORT);
+                toast.setGravity(Gravity.CENTER|Gravity.BOTTOM, 0, 0);
                 toast.show();
                 break;
         }
@@ -285,10 +284,13 @@ public class Quiz extends AppCompatActivity {
     }
 
     public void MCCheckAnswer(View view) {
-        if (chosenAnswer.equals(currQuestion.getAnswer())){
+        Context context = getApplicationContext();
+        if (chosenAnswer.isEmpty()){
+            Toast toast = Toast.makeText(context, "No answer submitted.\nPlease try again.", Toast.LENGTH_SHORT);
+            toast.show();
+        } else if (chosenAnswer.equals(currQuestion.getAnswer())){
             System.out.println("correct!");
             gotCorrectAnswer();
-
         } else {
             System.out.println("incorrect");
             gotWrongAnswer();
@@ -298,7 +300,11 @@ public class Quiz extends AppCompatActivity {
     public void TxtCheckAnswer(View view){
         EditText answerInput = findViewById(R.id.answerInput);
         chosenAnswer = answerInput.getText().toString();
-        if (chosenAnswer.equalsIgnoreCase(currQuestion.getAnswer())){
+        if (chosenAnswer.isEmpty()){
+            Context context = getApplicationContext();
+            Toast toast = Toast.makeText(context, "No answer submitted.\nPlease try again.", Toast.LENGTH_SHORT);
+            toast.show();
+        } else if (chosenAnswer.equalsIgnoreCase(currQuestion.getAnswer())){
             System.out.println("correct!");
             gotCorrectAnswer();
         } else {

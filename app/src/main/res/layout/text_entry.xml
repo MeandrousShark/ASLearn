@@ -68,9 +68,10 @@
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/answerInput"
-        app:layout_constraintVertical_bias="0.435" />
+        app:layout_constraintVertical_bias="0.204" />
 
     <Button
         android:id="@+id/nextQuestion"
@@ -89,7 +90,8 @@
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/answerInput"
-        app:layout_constraintVertical_bias="0.435" />
+        app:layout_constraintVertical_bias="0.204" />
 </android.support.constraint.ConstraintLayout>
