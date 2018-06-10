@@ -20,7 +20,8 @@
         <shape
             android:shape="rectangle">
             <solid
-                android:color="@color/button_selected"/>
+                android:color="@color/button_selected"
+                android:textColor="@android:color/white"/>
             <stroke
                 android:color="@color/button_selected"
                 android:width="2dp" />
@@ -50,7 +51,7 @@
         <shape
             android:shape="rectangle">
             <solid
-                android:color="#FFFFFF"/>
+                android:color="#FFFFFF" />
             <stroke
                 android:color="#FFFFFF"
                 android:width="2dp"/>

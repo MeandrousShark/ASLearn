@@ -45,7 +45,7 @@ public class DatabaseAccess {
 
     // Get all modules
     public ArrayList<Module> selectAllModules(){
-        String sqlQuery = "SELECT module_name, type, m_unlocked, m_completed, module_order FROM " +
+        String sqlQuery = "SELECT module, type, unlocked, completed, module_order FROM " +
                 TABLE_MODULE + " ORDER BY module_order";
 
         db = openHelper.getWritableDatabase();

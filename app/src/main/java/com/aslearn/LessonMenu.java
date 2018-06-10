@@ -25,7 +25,7 @@ public class LessonMenu extends AppCompatActivity{
     private DatabaseAccess dbAccess;
     private ArrayList<Lesson> lessons;
     private Button[] lessonButtons;
-    TextView test;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,6 +63,7 @@ public class LessonMenu extends AppCompatActivity{
            // lessonButton.setBackgroundColor(0xFFFFFE);
             lessonButton.setText(lessons.get(i).getLessonName());
             lessonButton.setTextSize(24);
+            lessonButton.setAllCaps(false);
             lessonButton.setTextColor(Color.GRAY);
             lessonButton.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_START);
             lessonButton.setPadding(90,0,90,0);
