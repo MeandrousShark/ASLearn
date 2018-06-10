@@ -224,6 +224,25 @@ public class DatabaseAccess {
         return words;
     }
 
+    /**
+     * Gets the total number of signs the user has learned (fluency val of at least 3)
+     * @return an int representing the total # of signs learned
+     */
+    public int selectNumWordsLearned(){
+        String sqlQuery = "SELECT COUNT(*) FROM " + TABLE_WORD + " WHERE fluency_val >= 3";
+
+        db = openHelper.getWritableDatabase();
+        Cursor cursor = db.rawQuery(sqlQuery, null);
+
+        int result = 0;
+        if (cursor.moveToNext()){
+            result = cursor.getInt(0);
+        }
+
+        db.close();
+        return result;
+    }
+
     //Updates the fluency value of a word
     public void updateFluencyVal(String word, int i){
         String sqlUpdate = "UPDATE Words " +
@@ -255,7 +274,7 @@ public class DatabaseAccess {
                 TABLE_LESSON + " WHERE lesson_name = '" + lesson +"'";
         db = openHelper.getWritableDatabase();
 
-
+        System.out.println(lesson);
 
         Cursor cursor = db.rawQuery(sqlQueryLessonInfo, null);
         if(cursor.moveToNext()){
@@ -264,9 +283,11 @@ public class DatabaseAccess {
                     Integer.parseInt(cursor.getString(3)),
                     Integer.parseInt(cursor.getString(4)));
 
+            System.out.println("Found lesson: "+lessonInfo.getLessonName());
+
             String sqlUpdateUnlocked = "UPDATE Lessons SET unlocked = 1 " +
                     "WHERE module = '" + lessonInfo.getModuleName() +"' "+
-                    "AND lesson_order = " + lessonInfo.getLessonOrder()+1;
+                    "AND lesson_order = (" + (lessonInfo.getLessonOrder()+1) + ");";
 
             db.execSQL(sqlUpdateCompleted);
             db.execSQL(sqlUpdateUnlocked);
