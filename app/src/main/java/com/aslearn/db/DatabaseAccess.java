@@ -16,6 +16,7 @@ public class DatabaseAccess {
     private static final String TABLE_LESSON = "Lessons";
     private static final String TABLE_WORD = "Words";
     private static final String TABLE_QUESTIONS = "Questions";
+    private static final String TABLE_CULTURE = "HistoryAndCultureLessons";
 
    // Cursor cursor = null;
 
@@ -63,6 +64,29 @@ public class DatabaseAccess {
 
         db.close();
         return modules;
+    }
+
+    /**
+     * Get the history and culture lesson for the specified module
+     * @param module the name of the module
+     * @return the history and culture lesson object
+     */
+    public HistoryAndCulture selectCultureLessonByModule(String module){
+        String sqlQuery = "SELECT hist_id, module, info FROM " + TABLE_CULTURE +
+                " WHERE module = '" + module + "';";
+
+        db = openHelper.getWritableDatabase();
+        Cursor cursor = db.rawQuery(sqlQuery, null);
+
+        HistoryAndCulture histAndCultLesson = null;
+
+        if (cursor.moveToNext()){
+            histAndCultLesson = new HistoryAndCulture(cursor.getInt(0),
+                    cursor.getString(1), cursor.getString(2));
+        }
+
+        db.close();
+        return histAndCultLesson;
     }
 
     //Get all lessons from the specified module

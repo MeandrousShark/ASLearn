@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.MediaController;
 import android.widget.TextView;
 import android.widget.VideoView;
 
@@ -17,7 +16,6 @@ import com.aslearn.db.Word;
 
 import java.util.ArrayList;
 
-//import com.aslearn.db.AppDatabase;
 
 /**
  *
@@ -31,15 +29,13 @@ public class InfoLesson extends AppCompatActivity{
     TextView infoView;
     VideoView videoView;
     ImageView imageView;
-    Intent intent;
+   // Intent intent;
     Button nextSignButton;
     Button moreInfoButton;
     private int floater;
     private Word word;
     private ArrayList<Word> words;
     private int index;
-
-   // AppDatabase appDatabase;
 
     /**
      * Finds the views from the xml, loads the database to an array of Words, then
@@ -59,6 +55,7 @@ public class InfoLesson extends AppCompatActivity{
         DatabaseAccess dbAccess = DatabaseAccess.getInstance(this);
         words = dbAccess.selectWordsByLesson(intent.getStringExtra("lessonName"));
         System.out.println("Number of words: " + words.size());
+        setTitle(intent.getStringExtra("lessonName"));
         setupSign();
     }
 
@@ -115,8 +112,6 @@ public class InfoLesson extends AppCompatActivity{
      */
     protected void moreInfoButton(View view) {
         //this magical value will change the button's text between back and more info
-
-
         floater += 1;
         if(floater % 2 == 1) {
             infoView.setText(word.getMoreInfo());

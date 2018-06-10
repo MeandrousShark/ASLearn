@@ -46,6 +46,7 @@ public class Quiz extends AppCompatActivity {
         String lesson = intent.getStringExtra("lessonName");
         dbAccess = DatabaseAccess.getInstance(this);
         questions = new LinkedList<Question>(dbAccess.selectQuestionsByLesson(lesson));
+        setTitle(lesson);
         nextQuestion();
     }
 

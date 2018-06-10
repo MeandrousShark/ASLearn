@@ -59,15 +59,21 @@ public class MainMenu extends AppCompatActivity {
             moduleButton.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_START);
             moduleButton.setPadding(90,0,90,0);
             layout.addView(moduleButton, layoutParams);
-            moduleButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    //Intent intent = new Intent(LessonMenu.this, InfoLesson.class);
-                    //intent.putExtra("lessonName", modules.get(I).getModuleName());
-                    //startActivity(intent);
-                    openLessonMenu(v);
-                }
-            });
+            if (modules.get(I).getType().equals("history")){
+                moduleButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        openHistoryLesson(v);
+                    }
+                });
+            } else {
+                moduleButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        openLessonMenu(v);
+                    }
+                });
+            }
             System.out.println(modules.get(I).getModuleName());
             System.out.println("Completed: "+modules.get(I).getCompleted());
             System.out.println("Unlocked: "+ modules.get(I).getUnlocked());
@@ -77,6 +83,19 @@ public class MainMenu extends AppCompatActivity {
             }
         }
         //  startLessons();
+    }
+
+    public void openHistoryLesson(View view) {
+        //@TODO Figure out the lesson view (where all the signs in the lesson are)
+        Intent intent = new Intent(this, HistoryLesson.class);
+//        String signName = "Welcome";
+//        String infoSection = "This is where the \nhow to sign info will go";
+        Button moduleSelected = (Button) view;
+        String module = moduleSelected.getText().toString();
+        intent.putExtra(MainMenu.moduleName, module);
+//        intent.putExtra(signInfo, infoSection);
+        startActivity(intent);
+        // InfoLesson lesson = new InfoLesson(buttonID, view.findViewById(view.getId()));
     }
 
     /**
