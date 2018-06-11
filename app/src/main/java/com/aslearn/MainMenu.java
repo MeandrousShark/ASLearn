@@ -35,7 +35,6 @@ public class MainMenu extends AppCompatActivity {
         if (modules != null) {
             setupModules();
         }
-        //modules = dbManager.getModules();
     }
 
     //TODO add a button 'Practice Worse Signs' at the bottom- quizzes you on 5(?) worst signs in this section
@@ -85,36 +84,28 @@ public class MainMenu extends AppCompatActivity {
         //  startLessons();
     }
 
+    /**
+     * Loads the HistoryLesson activity
+     * @param view the menu item that was clicked
+     */
     public void openHistoryLesson(View view) {
-        //@TODO Figure out the lesson view (where all the signs in the lesson are)
         Intent intent = new Intent(this, HistoryLesson.class);
-//        String signName = "Welcome";
-//        String infoSection = "This is where the \nhow to sign info will go";
         Button moduleSelected = (Button) view;
         String module = moduleSelected.getText().toString();
         intent.putExtra(MainMenu.moduleName, module);
-//        intent.putExtra(signInfo, infoSection);
         startActivity(intent);
-        // InfoLesson lesson = new InfoLesson(buttonID, view.findViewById(view.getId()));
     }
 
     /**
-     * Loads the InfoLesson activity when the user clicks on a lesson. (Currently only
-     * the Greetings button works)
-     * @param view the current view the user is on
+     * Loads the LessonMenu activity when the user clicks on a lesson.
+     * @param view the menu item that was clicked
      */
-
     //TODO add percentage sign to right side of button that indicates amount of lesson completed
     public void openLessonMenu(View view) {
-        //@TODO Figure out the lesson view (where all the signs in the lesson are)
         Intent intent = new Intent(this, LessonMenu.class);
-//        String signName = "Welcome";
-//        String infoSection = "This is where the \nhow to sign info will go";
         Button moduleSelected = (Button) view;
         String module = moduleSelected.getText().toString();
         intent.putExtra(MainMenu.moduleName, module);
-//        intent.putExtra(signInfo, infoSection);
         startActivity(intent);
-       // InfoLesson lesson = new InfoLesson(buttonID, view.findViewById(view.getId()));
     }
 }

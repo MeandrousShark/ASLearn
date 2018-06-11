@@ -18,9 +18,9 @@ import java.util.ArrayList;
 
 
 /**
+ * Created by hannonm2
  *
- * The Java Class that handles the Info Lessons. This is where
- * all of the code should be for it (or subclasses)
+ * This activity shows the user the info pages for all of the signs in a specified lesson.
  */
 
 public class InfoLesson extends AppCompatActivity{

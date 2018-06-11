@@ -11,11 +11,12 @@ import com.aslearn.db.HistoryAndCulture;
 
 /**
  * Created by hannonm2 on 6/8/18.
+ *
+ * This activity shows the history and culture lesson for a selected module.
  */
 
 public class HistoryLesson extends AppCompatActivity {
 
-  //  private String moduleName;
     private DatabaseAccess dbAccess;
     private HistoryAndCulture histAndCultLesson;
 
@@ -24,12 +25,14 @@ public class HistoryLesson extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.info_history);
         Intent intent = getIntent();
-       // moduleName = intent.getStringExtra(MainMenu.moduleName);
         dbAccess = DatabaseAccess.getInstance(this);
         histAndCultLesson = dbAccess.selectCultureLessonByModule(intent.getStringExtra(MainMenu.moduleName));
         setupLesson();
     }
 
+    /**
+     * Updates the view to show the information from the relevant history and culture lesson.
+     */
     private void setupLesson() {
         TextView titleView = findViewById(R.id.historyTitle);
         TextView infoView = findViewById(R.id.historyText);
@@ -38,6 +41,11 @@ public class HistoryLesson extends AppCompatActivity {
         infoView.setText(histAndCultLesson.getInfo());
     }
 
+    /**
+     * The onClick listener for the "Back to Lessons" button that marks the module as complete in
+     * the database and brings the user back to the module menu.
+     * @param view the "Back to Lessons" button
+     */
     public void finishedModule(View view){
         dbAccess.updateFinishedModule(histAndCultLesson.getModule());
         Intent intent = new Intent(this, MainMenu.class);

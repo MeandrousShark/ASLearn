@@ -52,22 +52,4 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-
-
-//    protected void culture(View view) {
-//        System.out.println("moduleMenu button clicked!");
-//        Intent intent = new Intent(this, MainMenu.class);
-//        startActivity(intent);
-//    }
-//        protected void dictionary_old(View view) {
-//        System.out.println("moduleMenu button clicked!");
-//        Intent intent = new Intent(this, MainMenu.class);
-//        startActivity(intent);
-//    }
-//        protected void progress(View view) {
-//        System.out.println("moduleMenu button clicked!");
-//        Intent intent = new Intent(this, MainMenu.class);
-//        startActivity(intent);
-//    }
-
 }
