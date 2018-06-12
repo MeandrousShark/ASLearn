@@ -2,14 +2,9 @@ package com.aslearn;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.content.Intent;
-import android.net.Uri;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.VideoView;
 
 import com.aslearn.db.DatabaseAccess;
 
@@ -37,16 +32,13 @@ public class MyProgress extends AppCompatActivity {
         numSignsLearned = findViewById(R.id.NumberLearnedSigns);
 
         badges = new HashMap<String, ImageView>();
-        badges.put("Alphabet", (ImageView)findViewById(R.id.Badge1));
-        badges.put("Numbers", (ImageView)findViewById(R.id.Badge2));
-        badges.put("Greetings", (ImageView)findViewById(R.id.Badge3));
-        badges.put("Food", (ImageView)findViewById(R.id.Badge4));
-        badges.put("Basic Verbs", (ImageView)findViewById(R.id.Badge5));
-        badges.put("Giving Directions", (ImageView)findViewById(R.id.Badge6));
-        badges.put("Basic Adjectives", (ImageView)findViewById(R.id.Badge7));
-        badges.put("Family", (ImageView)findViewById(R.id.Badge8));
-        badges.put("Weather", (ImageView)findViewById(R.id.Badge9));
-        badges.put("Questions", (ImageView)findViewById(R.id.Badge10));
+        badges.put("Alphabet", (ImageView)findViewById(R.id.alphabetBadge));
+        badges.put("Numbers", (ImageView)findViewById(R.id.numbersBadge));
+        badges.put("Greetings", (ImageView)findViewById(R.id.greetingsBadge));
+        badges.put("Food", (ImageView)findViewById(R.id.foodBadge));
+        badges.put("Basic Verbs", (ImageView)findViewById(R.id.verbBadge));
+        badges.put("Basic Adjectives", (ImageView)findViewById(R.id.adjectiveBadge));
+        badges.put("Family", (ImageView)findViewById(R.id.familyBadge));
 
         setNumSignsLearned();
         setBestWords();
