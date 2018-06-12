@@ -16,7 +16,7 @@ public class DatabaseAccess {
     private static final String TABLE_LESSON = "Lessons";
     private static final String TABLE_WORD = "Words";
     private static final String TABLE_QUESTIONS = "Questions";
-    private static final String TABLE_CULTURE = "HistoryAndCultureLessons";
+    private static final String TABLE_CULTURE = "HistoryAndCulture";
 
    // Cursor cursor = null;
 
@@ -134,7 +134,7 @@ public class DatabaseAccess {
     //Get all questions from the specified lesson
     public ArrayList<Question> selectQuestionsByLesson(String lesson){
         String sqlQuery = "SELECT question_id, question, answer, lesson, related_words, type, wrong_answers FROM " +
-                TABLE_QUESTIONS + " WHERE lesson = '" + lesson +"'";
+                TABLE_QUESTIONS + " WHERE lesson = '" + lesson +"' ORDER BY RANDOM() LIMIT 15";
 
         db = openHelper.getWritableDatabase();
         Cursor cursor = db.rawQuery(sqlQuery, null);

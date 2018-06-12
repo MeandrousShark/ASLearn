@@ -165,11 +165,16 @@ public class Quiz extends AppCompatActivity {
             if (isImageView){
                 imageViews[i].setContentDescription(answerList.get(i));
                 System.out.println("Content Description for image is: " + imageViews[i].getContentDescription().toString());
-                correctView = imageViews[i];
+                if (i==correctIndex) {
+                    correctView = imageViews[i];
+                }
             } else {
                 videoViews[i].setContentDescription(answerList.get(i));
+                imageViews[i].setContentDescription(answerList.get(i));
                 System.out.println("Content Description for video is: " + videoViews[i].getContentDescription().toString());
-                correctView = videoViews[i];
+                if (i == correctIndex) {
+                    correctView = videoViews[i];
+                }
             }
         }
     }
@@ -184,6 +189,7 @@ public class Quiz extends AppCompatActivity {
             videoView.setVisibility(View.INVISIBLE);
             imageView.setImageResource(resID);
             imageView.setVisibility(View.VISIBLE);
+            imageView.setElevation(2);
             return true;
         } else {
             int resID = getResources().getIdentifier(fileName, "raw", getPackageName());
@@ -196,7 +202,9 @@ public class Quiz extends AppCompatActivity {
                 }
             });
             videoView.setVisibility(View.VISIBLE);
-            imageView.setVisibility(View.INVISIBLE);
+            videoView.setElevation(2);
+           // imageView.setVisibility(View.INVISIBLE);
+          //  videoView.setOnTouchListener(On);
             videoView.start();
             return false;
         }
