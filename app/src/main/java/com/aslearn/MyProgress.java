@@ -13,6 +13,9 @@ import java.util.HashMap;
 
 /**
  * Created by hannonm2 on 5/30/18.
+ *
+ * This activity shows the user their progress. It displays the number of words learned, the five
+ * best and worst words, and the badges for completed modules.
  */
 
 public class MyProgress extends AppCompatActivity {
@@ -58,7 +61,9 @@ public class MyProgress extends AppCompatActivity {
     }
 
 
-
+    /**
+     * Sets the text for the 5 best words
+     */
     private void setBestWords(){
         ArrayList<String> bestWordList = dbAccess.select5BestWords();
         String text = "Great Work!\n";
@@ -68,7 +73,9 @@ public class MyProgress extends AppCompatActivity {
         bestWords.setText(text);
     }
 
-
+    /**
+     * Sets the text for the 5 worst words
+     */
     private void setWorstWords(){
         ArrayList<String> worstWordList = dbAccess.select5WorstWords();
         String text = "Could Improve\n";
@@ -78,6 +85,9 @@ public class MyProgress extends AppCompatActivity {
         worstWords.setText(text);
     }
 
+    /**
+     * Sets the badges for completed modules as visible
+     */
     private void setBadges(){
         ArrayList<String> completedModules = dbAccess.selectCompletedModules();
         ImageView currView;
