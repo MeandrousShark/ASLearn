@@ -31,14 +31,15 @@ public class MyProgress extends AppCompatActivity {
         bestWords = findViewById(R.id.BestSignsColumn);
         numSignsLearned = findViewById(R.id.NumberLearnedSigns);
 
-        badges = new HashMap<String, ImageView>();
+        badges = new HashMap<>();
         badges.put("Alphabet", (ImageView)findViewById(R.id.alphabetBadge));
         badges.put("Numbers", (ImageView)findViewById(R.id.numbersBadge));
         badges.put("Greetings", (ImageView)findViewById(R.id.greetingsBadge));
         badges.put("Food", (ImageView)findViewById(R.id.foodBadge));
-        badges.put("Basic Verbs", (ImageView)findViewById(R.id.verbBadge));
-        badges.put("Basic Adjectives", (ImageView)findViewById(R.id.adjectiveBadge));
+        badges.put("Verbs", (ImageView)findViewById(R.id.verbBadge));
+        badges.put("Adjectives", (ImageView)findViewById(R.id.adjectiveBadge));
         badges.put("Family", (ImageView)findViewById(R.id.familyBadge));
+        badges.put("Forming Sentences", (ImageView)findViewById(R.id.cultureBadge));
 
         setNumSignsLearned();
         setBestWords();
@@ -82,7 +83,9 @@ public class MyProgress extends AppCompatActivity {
         ImageView currView;
         for (String module:completedModules) {
             currView = badges.get(module);
-            currView.setVisibility(View.INVISIBLE);
+            if (currView != null) {
+                currView.setVisibility(View.VISIBLE);
+            }
         }
     }
 }
