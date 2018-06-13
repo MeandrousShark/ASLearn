@@ -18,6 +18,9 @@ import java.util.ArrayList;
 
 /**
  * Created by vancoul on 6/8/18.
+ *
+ * This activity allows the user to search the database for a particular sign, and then get the
+ * info page for that sign.
  */
 
 public class Dictionary extends AppCompatActivity {
@@ -30,6 +33,11 @@ public class Dictionary extends AppCompatActivity {
         setContentView(R.layout.dictionary_old);
     }
 
+    /**
+     * Selects words from the database that are similar to the user's text input. A list of the
+     * results is then displayed to the user, and the user can click on a word to view the info page.
+     * @param view the search button
+     */
     public void searchDictionary(View view) {
         //TODO Bug: When Entering multiple inputs to the dictionary search, it will just keep adding things
         EditText searchInput = findViewById(R.id.searchInput);

@@ -16,6 +16,7 @@ public class DatabaseAccess {
     private static final String TABLE_LESSON = "Lessons";
     private static final String TABLE_WORD = "Words";
     private static final String TABLE_QUESTIONS = "Questions";
+    private static final String TABLE_CULTURE = "HistoryAndCulture";
 
    // Cursor cursor = null;
 
@@ -45,7 +46,7 @@ public class DatabaseAccess {
 
     // Get all modules
     public ArrayList<Module> selectAllModules(){
-        String sqlQuery = "SELECT module_name, type, m_unlocked, m_completed, module_order FROM " +
+        String sqlQuery = "SELECT module, type, unlocked, completed, module_order FROM " +
                 TABLE_MODULE + " ORDER BY module_order";
 
         db = openHelper.getWritableDatabase();
@@ -63,6 +64,29 @@ public class DatabaseAccess {
 
         db.close();
         return modules;
+    }
+
+    /**
+     * Get the history and culture lesson for the specified module
+     * @param module the name of the module
+     * @return the history and culture lesson object
+     */
+    public HistoryAndCulture selectCultureLessonByModule(String module){
+        String sqlQuery = "SELECT hist_id, module, info FROM " + TABLE_CULTURE +
+                " WHERE module = '" + module + "';";
+
+        db = openHelper.getWritableDatabase();
+        Cursor cursor = db.rawQuery(sqlQuery, null);
+
+        HistoryAndCulture histAndCultLesson = null;
+
+        if (cursor.moveToNext()){
+            histAndCultLesson = new HistoryAndCulture(cursor.getInt(0),
+                    cursor.getString(1), cursor.getString(2));
+        }
+
+        db.close();
+        return histAndCultLesson;
     }
 
     //Get all lessons from the specified module
@@ -110,7 +134,7 @@ public class DatabaseAccess {
     //Get all questions from the specified lesson
     public ArrayList<Question> selectQuestionsByLesson(String lesson){
         String sqlQuery = "SELECT question_id, question, answer, lesson, related_words, type, wrong_answers FROM " +
-                TABLE_QUESTIONS + " WHERE lesson = '" + lesson +"'";
+                TABLE_QUESTIONS + " WHERE lesson = '" + lesson +"' ORDER BY RANDOM() LIMIT 15";
 
         db = openHelper.getWritableDatabase();
         Cursor cursor = db.rawQuery(sqlQuery, null);
@@ -224,6 +248,25 @@ public class DatabaseAccess {
         return words;
     }
 
+    /**
+     * Gets the total number of signs the user has learned (fluency val of at least 3)
+     * @return an int representing the total # of signs learned
+     */
+    public int selectNumWordsLearned(){
+        String sqlQuery = "SELECT COUNT(*) FROM " + TABLE_WORD + " WHERE fluency_val >= 3";
+
+        db = openHelper.getWritableDatabase();
+        Cursor cursor = db.rawQuery(sqlQuery, null);
+
+        int result = 0;
+        if (cursor.moveToNext()){
+            result = cursor.getInt(0);
+        }
+
+        db.close();
+        return result;
+    }
+
     //Updates the fluency value of a word
     public void updateFluencyVal(String word, int i){
         String sqlUpdate = "UPDATE Words " +
@@ -255,7 +298,7 @@ public class DatabaseAccess {
                 TABLE_LESSON + " WHERE lesson_name = '" + lesson +"'";
         db = openHelper.getWritableDatabase();
 
-
+        System.out.println(lesson);
 
         Cursor cursor = db.rawQuery(sqlQueryLessonInfo, null);
         if(cursor.moveToNext()){
@@ -264,9 +307,11 @@ public class DatabaseAccess {
                     Integer.parseInt(cursor.getString(3)),
                     Integer.parseInt(cursor.getString(4)));
 
+            System.out.println("Found lesson: "+lessonInfo.getLessonName());
+
             String sqlUpdateUnlocked = "UPDATE Lessons SET unlocked = 1 " +
                     "WHERE module = '" + lessonInfo.getModuleName() +"' "+
-                    "AND lesson_order = " + lessonInfo.getLessonOrder()+1;
+                    "AND lesson_order = (" + (lessonInfo.getLessonOrder()+1) + ");";
 
             db.execSQL(sqlUpdateCompleted);
             db.execSQL(sqlUpdateUnlocked);

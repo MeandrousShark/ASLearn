@@ -25,7 +25,6 @@
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".InfoLesson"
-            android:label="Greetings"
             android:parentActivityName=".MainMenu" />
         <activity
             android:name=".LessonMenu"
@@ -38,18 +37,19 @@
             android:label="My Progress"
             android:parentActivityName=".MainActivity" />
         <activity
-            android:name=".Quiz"
-            android:label="Quiz" />
+            android:name=".Quiz" />
         <activity
             android:name=".Dictionary"
-            android:label="Dictionary"
+            android:label="ASL Dictionary"
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".HistoryLesson"
+            android:label="History and Culture"
             android:parentActivityName=".MainMenu"
             />
         <activity
             android:name=".SignDictionary"
+            android:label="ASL Dictionary"
             android:parentActivityName=".Dictionary"
             />
 

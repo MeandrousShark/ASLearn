@@ -28,8 +28,7 @@ public class MainActivity extends AppCompatActivity {
      * Loads the module menu activity when the user clicks on "Learn ASL"
      * @param view the current view the user is on
      */
-    protected void learnASL(View view) {
-        System.out.println("moduleMenu button clicked!");
+    public void learnASL(View view) {
         Intent intent = new Intent(this, MainMenu.class);
         startActivity(intent);
     }
@@ -51,23 +50,5 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, MyProgress.class);
         startActivity(intent);
     }
-
-
-
-//    protected void culture(View view) {
-//        System.out.println("moduleMenu button clicked!");
-//        Intent intent = new Intent(this, MainMenu.class);
-//        startActivity(intent);
-//    }
-//        protected void dictionary_old(View view) {
-//        System.out.println("moduleMenu button clicked!");
-//        Intent intent = new Intent(this, MainMenu.class);
-//        startActivity(intent);
-//    }
-//        protected void progress(View view) {
-//        System.out.println("moduleMenu button clicked!");
-//        Intent intent = new Intent(this, MainMenu.class);
-//        startActivity(intent);
-//    }
 
 }

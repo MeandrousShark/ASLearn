@@ -2,14 +2,9 @@ package com.aslearn;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.content.Intent;
-import android.net.Uri;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.VideoView;
 
 import com.aslearn.db.DatabaseAccess;
 
@@ -18,6 +13,9 @@ import java.util.HashMap;
 
 /**
  * Created by hannonm2 on 5/30/18.
+ *
+ * This activity shows the user their progress. It displays the number of words learned, the five
+ * best and worst words, and the badges for completed modules.
  */
 
 public class MyProgress extends AppCompatActivity {
@@ -36,39 +34,36 @@ public class MyProgress extends AppCompatActivity {
         bestWords = findViewById(R.id.BestSignsColumn);
         numSignsLearned = findViewById(R.id.NumberLearnedSigns);
 
-        badges = new HashMap<String, ImageView>();
-        badges.put("Alphabet", (ImageView)findViewById(R.id.Badge1));
-        badges.put("Numbers", (ImageView)findViewById(R.id.Badge2));
-        badges.put("Greetings", (ImageView)findViewById(R.id.Badge3));
-        badges.put("Food", (ImageView)findViewById(R.id.Badge4));
-        badges.put("Basic Verbs", (ImageView)findViewById(R.id.Badge5));
-        badges.put("Giving Directions", (ImageView)findViewById(R.id.Badge6));
-        badges.put("Basic Adjectives", (ImageView)findViewById(R.id.Badge7));
-        badges.put("Family", (ImageView)findViewById(R.id.Badge8));
-        badges.put("Weather", (ImageView)findViewById(R.id.Badge9));
-        badges.put("Questions", (ImageView)findViewById(R.id.Badge10));
+        badges = new HashMap<>();
+        badges.put("Alphabet", (ImageView)findViewById(R.id.alphabetBadge));
+        badges.put("Numbers", (ImageView)findViewById(R.id.numbersBadge));
+        badges.put("Greetings", (ImageView)findViewById(R.id.greetingsBadge));
+        badges.put("Food", (ImageView)findViewById(R.id.foodBadge));
+        badges.put("Verbs", (ImageView)findViewById(R.id.verbBadge));
+        badges.put("Adjectives", (ImageView)findViewById(R.id.adjectiveBadge));
+        badges.put("Family", (ImageView)findViewById(R.id.familyBadge));
+        badges.put("Forming Sentences", (ImageView)findViewById(R.id.cultureBadge));
 
-        //setNumSignsLearned();
+        setNumSignsLearned();
         setBestWords();
         setWorstWords();
         setBadges();
     }
 
 
-
-    /*
-    **
-    **the database is not set up for this yet
-    **
-    **
+    /**
+     * Sets the text to show the number of signs learned
+     */
     private void setNumSignsLearned(){
-        ArrayList<String> totalSignsLearned = dbAccess.selectNumSignsLearned();
-        String text = "Number of Signs Learned:\n"+ length.totalSignsLearned() + " signs!";
-        bestWords.setText(text);
+        int totalSignsLearned = dbAccess.selectNumWordsLearned();
+        String text = "Number of Signs Learned:\n"+ totalSignsLearned + " signs!";
+        numSignsLearned.setText(text);
     }
 
-*/
 
+    /**
+     * Sets the text for the 5 best words
+     */
     private void setBestWords(){
         ArrayList<String> bestWordList = dbAccess.select5BestWords();
         String text = "Great Work!\n";
@@ -78,7 +73,9 @@ public class MyProgress extends AppCompatActivity {
         bestWords.setText(text);
     }
 
-
+    /**
+     * Sets the text for the 5 worst words
+     */
     private void setWorstWords(){
         ArrayList<String> worstWordList = dbAccess.select5WorstWords();
         String text = "Could Improve\n";
@@ -88,12 +85,17 @@ public class MyProgress extends AppCompatActivity {
         worstWords.setText(text);
     }
 
+    /**
+     * Sets the badges for completed modules as visible
+     */
     private void setBadges(){
         ArrayList<String> completedModules = dbAccess.selectCompletedModules();
         ImageView currView;
         for (String module:completedModules) {
             currView = badges.get(module);
-            currView.setVisibility(View.INVISIBLE);
+            if (currView != null) {
+                currView.setVisibility(View.VISIBLE);
+            }
         }
     }
 }
