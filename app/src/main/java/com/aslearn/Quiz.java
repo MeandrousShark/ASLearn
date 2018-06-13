@@ -241,11 +241,11 @@ public class Quiz extends AppCompatActivity {
         //increment fluency values of related words in the DB
         ArrayList<String> relatedWords = currQuestion.getRelatedWordsAsList();
         for (String word: relatedWords){
-            Word upword = dbAccess.selectSimilarWords(word).get(0);
-            System.out.println("fluency val for " + word + " before: " + upword.getFluencyVal());
+//            Word upword = dbAccess.selectSimilarWords(word).get(0);
+//            System.out.println("fluency val for " + word + " before: " + upword.getFluencyVal());
             dbAccess.updateFluencyVal(word, 1);
-            upword = dbAccess.selectSimilarWords(word).get(0);
-            System.out.println("Fluency val for " + upword.getWord() + " after: " + upword.getFluencyVal());
+  //          upword = dbAccess.selectSimilarWords(word).get(0);
+    //        System.out.println("Fluency val for " + upword.getWord() + " after: " + upword.getFluencyVal());
         }
         EditText answerInput = findViewById(R.id.answerInput);
         switch(currQuestion.getType()) {
