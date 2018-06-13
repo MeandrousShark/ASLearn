@@ -15,6 +15,8 @@ import com.aslearn.db.Word;
 
 /**
  * Created by hannonm2 on 6/8/18.
+ *
+ * This is the sign info page for dictionary results.
  */
 
 public class SignDictionary extends AppCompatActivity {

@@ -27,6 +27,10 @@ import java.util.Random;
 
 /**
  * Created by vancoul on 6/3/18.
+ *
+ * This is the quiz activity. It quizzes the user on lesson material with 3 types of questions.
+ * If the user gets a question wrong, they will get the question again at the end until they get
+ * it right.
  */
 
 public class Quiz extends AppCompatActivity {
@@ -50,6 +54,10 @@ public class Quiz extends AppCompatActivity {
         nextQuestion();
     }
 
+    /**
+     * Moves onto the next question in the quiz. If there are no more questions in the quiz, display
+     * congratulations message.
+     */
     private void nextQuestion(){
         //End quiz if there are no more questions
         chosenAnswer = "";
@@ -66,6 +74,9 @@ public class Quiz extends AppCompatActivity {
         }
     }
 
+    /**
+     * Display the next question given the type.
+     */
     private void setupQuestion() {
         switch(currQuestion.getType()) {
             case "sign2eng":
@@ -84,7 +95,9 @@ public class Quiz extends AppCompatActivity {
 
     }
 
-    //Make the layout for the text entry question
+    /**
+     * Make the layout for the text entry question
+     */
     private void makeTextEntryQuestion(){
         checkAnswerButton = findViewById(R.id.checkAnswer);
         nextButton = findViewById(R.id.nextQuestion);
@@ -106,7 +119,9 @@ public class Quiz extends AppCompatActivity {
         videoView.start();
     }
 
-    //Make the layout for the ASL-->English multiple choice question
+    /**
+     * Make the layout for the ASL-->English multiple choice question
+     */
     private void makeSign2EngQuestion(){
         checkAnswerButton = findViewById(R.id.MCConfirmButton);
         nextButton = findViewById(R.id.nextQuestion);
@@ -135,6 +150,10 @@ public class Quiz extends AppCompatActivity {
         String fileName = currQuestion.getQuestion();
         switchGraphic(fileName, imageView, videoView);
     }
+
+    /**
+     * Make the layout for English to ASL multiple choice question.
+     */
     private void makeEng2SignQuestion(){
         checkAnswerButton = findViewById(R.id.MCConfirmButton);
         nextButton = findViewById(R.id.nextQuestion);
@@ -179,6 +198,14 @@ public class Quiz extends AppCompatActivity {
         }
     }
 
+    /**
+     * Shows the graphic for the view. Sets ImageView if file type is a jpg, VideoView if file type
+     * is mp4
+     * @param fileName
+     * @param imageView
+     * @param videoView
+     * @return boolean for if graphic is an ImageView
+     */
     private boolean switchGraphic(String fileName, ImageView imageView, VideoView videoView){
         System.out.println(fileName);
         String[] fileNameSplit = fileName.split("\\.");
