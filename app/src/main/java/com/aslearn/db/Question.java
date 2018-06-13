@@ -13,7 +13,7 @@ public class Question {
     private String type;
     private String wrongAnswers;
 
-    //Constructor
+
     public Question (int questionID, String question, String answer, String lesson, String relatedWords, String type, String wrongAnswers){
         this.questionID=questionID;
         this.question=question;

@@ -50,7 +50,6 @@ public class MainMenu extends AppCompatActivity {
             Button moduleButton = moduleButtons[i];
             moduleButton = new Button(this);
             moduleButton.setBackground(getDrawable(R.drawable.buttonrounding));
-            // lessonButton.setBackgroundColor(0xFFFFFE);
             moduleButton.setText(modules.get(i).getModuleName());
             moduleButton.setTextSize(24);
             moduleButton.setAllCaps(false);
@@ -78,10 +77,8 @@ public class MainMenu extends AppCompatActivity {
             System.out.println("Unlocked: "+ modules.get(I).getUnlocked());
             if (modules.get(I).getUnlocked() == 0){
                 moduleButton.setEnabled(false);
-               // lessonButton.setAlpha(0.5f);
             }
         }
-        //  startLessons();
     }
 
     /**
