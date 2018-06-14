@@ -76,7 +76,7 @@ public class MainMenu extends AppCompatActivity {
             System.out.println("Completed: "+modules.get(I).getCompleted());
             System.out.println("Unlocked: "+ modules.get(I).getUnlocked());
             if (modules.get(I).getUnlocked() == 0){
-          //      moduleButton.setEnabled(false);
+                moduleButton.setEnabled(false);
             }
         }
     }

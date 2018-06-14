@@ -96,7 +96,7 @@ public class InfoLesson extends AppCompatActivity{
             imageView.setVisibility(View.INVISIBLE);
             videoView.start();
         }
-        if(word.getMoreInfo() == null) {
+        if(word.getMoreInfo().equals("")) {
             moreInfoButton.setEnabled(false);
             moreInfoButton.setAlpha(0.5f);
         } else {

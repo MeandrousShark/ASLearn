@@ -76,7 +76,7 @@ public class LessonMenu extends AppCompatActivity{
             System.out.println("Unlocked: "+ lessons.get(I).getUnlocked());
 
             if (lessons.get(I).getUnlocked() == 0){
-        //        lessonButton.setEnabled(false);
+                lessonButton.setEnabled(false);
             }
         }
     }
