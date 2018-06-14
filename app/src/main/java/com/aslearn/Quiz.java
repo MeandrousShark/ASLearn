@@ -183,14 +183,16 @@ public class Quiz extends AppCompatActivity {
             boolean isImageView = switchGraphic(answerList.get(i), imageViews[i], videoViews[i]);
             if (isImageView){
                 imageViews[i].setContentDescription(answerList.get(i));
-                System.out.println("Content Description for image is: " + imageViews[i].getContentDescription().toString());
+                System.out.println("Content Description for image is: " +
+                        imageViews[i].getContentDescription().toString());
                 if (i==correctIndex) {
                     correctView = imageViews[i];
                 }
             } else {
                 videoViews[i].setContentDescription(answerList.get(i));
                 imageViews[i].setContentDescription(answerList.get(i));
-                System.out.println("Content Description for video is: " + videoViews[i].getContentDescription().toString());
+                System.out.println("Content Description for video is: " +
+                        videoViews[i].getContentDescription().toString());
                 if (i == correctIndex) {
                     correctView = videoViews[i];
                 }
@@ -225,6 +227,7 @@ public class Quiz extends AppCompatActivity {
             videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
                 @Override
                 public void onPrepared(MediaPlayer mp) {
+                    mp.setVolume(0f, 0f);
                     mp.setLooping(true);
                 }
             });

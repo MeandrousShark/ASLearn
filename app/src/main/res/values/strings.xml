@@ -26,4 +26,5 @@ Location: mid section"</string>
     <string name="moreInfo">More info goes here</string>
     <string name="backButtonText">Back</string>
     <string name="moreInfoButtonText">More Info</string>
+    <string name="moreInfoBtn">More Info</string>
 </resources>

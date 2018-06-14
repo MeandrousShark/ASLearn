@@ -89,6 +89,7 @@ public class InfoLesson extends AppCompatActivity{
             videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
                 @Override
                 public void onPrepared(MediaPlayer mp) {
+                    mp.setVolume(0f, 0f);
                     mp.setLooping(true);
                 }
             });
@@ -131,7 +132,7 @@ public class InfoLesson extends AppCompatActivity{
     public void nextSign(View view) {
         index++;
         if(index < words.size()) {
-            moreInfoButton.setText("More Info");
+            moreInfoButton.setText(R.string.moreInfoBtn);
             setupSign();
         } else {
             Intent intent = new Intent(this, Quiz.class);

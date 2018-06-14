@@ -1,7 +1,10 @@
 package com.aslearn;
 
 import android.content.Intent;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
 import android.net.Uri;
+import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -21,6 +24,19 @@ public class MainActivity extends AppCompatActivity {
         videoView = (VideoView) findViewById(R.id.HelloGif);
         Uri uri = Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.welcome);
         videoView.setVideoURI(uri);
+
+        videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+            @Override
+            public void onPrepared(MediaPlayer mp) {
+                if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    videoView.setAudioFocusRequest(AudioManager.AUDIOFOCUS_NONE);
+                } else {
+                    //TODO figure out how to remove audio focus on Android API < 26
+                }
+                mp.setVolume(0f,0f);
+                mp.setLooping(false);
+            }
+        });
         videoView.start();
     }
 
