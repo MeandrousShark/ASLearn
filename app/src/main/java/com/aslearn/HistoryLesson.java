@@ -26,7 +26,7 @@ public class HistoryLesson extends AppCompatActivity {
         setContentView(R.layout.info_history);
         Intent intent = getIntent();
         dbAccess = DatabaseAccess.getInstance(this);
-        histAndCultLesson = dbAccess.selectCultureLessonByModule(intent.getStringExtra(MainMenu.moduleName));
+        histAndCultLesson = dbAccess.selectCultureLessonByModule(intent.getStringExtra(ModuleMenu.moduleName));
         setupLesson();
     }
 
@@ -48,7 +48,7 @@ public class HistoryLesson extends AppCompatActivity {
      */
     public void finishedModule(View view){
         dbAccess.updateFinishedModule(histAndCultLesson.getModule());
-        Intent intent = new Intent(this, MainMenu.class);
+        Intent intent = new Intent(this, ModuleMenu.class);
         startActivity(intent);
     }
 }

@@ -18,8 +18,9 @@ import android.widget.VideoView;
 
 import com.aslearn.db.DatabaseAccess;
 import com.aslearn.db.Question;
-import com.aslearn.db.Word;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
@@ -213,6 +214,7 @@ public class Quiz extends AppCompatActivity {
         String[] fileNameSplit = fileName.split("\\.");
         System.out.println(fileNameSplit.length);
         fileName = fileNameSplit[0];
+
         if(fileNameSplit[1].equals(("jpg"))) {
             int resID = getResources().getIdentifier(fileName, "drawable", getPackageName());
             videoView.setVisibility(View.INVISIBLE);
@@ -222,6 +224,7 @@ public class Quiz extends AppCompatActivity {
             return true;
         } else {
             int resID = getResources().getIdentifier(fileName, "raw", getPackageName());
+
             android.net.Uri uri = Uri.parse("android.resource://" + getPackageName() + "/" + resID);
             videoView.setVideoURI(uri);
             videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
@@ -233,9 +236,10 @@ public class Quiz extends AppCompatActivity {
             });
             videoView.setVisibility(View.VISIBLE);
             videoView.setElevation(2);
-           // imageView.setVisibility(View.INVISIBLE);
-          //  videoView.setOnTouchListener(On);
+            // imageView.setVisibility(View.INVISIBLE);
+            //  videoView.setOnTouchListener(On);
             videoView.start();
+
             return false;
         }
     }
@@ -356,7 +360,7 @@ public class Quiz extends AppCompatActivity {
     }
 
     public void backToLessons(View view){
-        Intent intent = new Intent(this, MainMenu.class);
+        Intent intent = new Intent(this, ModuleMenu.class);
         startActivity(intent);
     }
 

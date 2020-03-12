@@ -29,7 +29,7 @@ public class LessonMenu extends AppCompatActivity{
         dbAccess = DatabaseAccess.getInstance(this);
         setContentView(R.layout.lesson_menu);
         Intent intent = getIntent();
-        String moduleName = intent.getStringExtra(MainMenu.moduleName);
+        String moduleName = intent.getStringExtra(ModuleMenu.moduleName);
         System.out.println(moduleName);
         lessons = dbAccess.selectLessonsByModule(moduleName);
         if (lessons != null) {
@@ -74,10 +74,11 @@ public class LessonMenu extends AppCompatActivity{
             System.out.println(lessons.get(I).getLessonName());
             System.out.println("Completed: "+lessons.get(I).getCompleted());
             System.out.println("Unlocked: "+ lessons.get(I).getUnlocked());
+            //TODO Uncomment this when done debugging
+//            if (lessons.get(I).getUnlocked() == 0){
+//                lessonButton.setEnabled(true);
+//            }
 
-            if (lessons.get(I).getUnlocked() == 0){
-                lessonButton.setEnabled(false);
-            }
         }
     }
 }
