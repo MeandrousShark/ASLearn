@@ -14,7 +14,7 @@ public class Question {
     private String wrongAnswers;
 
 
-    public Question (int questionID, String question, String answer, String lesson, String relatedWords, String type, String wrongAnswers){
+     Question (int questionID, String question, String answer, String lesson, String relatedWords, String type, String wrongAnswers){
         this.questionID=questionID;
         this.question=question;
         this.answer=answer;

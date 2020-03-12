@@ -14,7 +14,7 @@ public class Module {
     private int moduleOrder;
 
     //Constructs a module from the database
-    public Module(String moduleName, String type, int unlocked, int completed, int moduleOrder) {
+     Module(String moduleName, String type, int unlocked, int completed, int moduleOrder) {
         this.moduleName = moduleName;
         this.type = type;
         this.unlocked = unlocked;

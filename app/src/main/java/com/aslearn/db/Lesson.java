@@ -34,7 +34,7 @@ public class Lesson {
 //        this.nextLesson=nextLesson;
 //    }
 
-    public Lesson(String lessonName, String moduleName, int unlocked, int completed, int lessonOrder){
+    Lesson(String lessonName, String moduleName, int unlocked, int completed, int lessonOrder){
         this.lessonName=lessonName;
         this.moduleName=moduleName;
         this.completed=completed;
@@ -51,7 +51,7 @@ public class Lesson {
         this.lessonName=lesson;
     }
 
-    public String getModuleName(){
+    String getModuleName(){
         return this.moduleName;
     }
 
@@ -78,7 +78,7 @@ public class Lesson {
 //        }
     }
 
-    public int getLessonOrder() {
+    int getLessonOrder() {
         return this.lessonOrder;
     }
 

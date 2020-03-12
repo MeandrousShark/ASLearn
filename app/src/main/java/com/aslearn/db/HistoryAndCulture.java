@@ -9,7 +9,7 @@ public class HistoryAndCulture {
     private String module;
     private String info;
 
-    public HistoryAndCulture(int hist_id, String module, String info){
+    HistoryAndCulture(int hist_id, String module, String info){
         this.hist_id = hist_id;
         this.module = module;
         this.info = info;
