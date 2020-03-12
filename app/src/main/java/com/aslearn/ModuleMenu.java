@@ -16,7 +16,7 @@ import java.util.ArrayList;
 /**
  * This is the main module menu. From here, users can select lessons.
  */
-public class MainMenu extends AppCompatActivity {
+public class ModuleMenu extends AppCompatActivity {
 
 
     public static final String moduleName = "com.aslearn.moduleName";
@@ -75,9 +75,10 @@ public class MainMenu extends AppCompatActivity {
             System.out.println(modules.get(I).getModuleName());
             System.out.println("Completed: "+modules.get(I).getCompleted());
             System.out.println("Unlocked: "+ modules.get(I).getUnlocked());
-            if (modules.get(I).getUnlocked() == 0){
-                moduleButton.setEnabled(false);
-            }
+            //TODO Uncomment this when done debugging
+//            if (modules.get(I).getUnlocked() == 0){
+//                moduleButton.setEnabled(false);
+//            }
         }
     }
 
@@ -89,7 +90,7 @@ public class MainMenu extends AppCompatActivity {
         Intent intent = new Intent(this, HistoryLesson.class);
         Button moduleSelected = (Button) view;
         String module = moduleSelected.getText().toString();
-        intent.putExtra(MainMenu.moduleName, module);
+        intent.putExtra(ModuleMenu.moduleName, module);
         startActivity(intent);
     }
 
@@ -102,7 +103,7 @@ public class MainMenu extends AppCompatActivity {
         Intent intent = new Intent(this, LessonMenu.class);
         Button moduleSelected = (Button) view;
         String module = moduleSelected.getText().toString();
-        intent.putExtra(MainMenu.moduleName, module);
+        intent.putExtra(ModuleMenu.moduleName, module);
         startActivity(intent);
     }
 }
