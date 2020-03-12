@@ -20,16 +20,16 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainMenu"
+            android:name=".ModuleMenu"
             android:label="@string/module_menu"
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".InfoLesson"
-            android:parentActivityName=".MainMenu" />
+            android:parentActivityName=".ModuleMenu" />
         <activity
             android:name=".LessonMenu"
             android:label="Lessons"
-            android:parentActivityName=".MainMenu" />
+            android:parentActivityName=".ModuleMenu" />
         <activity
             android:name=".MultipleChoice" />
         <activity
@@ -45,7 +45,7 @@
         <activity
             android:name=".HistoryLesson"
             android:label="History and Culture"
-            android:parentActivityName=".MainMenu"
+            android:parentActivityName=".ModuleMenu"
             />
         <activity
             android:name=".SignDictionary"

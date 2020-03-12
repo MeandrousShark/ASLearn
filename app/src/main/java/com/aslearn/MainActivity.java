@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
-import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -28,11 +27,7 @@ public class MainActivity extends AppCompatActivity {
         videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
             public void onPrepared(MediaPlayer mp) {
-                if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                    videoView.setAudioFocusRequest(AudioManager.AUDIOFOCUS_NONE);
-                } else {
-                    //TODO figure out how to remove audio focus on Android API < 26
-                }
+                videoView.setAudioFocusRequest(AudioManager.AUDIOFOCUS_NONE);
                 mp.setVolume(0f,0f);
                 mp.setLooping(false);
             }
@@ -45,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
      * @param view the current view the user is on
      */
     public void learnASL(View view) {
-        Intent intent = new Intent(this, MainMenu.class);
+        Intent intent = new Intent(this, ModuleMenu.class);
         startActivity(intent);
     }
 
